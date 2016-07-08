@@ -17,6 +17,10 @@ public class TimeSeries<T> {
     this.labels = labels;
   }
 
+  public Iterable<Item<T>> getItems() {
+    return this.items;
+  }
+
   /**
    * Returns a string representing the TimeSeries.
    */

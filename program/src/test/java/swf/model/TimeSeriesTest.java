@@ -75,6 +75,15 @@ public class TimeSeriesTest {
   }
 
   @Test
+  public void testGetItems() {
+    LinkedList<Item<Integer>> items = new LinkedList<Item<Integer>>();
+    items.add(new Item<Integer>(1, 5));
+    items.add(new Item<Integer>(5, 7));
+    items.add(new Item<Integer>(9, -3));
+    assertEquals(items, this.timeSeries1.getItems());
+  }
+
+  @Test
   public void testToString() {
     assertEquals("Items:\n1 5\n5 7\n9 -3\nLabels:\n2 START\n7 END\n", this.timeSeries1.toString());
   }
