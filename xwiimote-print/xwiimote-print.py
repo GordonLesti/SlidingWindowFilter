@@ -58,7 +58,7 @@ while n < 2:
         if evt.type == xwiimote.EVENT_KEY:
             key, state = evt.get_key()
             if (key == xwiimote.KEY_A and state == 1):
-                if record == False:
+                if not record:
                     print "RECORD"
                     record = True
                     output = ""
@@ -66,10 +66,11 @@ while n < 2:
                 else:
                     print "STOP RECORD"
                     record = False
-                    outputFile = open("record.txt", "w")
+                    outputFile = open("../data/record.txt", "w")
                     outputFile.write(output)
                     outputFile.close()
-            elif (record == True and key == xwiimote.KEY_B):
+                    n = 2
+            elif (record and key == xwiimote.KEY_B):
                 if state == 1:
                     print "START"
                     output += str(int(round(time.time() * 1000)) - startTime) + " START\n"
@@ -82,8 +83,6 @@ while n < 2:
         elif evt.type == xwiimote.EVENT_GONE:
             print "Gone"
             n = 2
-        # else:
-        #     print "type:", evt.type
     except IOError as e:
         if e.errno != errno.EAGAIN:
             print "Bad"

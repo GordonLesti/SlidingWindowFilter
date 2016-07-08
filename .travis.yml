@@ -1,0 +1,13 @@
+language: java
+
+sudo: false
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+
+before_script:
+  - cd program
+
+script:
+  - gradle check
