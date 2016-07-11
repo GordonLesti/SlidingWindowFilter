@@ -56,12 +56,11 @@ public class TimeSeries<T> {
    */
   @Override
   public String toString() {
-    String output = "Items:\n";
+    String output = "";
     Iterator<Item<T>> itemIterator = this.items.iterator();
     while (itemIterator.hasNext()) {
       output += itemIterator.next().toString() + "\n";
     }
-    output += "Labels:\n";
     Iterator<Item<String>> labelIterator = this.labels.iterator();
     while (labelIterator.hasNext()) {
       output += labelIterator.next().toString() + "\n";

@@ -110,7 +110,7 @@ public class TimeSeriesTest {
 
   @Test
   public void testToString() {
-    assertEquals("Items:\n1 5\n5 7\n9 -3\nLabels:\n2 START\n7 END\n", this.timeSeries1.toString());
+    assertEquals("1 5\n5 7\n9 -3\n2 START\n7 END\n", this.timeSeries1.toString());
   }
 
   @Test
