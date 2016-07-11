@@ -5,6 +5,7 @@ import swf.model.timeseries.Item;
 
 import java.lang.Iterable;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class TimeSeries<T> {
 
@@ -19,6 +20,35 @@ public class TimeSeries<T> {
 
   public Iterable<Item<T>> getItems() {
     return this.items;
+  }
+
+  public Iterable<Item<String>> getLabels() {
+    return this.labels;
+  }
+
+  /**
+   * Returns a sub TimeSeries from start to not included end.
+   */
+  public TimeSeries<T> subTimeSeries(long start, long end) {
+    LinkedList<Item<T>> subItems = new LinkedList<Item<T>>();
+    Iterator<Item<T>> itemIterator = this.items.iterator();
+    while (itemIterator.hasNext()) {
+      Item<T> item = itemIterator.next();
+      long time = item.getTime();
+      if (time >= start && time < end) {
+        subItems.add(item);
+      }
+    }
+    LinkedList<Item<String>> subLabels = new LinkedList<Item<String>>();
+    Iterator<Item<String>> labelIterator = this.labels.iterator();
+    while (labelIterator.hasNext()) {
+      Item<String> item = labelIterator.next();
+      long time = item.getTime();
+      if (time >= start && time < end) {
+        subLabels.add(item);
+      }
+    }
+    return new TimeSeries<T>(subItems, subLabels);
   }
 
   /**

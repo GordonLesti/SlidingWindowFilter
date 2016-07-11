@@ -84,6 +84,31 @@ public class TimeSeriesTest {
   }
 
   @Test
+  public void testGetLabels() {
+    LinkedList<Item<String>> labels = new LinkedList<Item<String>>();
+    labels.add(new Item<String>(2, "START"));
+    labels.add(new Item<String>(7, "END"));
+    assertEquals(labels, this.timeSeries1.getLabels());
+  }
+
+  @Test
+  public void testSubTimeSeries() {
+    LinkedList<Item<Integer>> items1 = new LinkedList<Item<Integer>>();
+    items1.add(new Item<Integer>(5, 7));
+    items1.add(new Item<Integer>(9, -3));
+    LinkedList<Item<String>> labels1 = new LinkedList<Item<String>>();
+    labels1.add(new Item<String>(2, "START"));
+    labels1.add(new Item<String>(7, "END"));
+    assertEquals(new TimeSeries<Integer>(items1, labels1), this.timeSeries1.subTimeSeries(2, 10));
+
+    LinkedList<Item<Integer>> items2 = new LinkedList<Item<Integer>>();
+    items2.add(new Item<Integer>(5, 7));
+    LinkedList<Item<String>> labels2 = new LinkedList<Item<String>>();
+    labels2.add(new Item<String>(2, "START"));
+    assertEquals(new TimeSeries<Integer>(items2, labels2), this.timeSeries1.subTimeSeries(2, 6));
+  }
+
+  @Test
   public void testToString() {
     assertEquals("Items:\n1 5\n5 7\n9 -3\nLabels:\n2 START\n7 END\n", this.timeSeries1.toString());
   }
