@@ -2,8 +2,7 @@
 
 [![Software License][ico-license]](LICENSE.md)
 
-A small python application that is part of the [final paper](https://github.com/GordonLesti/SlidingWindowFilter)  of my
-bachelor degree.
+The final paper of my bachelor degree.
 
 ## Related
 
