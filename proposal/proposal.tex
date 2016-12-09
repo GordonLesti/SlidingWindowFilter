@@ -2,6 +2,7 @@
 
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{pgfplots}
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
@@ -28,18 +29,135 @@
     \toctitle{Proposal for bachelor thesis}
     \tocauthor{Gordon Lesti}
     \maketitle
-    \newpage
 
     \section{Introduction}
-    % 3-5 Absätze
-    % Allgemeine Einleitung
-    % Lücke wurde schon identifiziert?
-    % Bisherige Ansätzte
-    % Eigener Vorschlag
-    % Struktur der Bachelorarbeit / Zeitplan
+    Smartwatches, wearable fitness tracker bracelet and smartphones are producing continuously data streams. Some of
+    those data streams come as time series and can be used by programs for a real time analysis.
+
+    \subsection{Sliding Window}
+    Real time analyzing programs are often working on small windows of the time series. Extracted information from the
+    window will be processed or stored and immediately afterwards the algorithm has to focus on the next window. Space
+    and time resources are often limited.
+
+    The Dynamic Time Warping \cite{berndt1994using} (DTW) algorithm is widely used
+    to find patterns in time series. But the quadratic time and space complexity for building an $n \times m$ grid is
+    restricting the usage of DTW for fast time series streams.
+
+    \subsection{Sliding Window Filter}
+    My approach will focus on a fast filter for time series streams that prevented the overuse of the DTW algorithm
+    calls. A very promising candidate for a fast filter is the complexity estimate from
+    \textit{A Complexity-Invariant Distance Measure for Time Series} \cite{batista2011complexity}.
+
+    \subsection{Schedule}
+    This is the aspired schedule for the bachelor thesis.
+    \begin{itemize}
+        \item \textbf{week 2}: Execution of the experiment with more than eight experimentees
+        \item \textbf{week 4}: Implementing the time series filter in Java\footnote{https://www.java.com/}
+        \item \textbf{week 8}: Analysis of the experiment results
+        \item \textbf{week 16}: Finishing a prototype of the bachelor thesis paper
+        \item \textbf{week 18}: Finishing the bachelor thesis paper
+    \end{itemize}
 
     \section{Problem Description}
-    % informelle & formelle Problembeschreibung
+    As described above a algorithm is working on the latest window of time series data. A device like a smartwatch for
+    example is sending continuously data. After an established step length $s$ a window of size $w$ will be extracted
+    from the input data stream. The DTW algorithm will try to classify the latest window by matching it against items
+    in a training set.
+
+    \subsection{Example}
+    As example a device that is sending every 50 milliseconds a integer value between 0 and 10.
+    Figure~\ref{fig:datainputgraph} shows the input data from time 0 to the current time in milliseconds. The
+    established step size $s$ is 100 milliseconds and the window size $s$ is 250 milliseconds. Assumed that the
+    algorithm is at the moment with 300 passed milliseconds, just three times step size $s$ the current window would be
+    presented by figure~\ref{fig:window1}. Figure~\ref{fig:window2} is presenting the window after four times the step
+    size and figure~\ref{fig:window3} after five times the step size.
+
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[xlabel=Time in milliseconds, ylabel=Data values]
+                \addplot coordinates {
+                    (0,5)
+                    (50,9)
+                    (100,0)
+                    (150,9)
+                    (200,1)
+                    (250,2)
+                    (300,3)
+                    (350,0)
+                    (400,2)
+                    (450,4)
+                    (500,0)
+                    (550,6)
+                    (600,6)
+                    (650,0)
+                    (700,9)
+                    (750,0)
+                    (800,0)
+                    (850,6)
+                    (900,1)
+                    (950,1)
+                    (1000,8)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Data input example.}
+        \label{fig:datainputgraph}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[xlabel=Time in milliseconds, ylabel=Data values]
+                \addplot coordinates {
+                    (50,9)
+                    (100,0)
+                    (150,9)
+                    (200,1)
+                    (250,2)
+                    (300,3)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Window at $3 \times s$, 300 milliseconds.}
+        \label{fig:window1}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[xlabel=Time in milliseconds, ylabel=Data values]
+                \addplot coordinates {
+                    (150,9)
+                    (200,1)
+                    (250,2)
+                    (300,3)
+                    (350,0)
+                    (400,2)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Window at $4 \times s$, 400 milliseconds.}
+        \label{fig:window2}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[xlabel=Time in milliseconds, ylabel=Data values]
+                \addplot coordinates {
+                    (500,0)
+                    (550,6)
+                    (600,6)
+                    (650,0)
+                    (700,9)
+                    (750,0)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Window at $5 \times s$, 500 milliseconds.}
+        \label{fig:window3}
+    \end{figure}
 
     \section{Objectives}
     % Eigener Ansatz
@@ -147,5 +265,12 @@
     %% Zukünftiges
     % Future Work
     % References
+
+    \begin{thebibliography}{1}
+        \bibitem{berndt1994using} Berndt, Donald J and Clifford, James "Using Dynamic Time Warping to Find Patterns in
+        Time Series." KDD workshop (1994): 359--370.
+        \bibitem{batista2011complexity} Batista, Gustavo EAPA and Wang, Xiaoyue and Keogh, Eamonn J "A
+        Complexity-Invariant Distance Measure for Time Series." SDM (2011): 699--710.
+    \end{thebibliography}
 
 \end{document}
