@@ -45,8 +45,7 @@
 
     \subsection{Sliding Window Filter}
     My approach will focus on a fast filter for time series streams that prevented the overuse of the DTW algorithm
-    calls. A very promising candidate for a fast filter is the complexity estimate from
-    \textit{A Complexity-Invariant Distance Measure for Time Series} \cite{batista2011complexity}.
+    calls.
 
     \subsection{Schedule}
     This is the aspired schedule for the bachelor thesis.
@@ -159,10 +158,25 @@
     holder of a smartwatch has performed.
 
     \section{Objectives}
-    % Eigener Ansatz
+    The approach of a sliding window filter for time series streams is to avoid unnecessary usage of the complex and
+    time consuming DTW algorithm. The filter works as a bouncer in front of the nearest neighbour classification with
+    the DTW algorithm.
+    A very promising candidate for a fast filter is the complexity estimate from
+    \textit{A Complexity-Invariant Distance Measure for Time Series} \cite{batista2011complexity}. The complexity
+    estimate of a teime series $Q$ with data points $q_1 \dots q_n$ can be calculated like this:\\
+    \begin{center}
+        $CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{n-1} (q_i-q_{i+1})^2}$
+    \end{center}
+
+    The precondition for the filter is knowledge about the complexity estimate of every time series in the training set.
+    A simple approach for the filter would be to allow only time series windows for classification that have a
+    complexity estimate between the lower and the upper bound of our training set.
 
     \section{Evaluation}
-    % Beschreibung des Datensatzes (uWave)
+    The sliding window filter idea can possibly work in many domains. For example to detecting keywords in audio
+    streams or detecting gestures in the acceleration data of a smartwatch. I will focus my research on the gesture
+    detection inspired by
+    \textit{uWave: Accelerometer-based personalized gesture recognition and its applications} \cite{liu2009uwave}.
 
     \subsection{Experiment}
     I have created a experiment to record the acceleration data from a Wii Remote controller that is used by a
@@ -267,9 +281,12 @@
 
     \begin{thebibliography}{1}
         \bibitem{berndt1994using} Berndt, Donald J and Clifford, James "Using Dynamic Time Warping to Find Patterns in
-        Time Series." KDD workshop (1994): 359--370.
+        Time Series." KDD workshop (1994): 359--370
         \bibitem{batista2011complexity} Batista, Gustavo EAPA and Wang, Xiaoyue and Keogh, Eamonn J "A
-        Complexity-Invariant Distance Measure for Time Series." SDM (2011): 699--710.
+        Complexity-Invariant Distance Measure for Time Series." SDM (2011): 699--710
+        \bibitem{liu2009uwave} Liu, Jiayang and Zhong, Lin and Wickramasuriya, Jehan and Vasudevan, Venu "uWave:
+        Accelerometer-based personalized gesture recognition and its applications" Pervasive and Mobile Computing
+        (2009): 657--675
     \end{thebibliography}
 
 \end{document}
