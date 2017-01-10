@@ -152,25 +152,41 @@
     \end{figure}
 
     A possible scenario is a software that gets every 100 milliseconds a time series interval or window like
-    figure~\ref{fig:datainputgraph}(b) - (c) from a device. The software has to classify the time series window with a
-    nearest neighbour algorithm and a distance measure like DTW. That way the software tries to guess a statement about
-    the current situation of the device. Maybe the software has classifies the current window as a gesture that the
-    holder of a smartwatch has performed.
+    figure~\ref{fig:datainputgraph}(b) - (c) from a device. The software has to classify the time series window, for
+    example with a one nearest neighbour algorithm and a distance measure like DTW. That way the software tries to guess
+    a statement about the current situation of the device. Maybe the software has classifies the current window as a
+    gesture that the holder of a smartwatch has performed.\\
+
+    The combination of a one nearest neighbour algorithm with DTW as distance measure are a very common approach to
+    classify time series. A more classic approach for a distance measure is the euclidean distance. The advantage is the
+    linear time and space complexity, but the euclidean distance is brittle \cite{keogh2005exact} for time series that
+    are out of phase in the time axis. Especially human made time series like gestures are often out of phase in the
+    time axis.
 
     \section{Objectives}
     The approach of a sliding window filter for time series streams is to avoid unnecessary usage of the complex and
-    time consuming DTW algorithm. The filter works as a bouncer in front of the nearest neighbour classification with
-    the DTW algorithm.
+    time consuming DTW algorithm. The filter works as a bouncer in front of the one nearest neighbour classification
+    with the DTW algorithm. The requirements for such a filter are linear time and space complexity.\\
+
     A very promising candidate for a fast filter is the complexity estimate from
     \textit{A Complexity-Invariant Distance Measure for Time Series} \cite{batista2011complexity}. The complexity
-    estimate of a teime series $Q$ with data points $q_1 \dots q_n$ can be calculated like this:\\
+    estimate of a time series $Q$ with data points $q_1 \dots q_n$ can be calculated like this:\\
     \begin{center}
         $CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{n-1} (q_i-q_{i+1})^2}$
     \end{center}
 
-    The precondition for the filter is knowledge about the complexity estimate of every time series in the training set.
+    An other promising candidate is the variance of a time series $Q$.\\
+    \begin{center}
+        $Var(Q) = \frac{1}{n -1} {\sum \limits_{i=1}^{n} (q_i-\bar{q}_n)^2}$ with
+        $\bar{q}_n = \frac{1}{n} {\sum \limits_{i=1}^{n} q_i}$
+    \end{center}
+
+    Both candidates have linear time and space complexity. It is not excluded that other filters are tried out during
+    the bachelor thesis.\\
+
+    The precondition for a filter is knowledge about the measure of every time series in the training set.
     A simple approach for the filter would be to allow only time series windows for classification that have a
-    complexity estimate between the lower and the upper bound of our training set.
+    measure between the lower and the upper bound of our training set.
 
     \section{Evaluation}
     The sliding window filter idea can possibly work in many domains. For example to detecting keywords in audio
@@ -282,6 +298,8 @@
     \begin{thebibliography}{1}
         \bibitem{berndt1994using} Berndt, Donald J and Clifford, James "Using Dynamic Time Warping to Find Patterns in
         Time Series." KDD workshop (1994): 359--370
+        \bibitem{keogh2005exact} Keogh, Eamonn and Ratanamahatana, Chotirat Ann "Exact indexing of dynamic time warping"
+        Knowledge and information systems (2005): 358--386
         \bibitem{batista2011complexity} Batista, Gustavo EAPA and Wang, Xiaoyue and Keogh, Eamonn J "A
         Complexity-Invariant Distance Measure for Time Series." SDM (2011): 699--710
         \bibitem{liu2009uwave} Liu, Jiayang and Zhong, Lin and Wickramasuriya, Jehan and Vasudevan, Venu "uWave:
