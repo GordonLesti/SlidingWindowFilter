@@ -1,2 +1,18 @@
 \subsection{Complexity-Invariant Distance Measure}
-The complexity-invariant distance measure \cite{batista2011complexity} or CID is a distance measure for time series.
+The complexity-invariant distance measure \cite{batista2011complexity} or shorten $CID$ is a distance measure for time
+series. It is composed of the euclidean distance or shorten $ED$ and a complexity correction factor or shorten $CF$.
+
+Given are a time series $S$ of size $n$ and a time series $T$ of size $m$ over the set $\mathbb{U}$. Furthermore is
+$n = m$ and a distance measure function $D$ on the set $\mathbb{U}$ with
+$D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$ is given.
+\begin{center}
+    $CID(S, T) = ED(S, T) \times CF(S, T)$
+\end{center}
+with complexity correction factor
+\begin{center}
+    $CF(S, T) = \frac{max(CE(S), CE(T))}{min(CE(S), CE(T))}$
+\end{center}
+$CE$ is a complexity estimate of a time series and a possible implementation can be
+\begin{center}
+    $CE(S) = \sqrt{\sum \limits_{i=1}^{n-1} D(s_i, s_{i + 1})^2}$
+\end{center}
