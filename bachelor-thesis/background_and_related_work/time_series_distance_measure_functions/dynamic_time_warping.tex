@@ -1,4 +1,4 @@
-\subsection{Dynamic Time Warping}
+\subsubsection{Dynamic Time Warping}
 Dynamic time warping or just shorten DTW is a well known algorithm for pattern detection in time series
 \cite{berndt1994using}. The following short description of the algorithm will only focus on the distance calculation and
 not on the backtracking. The warping path as result of the backtracking is irrelevant for the aim of this bachelor
@@ -6,11 +6,14 @@ thesis.
 
 Given are a time series $S$ of size $n$ and a time series $T$ of size $m$ over the set $U$. Furthermore is given a
 distance measure function $D$ on set $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. DTW creates a
-$n \times m$ matrix $M$ with the the following rule.
+$n \times m$ grid $M$ with the the following rule.
 \begin{center} \[ M_{i, j} = \begin{cases}
-    D(s_i,t_j) & \text{if } i = 1 \wedge t = 1\\
-    M_{i,j-1} + D(s_i,t_j) & \text{if } i = 1 \wedge t \neq 1\\
-    M_{i-1,j} + D(s_i,t_j) & \text{if } i \neq 1 \wedge t = 1\\
+    D(s_i,t_j) & \text{if } i = 1 \wedge j = 1\\
+    M_{i,j-1} + D(s_i,t_j) & \text{if } i = 1 \wedge j \neq 1\\
+    M_{i-1,j} + D(s_i,t_j) & \text{if } i \neq 1 \wedge j = 1\\
     min(M_{i-1,j}, M_{i-1,j-1}, M_{i,j-1}) + D(s_i,t_j) & \text{if } i \neq 1 \wedge j \neq 1
 \end{cases} \] \end{center}
-The resulting distance between the two given time series is the entry $M_{n,m}$ of the matrix, $DTW(S, T) = M_{n,m}$.
+The resulting distance between the two given time series is the entry $M_{n,m}$ of the grid.
+\begin{center}
+    $DTW(S, T) = M_{n,m}$
+\end{center}
