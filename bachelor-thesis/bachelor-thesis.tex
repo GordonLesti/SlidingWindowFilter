@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{pgfplots}
 \usepackage{tabularx}
+\usepackage{textcomp}
 \usepackage{url}
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
@@ -11,6 +12,7 @@
 \setcounter{tocdepth}{3}
 
 \begin{document}
+    \graphicspath{ {../img/} }
     \mainmatter
     \title{A Sliding Window Filter for Time Series Streams}
     \subtitle{Bachelor thesis\\
@@ -34,6 +36,6 @@
     \tableofcontents
     \input{introduction.tex}
     \input{background_and_notation.tex}
-    \input{references.tex}
     \input{experiment.tex}
+    \input{references.tex}
 \end{document}
