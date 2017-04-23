@@ -1,15 +1,14 @@
 \subsubsection{File Format}
 Interesting for the evaluation of the experiment are the acceleration data in three axis and the \textit{B} button down
-and up events to mark the beginning and the end of a gesture. The controller is sending the acceleration data with an
-average distance of five milliseconds. This results in three different kinds of events, incoming acceleration data, the
-\textit{B} button is pressed down and the \textit{B} button is released up. Every event has been marked with the time in
-milliseconds that have passed since the starting of the experiment. The representing line in a recorded file for a
+and up events to mark the beginning and the end of a gesture. This results in three different kinds of events, incoming
+acceleration data, the \textit{B} button is pressed down and the \textit{B} button is released up. The controller is
+sending the acceleration data with an average gap of five milliseconds. Every event has been marked with the time
+in milliseconds that have passed since the starting of the experiment. The representing line in a recorded file for a
 acceleration data event is starting with the time in milliseconds followed by the acceleration data of all three axis.
-The acceleration data of a axis comes as integer value with the unit
-$\frac{dm}{s^2}$\footnote{Decimetre per second squared}. A \textit{B} button down event is represented by a line also
-starting with the time in milliseconds followed by the keyword \textit{START} and a counter for the gesture. The
-\textit{B} button up event is the same with the keyword \textit{END} instead of \textit{START}. An example excerpt of a
-recorded file can look like this.\\\\
+The acceleration data of a axis comes as integer value with the unit decimetre per second squared. A \textit{B} button
+down event is represented by a line also starting with the time in milliseconds followed by the keyword \textit{START}
+and a counter for the gesture. The \textit{B} button up event is the same with the keyword \textit{END} instead of
+\textit{START}. An example excerpt of a recorded file can look like this.\\\\
 \verb!3045 20 19 74!\\
 \verb!3050 16 12 70!\\
 \verb!3055 START 1!\\
@@ -17,4 +16,6 @@ recorded file can look like this.\\\\
 \verb!3060 0 11 76!\\
 
 Line 1, 2, 4 and 5 are representations of acceleration data and line 3 marks the beginning of the first gesture
-triggered by a \textit{B} button down event. The recorded files will be evaluated in section \ref{evaluation}.
+triggered by a \textit{B} button down event. The recorded files will be evaluated in section \ref{evaluation}. All
+recorded files used in the evaluation are available on
+GitHub\footnote{https://github.com/GordonLesti/SlidingWindowFilter-evaluator/tree/master/src/main/resources}.
