@@ -1,1 +1,14 @@
 \section{Introduction}
+The scenario is an application that gets constantly data in form of a time series stream from one or more sensors. The
+application itself has in general no interest in a long term evaluation of the data. Only the most recent time series
+window has to be classified in the evaluation. The result of the evaluation will be stored or processed by an other
+application, the time series window moves on and has to be evaluated again. This process is repeating continuously.
+Dynamic Time Warping (DTW) in combination with a 1-Nearest-Neighbour (1NN) classification for the evaluation is an
+obvious approach for such a scenario. The downside, this approach is computationally too demanding for many realtime
+applications \cite{xi2006fast}. This disadvantage becomes even more tragic under the assumption that perhaps a large
+amout of incoming time series windows may cross a certain threshold to their nearest neighbour to be classified. Shall
+mean that not every incoming time series window can be matched to a class.
+
+This bachelor thesis explains the approach of a filter for time series in front of the 1NN in combination with DTW
+(1NN-DTW) to reduce the execution of 1NN-DTW on unclassifiable time series windows. The condition for such a filter is
+linear complexity.
