@@ -9,6 +9,16 @@ applications \cite{xi2006fast}. This disadvantage becomes even more tragic under
 amout of incoming time series windows may cross a certain threshold to their nearest neighbour to be classified. Shall
 mean that not every incoming time series window can be matched to a class.
 
-This bachelor thesis explains the approach of a filter for time series in front of the 1NN in combination with DTW
-(1NN-DTW) to reduce the execution of 1NN-DTW on unclassifiable time series windows. The condition for such a filter is
-linear complexity.
+This bachelor thesis explains the approach of a Sliding Window Filter for time series in front of the 1NN in combination
+with DTW (1NN-DTW) to reduce the execution of 1NN-DTW on unclassifiable time series windows. The condition for such a
+filter is linear complexity. Furthermore should the combination of the filter in front of the 1NN-DTW perform with a
+similar accuracy as 1NN-DTW stand alone.
+
+An experiment that simulates an above described scenario was carried out to expose the surplus value
+of a filter in front of 1NN-DTW under the given conditions.
+
+The rest of this bachelor thesis is organized  as follows. Section \ref{background_and_notation} will focus on basics
+around time series and distance measure functions that are used in this bachelor thesis. The Sliding Window Filter will
+be explained in section \ref{sliding_window_filter}. Section \ref{experiment} contains the description of the experiment
+and the evaluation of the results. Conclusions will be offered and future work suggested in section
+\ref{conclusion_and_future_work}.
