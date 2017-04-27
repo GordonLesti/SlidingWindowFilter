@@ -1,11 +1,13 @@
 \section{Background and Notation} \label{background_and_notation}
-A time series $S$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
-$S = (s_1, s_2, \dots, s_i, \dots, s_l)$ with $s_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
+A time series $Q$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
+$Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with $q_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
 function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. A common assumption for time series is that the
 containing data points are elements of the integer numbers $\mathbb{Z}$ or the real numbers $\mathbb{R}$. The distance
 measure function on these common domains is just the absolute value of the difference of two elements. A fundamental
 prerequisite for distance measure function on time series is often the distance measure function $D$ on the set
-$\mathbb{U}$. Table~\ref{tab:notation} explains the basic variables that are used in this bachelor thesis.
+$\mathbb{U}$. The experiment in section \ref{experiment} for example will work on the domain set $\mathbb{Z}^3$ with the
+distance function $D(x,y) = \sqrt{(x_1-y_1)^2 + (x_2-y_2)^2 + (x_3-y_3)^2}$. Table~\ref{tab:notation} explains the basic
+variables that are used in this bachelor thesis.
 
 \begin{table}[H]
     \begin{center}
@@ -14,8 +16,8 @@ $\mathbb{U}$. Table~\ref{tab:notation} explains the basic variables that are use
             \hline
             $\mathbb{U}$ & a set containing all items of a domain\\
             $D$ & a distance measure function on $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
-            $S$ & a time series over the set $\mathbb{U}$ of size $l$ with
-                $S = (s_1, s_2, \dots, s_i, \dots, s_l), s_i \in \mathbb{U}$\\
+            $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
+                $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$\\
             $DTW$ & dynamic time warping, a distance measure function for time series\\
             $ED$ & euclidean distance, a distance measure function for time series
         \end{tabularx}
