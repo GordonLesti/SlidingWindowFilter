@@ -1,3 +1,29 @@
 \section{Background and Notation} \label{background_and_notation}
-\input{background_and_notation/notation.tex}
-\input{background_and_notation/time_series_distance_measure_functions.tex}
+A time series $S$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
+$S = (s_1, s_2, \dots, s_i, \dots, s_l)$ with $s_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
+function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. A common assumption for time series is that the
+containing data points are elements of the integer numbers $\mathbb{Z}$ or the real numbers $\mathbb{R}$. The distance
+measure function on these common domains is just the absolute value of the difference of two elements. A fundamental
+prerequisite for distance measure function on time series is often the distance measure function $D$ on the set
+$\mathbb{U}$. Table~\ref{tab:notation} explains the basic variables that are used in this bachelor thesis.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabularx}{\textwidth}{c X}
+            \textbf{Symbol} & \textbf{Description}\\
+            \hline
+            $\mathbb{U}$ & a set containing all items of a domain\\
+            $D$ & a distance measure function on $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
+            $S$ & a time series over the set $\mathbb{U}$ of size $l$ with
+                $S = (s_1, s_2, \dots, s_i, \dots, s_l), s_i \in \mathbb{U}$\\
+            $DTW$ & dynamic time warping, a distance measure function for time series\\
+            $ED$ & euclidean distance, a distance measure function for time series
+        \end{tabularx}
+    \end{center}
+    \caption{Basic variables that are used in this bachelor thesis.}
+	\label{tab:notation}
+\end{table}
+
+\input{background_and_notation/euclidean_distance.tex}
+\input{background_and_notation/dynamic_time_warping.tex}
+\input{background_and_notation/complexity-invariant_distance_measure.tex}
