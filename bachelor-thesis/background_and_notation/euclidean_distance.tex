@@ -4,9 +4,17 @@ Given are two time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$, $C = (c_1, c
 same length $l$ over the domain set $\mathbb{U}$ and a distance measure function $D$ with
 $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. The ED between those two time series can be calculated with the
 following formula.
+
 \begin{center}
     $ED(Q, C) = \sqrt[2]{\sum \limits_{i=1}^{l} D(q_i, c_i)^2}$
 \end{center}
+
+An advantage of ED is the linear time and space complexity of $\mathcal{O}(l)$ to calculate the similarity between two
+time series. The algorithm itself has even only a space complexity of $\mathcal{O}(1)$ if the space of the input time
+series is ignored. Comparing two time series of different length with the ED presupposes to transform the time series
+to the same length. That can be achieved by stretch the smaller time series for example. Figure
+\ref{fig:euclideandistance} illustrates the Euclidean Distance between a time series $Q$ and $C$ that contain recorded
+data from one acceleration sensor.
 
 \begin{figure}[H]
     \begin{center}
@@ -31,10 +39,3 @@ following formula.
     sum of the gray distance lines illustrate the Euclidean distance between the two time series.}
     \label{fig:euclideandistance}
 \end{figure}
-
-An advantage of ED is the linear time and space complexity of $\mathcal{O}(l)$ to calculate the similarity between two
-time series. The algorithm itself has even only a space complexity of $\mathcal{O}(1)$ if the space of the input time
-series is ignored. Comparing two time series of different length with the ED presupposes to transform the time series
-to the same length. That can be achieved by stretch the smaller time series for example. Figure
-\ref{fig:euclideandistance} illustrates the Euclidean Distance between a time series $Q$ and $C$ that contain recorded
-data from one acceleration sensor.
