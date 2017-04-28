@@ -1,4 +1,4 @@
-\subsection{Euclidean Distance}
+\subsection{Euclidean Distance} \label{euclidean_distance}
 The Euclidean Distance (ED) is the most straightforward similarity measure for time series \cite{ding2008querying}.
 Given are two time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$, $C = (c_1, c_2, \dots, c_j, \dots, c_l)$ with the
 same length $l$ over the domain set $\mathbb{U}$ and a distance measure function $D$ with
@@ -12,15 +12,18 @@ following formula.
     \begin{center}
         \begin{tikzpicture}
             \begin{axis}[
+                xmin=1,
+                xmax=90,
                 xlabel=time,
                 ylabel=acceleration,
                 width=\textwidth,
-                height=\axisdefaultheight]
+                height=\axisdefaultheight,
+                reverse legend]
+                \addplot[gray, quiver={v=\thisrow{v}}] table[x=t, y=q] {background_and_notation/euclidean_distance/timeseries.dat};
                 \addplot[blue, mark=none] table[x=t, y=q] {background_and_notation/euclidean_distance/timeseries.dat};
                 \addlegendentry{Q}
                 \addplot[red, mark=none] table[x=t, y=c] {background_and_notation/euclidean_distance/timeseries.dat};
                 \addlegendentry{C}
-                \addplot[gray, quiver={v=\thisrow{v}}] table[x=t, y=q] {background_and_notation/euclidean_distance/timeseries.dat};
             \end{axis}
         \end{tikzpicture}
     \end{center}

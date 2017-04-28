@@ -11,15 +11,18 @@ basic notation that is used in this bachelor thesis.
 
 \begin{table}[H]
     \begin{center}
-        \begin{tabularx}{\textwidth}{c X}
-            \textbf{Symbol} & \textbf{Description}\\
+        \begin{tabularx}{\textwidth}{c X l}
+            \textbf{Symbol} \qquad & \textbf{Description} & \qquad \textbf{Section}\\
             \hline
-            $\mathbb{U}$ & a set containing all items of a domain\\
-            $D$ & a distance measure function on $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
+            $\mathbb{U}$ & a set containing all items of a domain & \qquad \ref{background_and_notation}\\
+            $D$ & a distance measure function on $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
+                & \qquad \ref{background_and_notation}\\
             $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
-                $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$\\
-            $ED$ & Euclidean Distance, a similarity measure for time series\\
-            $DTW$ & Dynamic Time Warping, a similarity measure for time series\\
+                $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$ & \qquad \ref{background_and_notation}\\
+            ED & Euclidean Distance, a similarity measure for time series & \qquad \ref{euclidean_distance}\\
+            DTW & Dynamic Time Warping, a similarity measure for time series & \qquad \ref{dynamic_time_warping}\\
+            CID & Complexity-Invariant Distance, a similarity measure for time series
+                & \qquad \ref{complexity-invariant_distance_measure}\\
         \end{tabularx}
     \end{center}
     \caption{Basic notation.}
