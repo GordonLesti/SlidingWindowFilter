@@ -1,0 +1,86 @@
+\subsubsection{Quantization} \label{quantization}
+All recorded data has been quantized before evaluation. The authors of \textit{uWave} \cite{liu2009uwave} have two
+reasons for that, the length of the time series will be reduced for DTW in order to improve computation efficiency and
+the recorded time series will be transformed with a stable time gab between the data points. The quantization process of
+\textit{uWave} \cite{liu2009uwave} has been taken over.
+
+\paragraph{Compressing} The recorded acceleration data has been compressed to an average value for a window size of 50
+ms and a step length of 30 ms.
+
+\paragraph{Conversion} The compressed records will be converted into 33 different levels that will be summarized in
+table \ref{table:conversion}.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{l l}
+            \textbf{Acceleration data ($a$) in $\frac{dm}{s^2}$} & \qquad \textbf{Converted value}\\
+            \hline
+            $a > 200$ & \qquad 16\\
+            $100 < a < 200$ & \qquad 11 to 15 (five levels linearly)\\
+            $0 < a < 100$ & \qquad 1 to 10 (ten levels linearly)\\
+            $a = 0$ & \qquad 0\\
+            $-100 < a < 0$ & \qquad -1 to - 10 (ten levels linearly)\\
+            $-200 < a < -100$ & \qquad -11 to - 15 (five levels linearly)\\
+            $a < -200$ & \qquad -16\\
+        \end{tabular}
+    \end{center}
+    \caption{Table shows the conversion rules of the recorded acceleration data.}
+	\label{table:conversion}
+\end{table}
+
+The hole quantization process of a recorded gesture is illustrated by figure \ref{fig:quantization}.
+
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{ccc}
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=1,
+                        xmax=295,
+                        xlabel=time,
+                        ylabel=acceleration]
+                        \addplot[blue, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/raw.dat};
+                        \addplot[red, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/raw.dat};
+                        \addplot[green, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/raw.dat};
+                    \end{axis}
+                \end{tikzpicture}
+            } &
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}
+                    \pgfplotsset{every axis legend/.append style={
+                		at={(0.5,1.03)},
+                		anchor=south}}
+                    \begin{axis}[
+                        xmin=1,
+                        xmax=52,
+                        xlabel=time,
+                        ylabel=acceleration,
+                        legend columns=4]
+                        \addplot[blue, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/compressed.dat};
+                        \addlegendentry{x-axis}
+                        \addplot[red, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/compressed.dat};
+                        \addlegendentry{y-axis}
+                        \addplot[green, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/compressed.dat};
+                        \addlegendentry{z-axis}
+                    \end{axis}
+                \end{tikzpicture}
+            } &
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=1,
+                        xmax=52,
+                        xlabel=time,
+                        ylabel=converted acceleration]
+                        \addplot[blue, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/converted.dat};
+                        \addplot[red, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/converted.dat};
+                        \addplot[green, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/converted.dat};
+                    \end{axis}
+                \end{tikzpicture}
+            }
+        \end{tabular}
+    \end{center}
+    \caption{}
+    \label{fig:quantization}
+\end{figure}
