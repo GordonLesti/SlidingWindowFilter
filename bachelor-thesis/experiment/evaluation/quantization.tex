@@ -10,7 +10,7 @@ ms and a step length of 30 ms.
 \paragraph{Conversion} The compressed records will be converted into 33 different levels that will be summarized in
 table \ref{table:conversion}.
 
-\begin{table}[H]
+\begin{table}
     \begin{center}
         \begin{tabular}{l l}
             \textbf{Acceleration data ($a$) in $\frac{dm}{s^2}$} & \qquad \textbf{Converted value}\\
@@ -24,7 +24,8 @@ table \ref{table:conversion}.
             $a < -200$ & \qquad -16\\
         \end{tabular}
     \end{center}
-    \caption{Table shows the conversion rules of the recorded acceleration data.}
+    \caption{Table shows the conversion rules of the recorded acceleration data. In contrast to \textit{uWave}
+    \cite{liu2009uwave} are $100\frac{dm}{s^2}$ the steps threshold and not $1g$.}
 	\label{table:conversion}
 \end{table}
 
@@ -81,6 +82,7 @@ The hole quantization process of a recorded gesture is illustrated by figure \re
             }
         \end{tabular}
     \end{center}
-    \caption{}
+    \caption{The left plot shows the raw recorded gesture for all three axis. On the middle plot are the compressed
+    acceleration datas of the gesture. The right plot shows the converted and compressed gesture.}
     \label{fig:quantization}
 \end{figure}
