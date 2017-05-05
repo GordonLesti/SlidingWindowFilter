@@ -1,0 +1,11 @@
+\paragraph{Performance Measure} \label{performance_measure}
+The presented parameters for a Sliding Window Simulation are resulting in a huge amount of different configured
+simulations. Every configured simulation tries to detect gestures in the test data stream for every experimentee. It can
+be argued how to compare the performance of those simulations. Have misrecognized gestures in the assessment more weight
+than correctly recognized or the other way around? It is no easy decision to weight the mistakes of a simulation against
+the success of a simulation.
+
+All containing data points of a supposed detected gesture will be labeled by a simulation. Those labels can be compared
+to the original labels that have been made by the experimentee. A simulation is a multi-class classificator for the
+gesture classes $C_{GesA}, C_{GesB}, \dots, C_{GesH}$. Common performance measures for multi-class classificator are
+$Average Accuracy$, $Precision_{\mu}$, $Recall_{\mu}$ and $Fscore_{\mu}$ as mentioned in\cite{sokolova2009systematic}.

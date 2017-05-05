@@ -1,0 +1,30 @@
+\paragraph{Sliding Window Filter Measures} \label{sliding_window_filter_measures}
+The Sliding Window Filter has already been explained in section \ref{sliding_window_filter}. The following time series
+measures have been tested as underlying measures for the Sliding Window Filter.
+
+\begin{itemize}
+    \item \textbf{CE:} The Complexity Estimate as explained in section \ref{complexity-invariant_distance_measure}.
+    \item \textbf{ACE:} The Average Complexity Estimate is CE divided by the length of the time series reduced by one.
+    Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 1$ over the domain set $\mathbb{U}$
+    and the measure CE. The ACE of a time series $Q$ can be calculated by the following formula.
+    \begin{center}
+        $ACE(Q) = \frac{1}{l - 1}CE(Q)$
+    \end{center}
+    \item \textbf{VAR:} The Sample Variance based on \cite{chan1983algorithms}. Given is a time series
+    $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 0$ over the domain set $\mathbb{U}$, a distance measure
+    function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$, a summing function $ADD$ with
+    $ADD: \mathbb{U} \times \mathbb{U} \to \mathbb{U}$ and a scalar multiplication function $SMULT$ with
+    $SMULT: \mathbb{R} \times \mathbb{U} \to \mathbb{U}$. The Variance of a time series $Q$ can be calculated by the
+    following formula.
+    \begin{center}
+        $VAR(Q) = \frac{1}{l}\sum \limits_{i=1}^{l} D(q_i, \bar{q})^2$
+    \end{center}
+    where
+    \begin{center}
+        $\bar{q} = SMULT(\frac{1}{l}, \sum \limits_{i=1}^{l} q_i)$
+    \end{center}
+    The sigma sum sign $\sum$ in the last formula is used under the contaxt of the $ADD$ function between elements of
+    $\mathbb{U}$.
+\end{itemize}
+Every mentioned estimates has been tested as underlying measures for the Sliding Window Filter combined with a blur
+factor of 1.0, 1.1, 1.2, 1.3, 1.4 and 1.5.

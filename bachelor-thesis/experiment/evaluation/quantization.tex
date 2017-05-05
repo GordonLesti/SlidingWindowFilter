@@ -1,8 +1,8 @@
 \subsubsection{Quantization} \label{quantization}
-All recorded data has been quantized before evaluation. The authors of \textit{uWave} \cite{liu2009uwave} have two
-reasons for that, the length of the time series will be reduced for DTW in order to improve computation efficiency and
-the recorded time series will be transformed with a stable time gab between the data points. The quantization process of
-\textit{uWave} \cite{liu2009uwave} has been taken over. The hole quantization process of a recorded gesture is
+All recorded data has been quantized before evaluation. The authors of \cite{liu2009uwave} have two reasons for that,
+the length of the time series will be reduced for DTW in order to improve computation efficiency and the recorded time
+series will be transformed with a stable time gab between the data points. The quantization process of
+\cite{liu2009uwave} has been taken over. The hole quantization process of a recorded gesture is
 illustrated by figure \ref{fig:quantization}.
 
 \paragraph{Compressing} The recorded acceleration data has been compressed to an average value for a window size of 50
@@ -25,8 +25,8 @@ table \ref{table:conversion}.
             $a < -200$ & \qquad -16\\
         \end{tabular}
     \end{center}
-    \caption{Table shows the conversion rules of the recorded acceleration data. In contrast to \textit{uWave}
-    \cite{liu2009uwave} are $100\frac{dm}{s^2}$ the steps threshold and not $1g$.}
+    \caption{Table shows the conversion rules of the recorded acceleration data. In contrast to \cite{liu2009uwave} are
+    $100\frac{dm}{s^2}$ the steps threshold and not $1g$.}
 	\label{table:conversion}
 \end{table}
 

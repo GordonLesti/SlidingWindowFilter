@@ -3,18 +3,18 @@ The Complexity-Invariant Distance measure \cite{batista2011complexity} (CID) is 
 series. It is composed of the ED and a Complexity Correction Factor (CF). Given are two time series
 $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$, $C = (c_1, c_2, \dots, c_j, \dots, c_l)$ with the same length $l$ over the
 domain set $\mathbb{U}$ and a distance measure function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$.
-The CID of two time series $Q$ and $C$ can be calculated by.
+The CID of two time series $Q$ and $C$ can be calculated by the following formula.
 \begin{center}
     $CID(Q, C) = ED(Q, C) \times CF(Q, C)$
 \end{center}
-The CF of two time series $Q$ and $C$ can be calculated by.
+The CF of two time series $Q$ and $C$ can be calculated by the following formula.
 \begin{center}
      $CF(Q, C) = \frac{max(CE(Q), CE(C))}{min(CE(Q), CE(C))}$
 \end{center}
 CF is always a value greater or equal than 1. The more $CE(Q)$ is different from $CE(C)$, the more $CF(Q, C)$ is
 increasing and the distance $CID(Q, C)$ between the time series is increasing. The Complexity Estimate (CE) is a measure
-for time series and the authors of \textit{A Complexity-Invariant Distance Measure for Time Series}
-\cite{batista2011complexity} introduced one possible approach of a CE implementation for a time series $Q$.
+for time series and the authors of \cite{batista2011complexity} introduced one possible approach of a CE implementation
+for a time series $Q$.
 \begin{center}
     $CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{l-1} D(q_i, q_{i + 1})^2}$
 \end{center}

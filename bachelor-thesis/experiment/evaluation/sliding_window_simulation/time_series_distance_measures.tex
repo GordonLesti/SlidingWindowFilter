@@ -1,3 +1,8 @@
 \paragraph{Time Series Distance Measures} \label{time_series_distance_measures}
-\textit{uWave} \cite{liu2009uwave} has shown that DTW works good on time series as accelerometer based gesture
-detection.
+DTW has proven in \cite{liu2009uwave} that it works for time series as accelerometer based gesture detection. The
+following distance measure functions for time series have been tested.
+
+\begin{itemize}
+    \item \textbf{DTW:} Plain DTW as explained in section \ref{dynamic_time_warping}.
+    \item \textbf{CIDDTW:} DTW combined with CF as explained in section \ref{complexity-invariant_dynamic_time_warping}.
+\end{itemize}
