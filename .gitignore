@@ -3,3 +3,7 @@
 *.log
 *.pdf
 *.toc
+*.dep
+*.dpth
+*.md5
+*.auxlock

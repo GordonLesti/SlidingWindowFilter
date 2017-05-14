@@ -1,1 +1,100 @@
 \subsection{Results} \label{results}
+All the different configurations together are resulting in 46240 different simulations that have been executed. The
+$Precision_{\mu}$ and $Recall_{\mu}$ of every simultaion has been computed and the result has been written to a
+CSV\footnote{https://tools.ietf.org/html/rfc4180} file ordered by the $F_{1}score_{\mu}$. The file can be found at
+GitHub\footnote{https://raw.githubusercontent.com/GordonLesti/SlidingWindowFilter/master/data/swf-result.csv}. Line one
+to ten of that file are presented by table \ref{tab:result}.
+
+\begin{table}
+    \begin{center}
+        {\tiny
+            \begin{tabular}{l l l l l l l l l}
+                \textbf{distance} & \textbf{filter} & \textbf{window} & \textbf{threshold} & \textbf{precision} & \textbf{recall} & \textbf{f1score} & \textbf{accuracy} & \textbf{\#(nnc)}\\
+                \hline
+                NDTW SCB(0.12) & ACF(2.0) & Middle  & HalfAverageDistance & 0.8413 & 0.6545 & 0.7362 & 0.9886 & 4221\\
+                NDTW SCB(0.12) & VF(1.9) & Middle  & HalfAverageDistance & 0.8406 & 0.6539 & 0.7356 & 0.9885 & 3330\\
+                NDTW SCB(0.12) & VF(2.0) & Middle  & HalfAverageDistance & 0.8406 & 0.6539 & 0.7356 & 0.9885 & 3568\\
+                NDTW SCB(0.12) & NoFilter & Middle  & HalfAverageDistance & 0.8406 & 0.6539 & 0.7356 & 0.9885 & 4893\\
+                NDTW SCB(0.11) & ACF(2.0) & Middle  & HalfAverageDistance & 0.8292 & 0.6527 & 0.7304 & 0.9882 & 4211\\
+                NDTW SCB(0.11) & NoFilter & Middle & HalfAverageDistance & 0.8292 & 0.6527 & 0.7304 & 0.9882 & 4883\\
+                NDTW SCB(0.12) & VF(1.7) & Middle & HalfAverageDistance & 0.8398 & 0.6451 & 0.7297 & 0.9883 & 2989\\
+                NDTW SCB(0.12) & VF(1.8) & Middle & HalfAverageDistance & 0.8398 & 0.6451 & 0.7297 & 0.9883 & 3134\\
+                NDTW SCB(0.12) & CF(1.8) & Middle & HalfAverageDistance & 0.8398 & 0.6451 & 0.7297 & 0.9883 & 3699\\
+                NDTW SCB(0.12) & CF(1.9) & Middle & HalfAverageDistance & 0.8398 & 0.6451 & 0.7297 & 0.9883 & 3786
+            \end{tabular}
+        }
+    \end{center}
+    \caption{The top ten simulations and their configurations measured on the $F_{1}score_{\mu}$ with rounded values.
+    Column one to four are the configurations as described in section \ref{sliding_window_simulation}, column five to
+    eight are the resulting performance measures as described in section \ref{performance_measure} and column nine are
+    the number of calls to the Nearest Neighbour classification for every simulation.}
+	\label{tab:result}
+\end{table}
+
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{ccc}
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$]
+                        \addplot[blue, only marks, mark size=0.1] table {../data/f1score.dat};
+                        \coordinate (spypoint) at (axis cs:0.841307095143528,0.654494382022472);
+                        \coordinate (magnifyglass) at (axis cs:0.3,0.3);
+                    \end{axis}
+                    \spy [size=2.5cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            } &
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$]
+                        \addplot[red, only marks, mark size=0.1] table {../data/f0.5score.dat};
+                        \coordinate (spypoint) at (axis cs:0.8761578735,0.6110955056);
+                        \coordinate (magnifyglass) at (axis cs:0.3,0.3);
+                    \end{axis}
+                    \spy [size=2.5cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            } &
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$]
+                        \addplot[green, only marks, mark size=0.1] table {../data/f2score.dat};
+                        \coordinate (spypoint) at (axis cs:0.8413070951,0.654494382);
+                        \coordinate (magnifyglass) at (axis cs:0.3,0.3);
+                    \end{axis}
+                    \spy [size=2.5cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        \end{tabular}
+    \end{center}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of the top thousand simulations measured on the $F_{1}score_{\mu}$ for
+    the left plot, $F_{\frac{1}{2}}score_{\mu}$ for the plot in the middle and $F_{2}score_{\mu}$ for the right plot.
+    The magnifying glass is focusing on the best simulation measured on the underlying $Fscore_{\mu}$.}
+    \label{fig:result}
+\end{figure}
