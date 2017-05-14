@@ -21,10 +21,10 @@ measures have been tested as underlying measures for the Sliding Window Filter.
     \end{center}
     where
     \begin{center}
-        $\bar{q} = SMULT(\frac{1}{l}, \sum \limits_{i=1}^{l} q_i)$
+        $\bar{q} = SMULT(\frac{1}{l-1}, \sum \limits_{i=1}^{l} q_i)$
     \end{center}
     The sigma sum sign $\sum$ in the last formula is used under the contaxt of the $ADD$ function between elements of
     $\mathbb{U}$.
 \end{itemize}
 Every mentioned estimates has been tested as underlying measures for the Sliding Window Filter combined with a blur
-factor of 1.0, 1.1, 1.2, 1.3, 1.4 and 1.5.
+factor of $\frac{10}{10}$, $\frac{11}{10}$, $\frac{12}{10}$, $\frac{13}{10}$, $\frac{14}{10}$ and $\frac{15}{10}$.
