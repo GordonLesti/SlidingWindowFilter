@@ -5,11 +5,24 @@ It appears not effective to compare all different tested band sizes on a huge su
 influence of the Sakoe-Chiba band size will be demonstrated by changing the band size on the best performing simulation
 without a filter. This configuration can be found in row four of table \ref{tab:result}. Figure
 \ref{fig:sakoe-chiba_band_result} illustrates the influence of the Sakoe-Chiba band size on the $F_{1}score_{\mu}$ for
-the best performing simulation without filter. There is clear maximum at 24\% band size.
+the best performing simulation without filter. There is a clear maximum at 24\% band size.
 
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
+            \resizebox {0.5\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=200,
+                        xlabel=band size in \% depending on input time series,
+                        ylabel=$F_{1}score_{\mu}$,
+                        width=\textwidth,
+                        height=\axisdefaultheight]
+                        \addplot[blue] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                    \end{axis}
+                \end{tikzpicture}
+            } &
             \resizebox {0.5\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
@@ -24,23 +37,10 @@ the best performing simulation without filter. There is clear maximum at 24\% ba
                         \addplot[blue] table {../data/fig/sakoe-chiba_band_result/scb.dat};
                     \end{axis}
                 \end{tikzpicture}
-            } &
-            \resizebox {0.5\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=200,
-                        xlabel=band size in \% depending on input time series,
-                        ylabel=$F_{1}score_{\mu}$,
-                        width=\textwidth,
-                        height=\axisdefaultheight]
-                        \addplot[blue] table {../data/fig/sakoe-chiba_band_result/scb.dat};
-                    \end{axis}
-                \end{tikzpicture}
             }
         \end{tabular}
     \end{center}
-    \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band. The right plot is a zoomed version of
-    the left plot.}
+    \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band. The left plot is a on the y-axis
+    zoomed and scaled version of the right plot.}
     \label{fig:sakoe-chiba_band_result}
 \end{figure}

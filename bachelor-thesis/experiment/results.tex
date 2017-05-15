@@ -59,7 +59,7 @@ following results could have an other ranking under an other performance measure
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[blue, only marks, mark size=0.1] table {../data/fig/result/f1score.dat};
+                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/result/f1score.dat};
                         \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
                         \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
                         \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
@@ -88,7 +88,7 @@ following results could have an other ranking under an other performance measure
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[red, only marks, mark size=0.1] table {../data/fig/result/f0.5score.dat};
+                        \addplot[red, only marks, mark size=0.4] table {../data/fig/result/f0.5score.dat};
                         \addplot[gray, domain=0.081:1] {(0.25 * 0.1 * x) / (1.25 * x - 0.1)};
                         \addplot[gray, domain=0.161:1] {(0.25 * 0.2 * x) / (1.25 * x - 0.2)};
                         \addplot[gray, domain=0.25:1] {(0.25 * 0.3 * x) / (1.25 * x - 0.3)};
@@ -117,7 +117,7 @@ following results could have an other ranking under an other performance measure
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[green, only marks, mark size=0.1] table {../data/fig/result/f2score.dat};
+                        \addplot[green, only marks, mark size=0.4] table {../data/fig/result/f2score.dat};
                         \addplot[gray, domain=0.021:1] {(4 * 0.1 * x) / (5 * x - 0.1)};
                         \addplot[gray, domain=0.041:1] {(4 * 0.2 * x) / (5 * x - 0.2)};
                         \addplot[gray, domain=0.061:1] {(4 * 0.3 * x) / (5 * x - 0.3)};
@@ -138,9 +138,10 @@ following results could have an other ranking under an other performance measure
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of the top thousand simulations measured on the $F_{1}score_{\mu}$ for
     the left plot, $F_{\frac{1}{2}}score_{\mu}$ for the plot in the middle and $F_{2}score_{\mu}$ for the right plot.
-    The magnifying glass is focusing on the best simulation measured on the underlying $Fscore_{\mu}$. The gray lines
-    are illustrating the distribution of the underlying $Fscore_{\mu}$ in $\frac{1}{10}$ steps.}
+    The magnifying glass is focusing on the best simulation measured on the underlying $F_{\beta}score_{\mu}$. The gray
+    lines are illustrating the distribution of the underlying $F_{\beta}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:result}
 \end{figure}
 
 \input{experiment/results/influence_of_time_series_distance_measure.tex}
+\input{experiment/results/influence_of_window_size_determination.tex}
