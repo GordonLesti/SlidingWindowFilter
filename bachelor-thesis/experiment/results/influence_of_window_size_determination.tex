@@ -1,12 +1,11 @@
 \subsubsection{Influence of Window Size Determination} \label{influence_of_window_size_determination}
-136 different simulations have been tested that use NDTW with a Sakoe-Chiba band of size 24\% depending on the input
-time series length and \textit{Half Average Distance} as threshold determination. \textit{Average}, \textit{Max},
-\textit{Middle} and \textit{Min} as window size determination have each respectively 34 different simulations. Figure
+92 different simulations have been tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the
+input time series length and \textit{HAveD} as threshold determination. \textit{Ave}, \textit{Max}, \textit{Mid} and
+\textit{Min} as window size determination have each respectively 23 different simulations. Figure
 \ref{fig:window_size_result} illustrates the distribution of the four subsets. It is clearly visible that the
-\textit{Middle} window size determination reaches the best $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$
-values in the experiment. The \textit{Average} window size determination achieves also much better performance as
-\textit{Max} and \textit{Min}. It is striking that \textit{Min} is more distributed as the other window size
-determinations.
+\textit{Mid} window size determination reaches the best $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$
+values in the experiment. The \textit{Ave} window size determination achieves also much better performance as
+\textit{Max} and \textit{Min}.
 
 \begin{figure}
     \begin{center}
@@ -24,20 +23,20 @@ determinations.
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/average.dat};
-                        \addlegendentry{Average}
+                        \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
+                        \addlegendentry{Ave}
                         \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
                         \addlegendentry{Max}
-                        \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/middle.dat};
-                        \addlegendentry{Middle}
-                        \addplot[yellow, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
+                        \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
+                        \addlegendentry{Mid}
+                        \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
                         \addlegendentry{Min}
-                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
                     \end{axis}
                 \end{tikzpicture}
             } &
@@ -53,26 +52,26 @@ determinations.
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/window_size_result/average.dat};
+                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/window_size_result/ave.dat};
                         \addplot[red, only marks, mark size=0.4] table {../data/fig/window_size_result/max.dat};
-                        \addplot[green, only marks, mark size=0.4] table {../data/fig/window_size_result/middle.dat};
-                        \addplot[yellow, only marks, mark size=0.4] table {../data/fig/window_size_result/min.dat};
-                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \addplot[green, only marks, mark size=0.4] table {../data/fig/window_size_result/mid.dat};
+                        \addplot[violet, only marks, mark size=0.4] table {../data/fig/window_size_result/min.dat};
+                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
                     \end{axis}
                 \end{tikzpicture}
             }
         \end{tabular}
     \end{center}
-    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use NDTW with a Sakoe-Chiba band of size 24\%
-    depending on the input time series length and \textit{Half Average Distance} as threshold determination, separated
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
+    36\% depending on the input time series length and \textit{HAveD} as threshold determination, separated
     by the used window size determination. The left plot is just a zoomed version of the right plot. Gray lines are
     illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:window_size_result}

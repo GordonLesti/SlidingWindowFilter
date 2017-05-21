@@ -1,9 +1,11 @@
 \subsubsection{Influence of Time Series Distance Measure} \label{influence_of_time_series_distance_measure}
-2312 different simulations have been tested that contain \textit{Middle} as window size determination and
-\textit{Half Average Distance} as threshold determination in their configuration. The half of those simulations was
+2346 different simulations have been tested that contain \textit{Mid} as window size determination and
+\textit{HAveD} as threshold determination in their configuration. The half of those simulations was
 using plain DTW and the other half used NDTW. Figure \ref{fig:distance_measure_result} illustrates the distribution of
 both subsets. It is clearly visible that NDTW reaches better $Recall_{\mu}$ values as DTW in the experiment, however
 also slightly worse $Precision_{\mu}$ values.
+
+\definecolor{light-gray}{gray}{0.8}
 
 \begin{figure}
     \begin{center}
@@ -11,10 +13,10 @@ also slightly worse $Precision_{\mu}$ values.
             \resizebox {0.5\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
-                        legend pos=north west,
-                        xmin=0.6,
-                        xmax=1,
-                        ymin=0.3,
+                        legend pos=south west,
+                        xmin=0.4,
+                        xmax=0.9,
+                        ymin=0.2,
                         ymax=0.7,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth,
@@ -23,11 +25,14 @@ also slightly worse $Precision_{\mu}$ values.
                         \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
                         \addlegendentry{DTW}
                         \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
-                        \addlegendentry{NDTW}
-                        \addplot[gray, domain=0.6:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[gray, domain=0.6:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.6:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[gray, domain=0.6:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addlegendentry{$\eta$DTW}
+                        \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                        \addlegendentry{$\eta '$DTW}
+                        \addplot[lightgray, domain=0.4:0.9] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[lightgray, domain=0.4:0.9] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[lightgray, domain=0.4:0.9] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[lightgray, domain=0.4:0.9] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.4:0.9] {(0.7 * x) / (2 * x - 0.7)};
                     \end{axis}
                 \end{tikzpicture}
             } &
@@ -45,24 +50,25 @@ also slightly worse $Precision_{\mu}$ values.
                         samples=100]
                         \addplot[blue, only marks, mark size=0.4] table {../data/fig/distance_measure_result/dtw.dat};
                         \addplot[red, only marks, mark size=0.4] table {../data/fig/distance_measure_result/ndtw.dat};
-                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \addplot[green, only marks, mark size=0.4] table {../data/fig/distance_measure_result/n1dtw.dat};
+                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
                     \end{axis}
                 \end{tikzpicture}
             }
         \end{tabular}
     \end{center}
-    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations with \textit{Middle} as window determination and
-    \textit{Half Average Distance} as threshold determination, separated by the used time series distance measures DTW
-    or NDTW. The left plot is just a zoomed version of the right plot. Gray lines are illustrating the distribution of
-    $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations with \textit{Mid} as window determination and
+    \textit{HAveD} as threshold determination, separated by the used time series distance measures DTW, $\eta$DTW
+    or $\eta '$DTW. The left plot is just a zoomed version of the right plot. Gray lines are illustrating the
+    distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:distance_measure_result}
 \end{figure}
 
