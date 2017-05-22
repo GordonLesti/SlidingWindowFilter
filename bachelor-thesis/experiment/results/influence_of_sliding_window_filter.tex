@@ -1,12 +1,11 @@
 \subsubsection{Influence of Sliding Window Filter} \label{influence_of_sliding_window_filter}
-34 different simulations have been tested that use NDTW with a Sakoe-Chiba band of size 24\% depending on the input
-time series length, \textit{Half Average Distance} as threshold determination and \textit{Middle} as window size
-determination. One of those simulations has no filter, the other 33 simulations have a filter with the underlying time
-series measure CE, ACE or VAR in combination with eleven different blur factors. Figure
-\ref{fig:sliding_window_filter_result} illustrates the distribution of the four subsets. 29 simulations are reaching a
-$F_{1}score_{\mu}$ value bigger or equal to 0.7. Every underlying time series measure for the filter is represented in
-those 29 simulations. One simulation with a filter has a better $F_{1}score_{\mu}$ than the best performing simulation
-without filter.
+23 different simulations have been tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the input
+time series length, \textit{HAveD} as threshold determination and \textit{Mid} as window size determination. One of
+those simulations has no filter, the other 22 simulations have a filter with the underlying time series measure LNCE or
+VAR in combination with eleven different blur factors. Figure \ref{fig:sliding_window_filter_result} illustrates the
+distribution of the four subsets. 20 simulations are reaching a $F_{1}score_{\mu}$ value bigger or equal to 0.7. Every
+underlying time series measure for the filter is represented in those 29 simulations. One simulation with a filter has a
+better $F_{1}score_{\mu}$ than the best performing simulation without filter.
 
 \begin{figure}
     \begin{center}
@@ -24,16 +23,14 @@ without filter.
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[blue, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/ace.dat};
-                        \addlegendentry{ACE}
-                        \addplot[red, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/ce.dat};
-                        \addlegendentry{CE}
-                        \addplot[green, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/var.dat};
+                        \addplot[blue, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/lnce.dat};
+                        \addlegendentry{LNCE}
+                        \addplot[red, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/var.dat};
                         \addlegendentry{VAR}
-                        \addplot[yellow, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                        \addplot[green, only marks, mark size=1] table {../data/fig/sliding_window_filter_result/nofilter.dat};
                         \addlegendentry{No Filter}
-                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
                     \end{axis}
                 \end{tikzpicture}
             } &
@@ -49,29 +46,27 @@ without filter.
                         xlabel=$Precision_{\mu}$,
                         ylabel=$Recall_{\mu}$,
                         samples=100]
-                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/ace.dat};
-                        \addplot[red, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/ce.dat};
-                        \addplot[green, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/var.dat};
-                        \addplot[yellow, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/nofilter.dat};
-                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/lnce.dat};
+                        \addplot[red, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/var.dat};
+                        \addplot[green, only marks, mark size=0.4] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
                     \end{axis}
                 \end{tikzpicture}
             }
         \end{tabular}
     \end{center}
-    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use NDTW with a Sakoe-Chiba band of size 24\%
-    depending on the input time series length, \textit{Half Average Distance} as threshold determination and
-    \textit{Middle} as window size determination, separated by the used Sliding Window Filter. The left plot is just a
-    zoomed version of the right plot. Gray lines are illustrating the distribution of $F_{1}score_{\mu}$ in
-    $\frac{1}{10}$ steps.}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
+    36\% depending on the input time series length, \textit{HAveD} as threshold determination and \textit{Mid} as window
+    size determination, separated by the used Sliding Window Filter. The left plot is just a zoomed version of the right
+    plot. Gray lines are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:sliding_window_filter_result}
 \end{figure}
 

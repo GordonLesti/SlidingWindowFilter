@@ -1,11 +1,11 @@
 \paragraph{Influence of Sakoe-Chiba Band Size} \label{influence_of_sakoe-chiba_band_size}
 The positive influence of the Sakoe-Chiba band size for the performance of a simulation in the experiment is verified by
-table \ref{tab:result}. The most dominating configurations are using a band size with 24\% of the input time series.
+table \ref{tab:result}. The most dominating configurations are using a band size with 36\% of the input time series.
 It appears not effective to compare all different tested band sizes on a huge subset as done above. Therefore, the
 influence of the Sakoe-Chiba band size will be demonstrated by changing the band size on the best performing simulation
-without a filter. This configuration can be found in row four of table \ref{tab:result}. Figure
+without a filter. This configuration can be found in row two of table \ref{tab:result}. Figure
 \ref{fig:sakoe-chiba_band_result} illustrates the influence of the Sakoe-Chiba band size on the $F_{1}score_{\mu}$ for
-the best performing simulation without filter. There is a clear maximum at 24\% band size.
+the best performing simulation without filter. There is a maximum at 36\% band size.
 
 \begin{figure}
     \begin{center}
@@ -14,7 +14,8 @@ the best performing simulation without filter. There is a clear maximum at 24\% 
                 \begin{tikzpicture}
                     \begin{axis}[
                         xmin=0,
-                        xmax=200,
+                        ymin=0.65,
+                        xmax=80,
                         xlabel=band size in \% depending on input time series,
                         ylabel=$F_{1}score_{\mu}$,
                         width=\textwidth,
@@ -40,7 +41,7 @@ the best performing simulation without filter. There is a clear maximum at 24\% 
             }
         \end{tabular}
     \end{center}
-    \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band. The left plot is a on the y-axis
-    zoomed and scaled version of the right plot.}
+    \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band. The left plot is a zoomed and scaled
+    version of the right plot.}
     \label{fig:sakoe-chiba_band_result}
 \end{figure}
