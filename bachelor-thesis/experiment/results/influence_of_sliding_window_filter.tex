@@ -27,7 +27,7 @@ better $F_{1}score_{\mu}$ than the best performing simulation without filter.
                         \addlegendentry{LNCE}
                         \addplot[red, mark=triangle, only marks, mark size=2] table {../data/fig/sliding_window_filter_result/var.dat};
                         \addlegendentry{VAR}
-                        \addplot[green, mark=square, only marks, mark size=2] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                        \addplot[black, mark=square, only marks, mark size=2] table {../data/fig/sliding_window_filter_result/nofilter.dat};
                         \addlegendentry{No Filter}
                         \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
                         \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
@@ -48,7 +48,7 @@ better $F_{1}score_{\mu}$ than the best performing simulation without filter.
                         samples=100]
                         \addplot[blue, mark=o, only marks, mark size=0.8] table {../data/fig/sliding_window_filter_result/lnce.dat};
                         \addplot[red, mark=triangle, only marks, mark size=0.8] table {../data/fig/sliding_window_filter_result/var.dat};
-                        \addplot[green, mark=square, only marks, mark size=0.8] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                        \addplot[black, mark=square, only marks, mark size=0.8] table {../data/fig/sliding_window_filter_result/nofilter.dat};
                         \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
                         \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
                         \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
