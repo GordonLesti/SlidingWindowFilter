@@ -12,7 +12,7 @@ blur factors very close to the top $F_{1}score_{\mu}$ value.
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
-            \resizebox {0.5\textwidth} {!} {
+            \resizebox {0.45\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         legend pos=south east,
@@ -33,7 +33,7 @@ blur factors very close to the top $F_{1}score_{\mu}$ value.
                     \end{axis}
                 \end{tikzpicture}
             } &
-            \resizebox {0.5\textwidth} {!} {
+            \resizebox {0.45\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         legend pos=south east,
@@ -66,4 +66,41 @@ The left plot of figure \ref{fig:blur_factor_result} and also the table \ref{tab
 filters can reach the same $F_{1}score_{\mu}$ value as the dominating simulation without filter. The question remains,
 how often are the presented filters blocking the NNC-DTW calls. The right plot of figure \ref{fig:blur_factor_result}
 illustrates the influence of the blur factor on the amount of NNC-DTW calls. All two filter types remain clearly below
-the amount of NNC-DTW calls of the dominating configuration without filter.
+the amount of NNC-DTW calls of the dominating configuration without filter. Figure \ref{fig:blur_factor_tradeoff}
+combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves for both filters.
+
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{cc}
+            \resizebox {0.445\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        legend pos=south west,
+                        xlabel=$F_{1}score_{\mu}$,
+                        ylabel=\# blocked NNC-DTW calls,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth]
+                        \addplot[blue] table {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addlegendentry{LNCE}
+                    \end{axis}
+                \end{tikzpicture}
+            } &
+            \resizebox {0.455\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        legend pos=south west,
+                        xlabel=$F_{1}score_{\mu}$,
+                        ylabel=\# blocked NNC-DTW calls,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth]
+                        \addplot[red] table {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addlegendentry{VAR}
+                    \end{axis}
+                \end{tikzpicture}
+            }
+        \end{tabular}
+    \end{center}
+    \caption{Trade-off curves beteen the $F_{1}score_{\mu}$ and the amount of blocked NNC-DTW calls for both filter
+    types.}
+    \label{fig:blur_factor_tradeoff}
+\end{figure}

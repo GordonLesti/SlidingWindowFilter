@@ -3,12 +3,11 @@ The Sliding Window Filter has already been explained in section \ref{sliding_win
 measures have been tested as underlying measures for the Sliding Window Filter.
 
 \begin{itemize}
-    \item \textbf{CE:} The Complexity Estimate as explained in section \ref{complexity-invariant_distance_measure}.
-    \item \textbf{ACE:} The Average Complexity Estimate is CE divided by the length of the time series reduced by one.
-    Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 1$ over the domain set $\mathbb{U}$
-    and the measure CE. The ACE of a time series $Q$ can be calculated by the following formula.
+    \item \textbf{LNCE:} Stands for length normalized CE. LNCE is CE divided by the length of the time series reduced by
+    one. Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 1$ over the domain set
+    $\mathbb{U}$ and the measure CE. The ACE of a time series $Q$ can be calculated by the following formula.
     \begin{center}
-        $ACE(Q) = \frac{1}{l - 1}CE(Q)$
+        $LNCE(Q) = \frac{1}{l - 1}CE(Q)$
     \end{center}
     \item \textbf{VAR:} The Sample Variance based on \cite{chan1983algorithms}. Given is a time series
     $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 0$ over the domain set $\mathbb{U}$, a distance measure
@@ -26,5 +25,5 @@ measures have been tested as underlying measures for the Sliding Window Filter.
     The sigma sum sign $\sum$ in the last formula is used under the contaxt of the $ADD$ function between elements of
     $\mathbb{U}$.
 \end{itemize}
-Every mentioned estimates has been tested as underlying measures for the Sliding Window Filter combined with a blur
-factor of $\frac{10}{10}$, $\frac{11}{10}$, $\frac{12}{10}$, $\frac{13}{10}$, $\frac{14}{10}$ and $\frac{15}{10}$.
+The passing interval of every filter has been tested with eleven different factors that increases the interval from
+100\% to maximum 300\%.

@@ -7,14 +7,15 @@ one instance for every class in the training data as already mentioned in sectio
 threshold determinations have been tested.
 
 \begin{itemize}
-    \item \textbf{Half Minimum Distance:} This approach determinates the threshold for a class by the half minimum
-    distance of the class to all other classes in the training data.
-    \item \textbf{Half Average Distance:} This approach determinates the threshold for a class by the half average
-    distance of the class to all other classes in the training data.
-    \item \textbf{Half Middle Distance:} This approach determinates the threshold for a class by the half average of the
-    minimum and maximum distance of the class to all other classes in the training data.
-    \item \textbf{Cheating:} This approach fakes already generated knowledge about the distance threshold by setting the
-    threshold to the by a small factor increased distance between the only existing training class instance and the test
-    instance that has to be found. Two more intuitively chosen factors will be tested, $\frac{11}{10}$ and
-    $\frac{12}{10}$. The cheating approach exists only to judge the performance of other threshold determinations.
+    \item \textbf{HMinD:} Stands for half minimum distance, this approach determinates the threshold for a class by the
+        half minimum distance of the class to all other classes in the training data.
+    \item \textbf{HAveD:} Stands for half average distance, this approach determinates the threshold for a class by the
+        half average distance of the class to all other classes in the training data.
+    \item \textbf{HMidD:} Stands for half middle distance, this approach determinates the threshold for a class by the
+        half average of the minimum and maximum distance of the class to all other classes in the training data.
+    \item \textbf{Peak:} Stands for peaking, this approach fakes already generated knowledge about the distance
+        threshold by setting the threshold to the by a small factor increased distance between the only existing
+        training class instance and the test instance that has to be found. Two more intuitively chosen factors will be
+        tested, $\frac{11}{10}$ and $\frac{12}{10}$. The cheating approach exists only to judge the performance of other
+        threshold determinations.
 \end{itemize}
