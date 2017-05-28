@@ -1,2 +1,86 @@
 \subsubsection{Sakoe-Chiba Band} \label{sakoe-chiba_band}
 \cite{sakoe1978dynamic}
+
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{cc}
+            \resizebox {0.6\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=47,
+                        xlabel=time,
+                        ylabel=acceleration,
+                        width=\textwidth,
+                        height=\axisdefaultheight,
+                        reverse legend]
+                        \addplot[lightgray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/scb/path.dat};
+                        \addplot[red, thick, mark=none] table {../data/fig/scb/q.dat};
+                        \addlegendentry{Q}
+                        \addplot[blue, thick, mark=none] table {../data/fig/scb/c.dat};
+                        \addlegendentry{C}
+                    \end{axis}
+                \end{tikzpicture}
+            } & \qquad
+            \resizebox {0.3\textwidth} {!} {
+                \begin{tabular}{ll}
+                    &
+                    \\[-1.5\textwidth]
+                    &
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            ymin=-100,
+                            ymax=0,
+                            hide x axis,
+                            hide y axis,
+                            width=\textwidth,
+                            height=\axisdefaultheight]
+                            \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
+                        \end{axis}
+                    \end{tikzpicture} \\
+                    \begin{turn}{90}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\textwidth,
+                                height=\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{turn} &
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            enlargelimits=false,
+                            ymin=0,
+                            ymax=47,
+                            hide x axis,
+                            hide y axis,
+                            width=\textwidth,
+                            height=\textwidth,
+                            colorbar,
+                            colormap/viridis high res]
+                            \addplot[matrix plot*,
+                                shader=flat,
+                                mesh/cols=48,
+                                point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
+                            \addplot[white, ultra thick, mark=*] table {../data/fig/scb/matrix_path.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{tabular}
+            }
+        \end{tabular}
+    \end{center}
+    \caption{Two time series $Q$ and $C$ containing recorded and compressed data from one acceleration sensor. On the
+    left plot both time series graphs, the gray lines are representing the warping path of DTW with a Sakoe-Chiba band
+    of size 20\%. The right plot shows the associated matrix containing the distances between the time series data
+    points. Starting in the lower left corner and ending in the upper right corner, the warping path is illustrated as
+    white graph.}
+    \label{fig:scb}
+\end{figure}
