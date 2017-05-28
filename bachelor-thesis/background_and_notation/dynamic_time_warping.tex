@@ -91,8 +91,8 @@ of the matrix.
                             colormap/viridis high res]
                             \addplot[matrix plot*,
                                 mesh/cols=48,
-                                point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
-                            \addplot[white, ultra thick, mark=*] table {../data/fig/dynamictimewarping/matrix_path.dat};
+                                point meta=explicit] table[x=y, y=x, meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                            \addplot[white, ultra thick, mark=*] table[x=y, y=x] {../data/fig/dynamictimewarping/matrix_path.dat};
                         \end{axis}
                     \end{tikzpicture}
                 \end{tabular}

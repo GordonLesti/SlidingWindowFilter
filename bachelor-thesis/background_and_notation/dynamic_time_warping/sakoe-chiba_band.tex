@@ -69,8 +69,8 @@
                             \addplot[matrix plot*,
                                 shader=flat,
                                 mesh/cols=48,
-                                point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
-                            \addplot[white, ultra thick, mark=*] table {../data/fig/scb/matrix_path.dat};
+                                point meta=explicit] table[x=y, y=x, meta=C] {../data/fig/scb/matrix.dat};
+                            \addplot[white, ultra thick, mark=*] table[x=y, y=x] {../data/fig/scb/matrix_path.dat};
                         \end{axis}
                     \end{tikzpicture}
                 \end{tabular}
