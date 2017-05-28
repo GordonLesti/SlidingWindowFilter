@@ -21,7 +21,7 @@
                         \addlegendentry{C}
                     \end{axis}
                 \end{tikzpicture}
-            } & \qquad
+            } & \quad
             \resizebox {0.3\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
@@ -40,6 +40,8 @@
                             \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
                         \end{axis}
                     \end{tikzpicture} \\
+                    &
+                    \\[1em]
                     \begin{turn}{90}
                         \begin{tikzpicture}
                             \begin{axis}[
@@ -54,7 +56,7 @@
                                 \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
                             \end{axis}
                         \end{tikzpicture}
-                    \end{turn} &
+                    \end{turn} \hspace*{3em} &
                     \begin{tikzpicture}
                         \begin{axis}[
                             enlargelimits=false,
@@ -77,7 +79,7 @@
             }
         \end{tabular}
     \end{center}
-    \caption{Two time series $Q$ and $C$ containing recorded and compressed data from one acceleration sensor. On the
+    \caption{The same two time series $Q$ and $C$ from figure \ref{fig:dynamictimewarping}. On the
     left plot both time series graphs, the gray lines are representing the warping path of DTW with a Sakoe-Chiba band
     of size 20\%. The right plot shows the associated matrix containing the distances between the time series data
     points. Starting in the lower left corner and ending in the upper right corner, the warping path is illustrated as

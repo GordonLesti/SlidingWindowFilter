@@ -44,7 +44,7 @@ of the matrix.
                         \addlegendentry{C}
                     \end{axis}
                 \end{tikzpicture}
-            } & \qquad
+            } & \quad
             \resizebox {0.3\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
@@ -62,7 +62,9 @@ of the matrix.
                             height=\axisdefaultheight]
                             \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
                         \end{axis}
-                    \end{tikzpicture} \\
+                    \end{tikzpicture}\\
+                    &
+                    \\[1em]
                     \begin{turn}{90}
                         \begin{tikzpicture}
                             \begin{axis}[
@@ -77,7 +79,7 @@ of the matrix.
                                 \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
                             \end{axis}
                         \end{tikzpicture}
-                    \end{turn} &
+                    \end{turn} \hspace*{3em} &
                     \begin{tikzpicture}
                         \begin{axis}[
                             enlargelimits=false,
