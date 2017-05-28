@@ -24,9 +24,9 @@ blur factors very close to the top $F_{1}score_{\mu}$ value.
                         ylabel=$F_{1}score_{\mu}$,
                         width=\textwidth,
                         height=\axisdefaultheight]
-                        \addplot[blue] table {../data/fig/blur_factor_result/lnce.dat};
+                        \addplot[blue, ultra thick] table {../data/fig/blur_factor_result/lnce.dat};
                         \addlegendentry{LNCE}
-                        \addplot[red] table {../data/fig/blur_factor_result/var.dat};
+                        \addplot[red, ultra thick] table {../data/fig/blur_factor_result/var.dat};
                         \addlegendentry{VAR}
                         \addplot[dotted, black, domain=100:300] {0.738393631276109};
                         \addlegendentry{No Filter}
@@ -45,9 +45,9 @@ blur factors very close to the top $F_{1}score_{\mu}$ value.
                         ylabel=\# 1NN-DTW calls,
                         width=\textwidth,
                         height=\axisdefaultheight]
-                        \addplot[blue] table {../data/fig/nnc_calls_result/lnce.dat};
+                        \addplot[blue, ultra thick] table {../data/fig/nnc_calls_result/lnce.dat};
                         \addlegendentry{LNCE}
-                        \addplot[red] table {../data/fig/nnc_calls_result/var.dat};
+                        \addplot[red, ultra thick] table {../data/fig/nnc_calls_result/var.dat};
                         \addlegendentry{VAR}
                         \addplot[dotted, black, domain=100:300] {4893};
                         \addlegendentry{No Filter}
@@ -80,7 +80,7 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[blue] table {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addplot[blue, ultra thick] table {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
                         \addlegendentry{LNCE}
                     \end{axis}
                 \end{tikzpicture}
@@ -93,7 +93,7 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[red] table {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addplot[red, ultra thick] table {../data/fig/nnc_calls_result/tradeoff-var.dat};
                         \addlegendentry{VAR}
                     \end{axis}
                 \end{tikzpicture}

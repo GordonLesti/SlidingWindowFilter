@@ -6,6 +6,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{pgfplots}
+\usepackage{rotating}
 \usepackage{tabularx}
 \usepackage{textcomp}
 \usepackage{url}
@@ -21,7 +22,7 @@
 \def\arraystretch{1.2}
 
 \begin{document}
-    \graphicspath{ {../img/} }
+    \graphicspath{{../img/}}
     \mainmatter
     \title{A Sliding Window Filter for Time Series Streams}
     \subtitle{Bachelor thesis\\
@@ -39,16 +40,25 @@
     \url{http://www.aot.tu-berlin.de/}}
     \toctitle{A Sliding Window Filter for Time Series Streams}
     \tocauthor{Gordon Lesti}
+    \pagenumbering{Roman}
+    \let\oldaddcontentsline\addcontentsline
+    \def\addcontentsline#1#2#3{}
     \maketitle
+    \def\addcontentsline#1#2#3{\oldaddcontentsline{#1}{#2}{#3}}
 
     \input{abstract.tex}
+    \clearpage
+    \input{statutory_declaration.tex}
     \tableofcontents
-    \newpage
+    \clearpage
+    \pagenumbering{arabic}
     \input{introduction.tex}
     \input{background_and_notation.tex}
     \input{sliding_window_filter.tex}
     \input{experiment.tex}
     \input{conclusion_and_future_work.tex}
-    \newpage
+    \clearpage
     \input{references.tex}
+    \clearpage
+    \input{attachment_abstract.tex}
 \end{document}
