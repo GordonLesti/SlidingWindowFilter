@@ -1,10 +1,28 @@
-\subsection{Time Series Normalization} \label{time_series_normalization}
-\cite{keogh2003need}
+\subsubsection{Time Series Normalization} \label{time_series_normalization}
+When using DTW to determine the similarity of two time series it is a common approach to z-normalize or Z-score the time
+series in front of the calculation. In \cite{das1998rule} two different time series normalizations are presented. Both
+time series normalizations $\eta$ and $\eta '$ will be explained in the following section.
+
+Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ over the domain set $\mathbb{U}$, a
+distance measure function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$, a summing function $ADD$ with
+$ADD: \mathbb{U} \times \mathbb{U} \to \mathbb{U}$ and a scalar multiplication function $SMULT$ with
+$SMULT: \mathbb{R} \times \mathbb{U} \to \mathbb{U}$. The first time series normalization $\eta$ transforms every data
+point of the given time series $Q$ as follows.
+\begin{center}
+    $\eta (q) = ADD(q, SMULT(-1, \bar{q}))$
+\end{center}
+where $\bar{q}$ is the mean of the time series $Q$
+\begin{center}
+    $\bar{q} = SMULT(\frac{1}{l}, \sum \limits_{i=1}^{l} q_i)$
+\end{center}
+The sigma sum sign $\sum$ in the last formula is used under the context of the $ADD$ function between elements of
+$\mathbb{U}$. Figure \ref{fig:norm1} shows the impact of the $\eta$ normalization on DTW compared to plain DTW in figure
+\ref{fig:dynamictimewarping}.
 
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
-            \resizebox {0.6\textwidth} {!} {
+            \resizebox {0.57\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         xmin=0,
@@ -22,26 +40,10 @@
                     \end{axis}
                 \end{tikzpicture}
             } & \quad
-            \resizebox {0.3\textwidth} {!} {
+            \resizebox {0.33\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
-                    \\[-1.7\textwidth]
-                    &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin=0,
-                            xmax=47,
-                            ymin=-40,
-                            ymax=40,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\axisdefaultheight]
-                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
-                        \end{axis}
-                    \end{tikzpicture} \\
-                    &
-                    \\[1em]
+                    \\[-1.61\textwidth]
                     \begin{turn}{90}
                         \begin{tikzpicture}
                             \begin{axis}[
@@ -73,6 +75,22 @@
                                 point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
                             \addplot[white, ultra thick, mark=*] table {../data/fig/norm1/matrix_path.dat};
                         \end{axis}
+                    \end{tikzpicture}\\
+                    &
+                    \\[1em]
+                    &
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            ymin=-40,
+                            ymax=40,
+                            hide x axis,
+                            hide y axis,
+                            width=\textwidth,
+                            height=\axisdefaultheight]
+                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
+                        \end{axis}
                     \end{tikzpicture}
                 \end{tabular}
             }
@@ -85,10 +103,22 @@
     \label{fig:norm1}
 \end{figure}
 
+The second time series normalization $\eta '$ transforms every data point of the given time series $Q$ as follows.
+\begin{center}
+    $\eta '(q) = SMULT(\frac{1}{\sigma}, \eta (q))$
+\end{center}
+where $\sigma$ is the standard deviation of the time series $Q$
+\begin{center}
+    $\sigma = SMULT(\frac{1}{l-1}, \sum \limits_{i=1}^{l} D(q_i, \bar{q})^2)$
+\end{center}
+Again is the sigma sum sign $\sum$ in the last formula used under the context of the $ADD$ function between elements of
+$\mathbb{U}$. Figure \ref{fig:norm2} shows the impact of the $\eta '$ normalization on DTW compared to plain DTW in
+figure \ref{fig:dynamictimewarping}.
+
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
-            \resizebox {0.6\textwidth} {!} {
+            \resizebox {0.57\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         xmin=0,
@@ -106,26 +136,10 @@
                     \end{axis}
                 \end{tikzpicture}
             } & \quad
-            \resizebox {0.3\textwidth} {!} {
+            \resizebox {0.33\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
-                    \\[-1.7\textwidth]
-                    &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin=0,
-                            xmax=47,
-                            ymin=-2,
-                            ymax=2,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\axisdefaultheight]
-                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
-                        \end{axis}
-                    \end{tikzpicture} \\
-                    &
-                    \\[1em]
+                    \\[-1.61\textwidth]
                     \begin{turn}{90}
                         \begin{tikzpicture}
                             \begin{axis}[
@@ -156,6 +170,22 @@
                                 mesh/cols=48,
                                 point meta=explicit] table[meta=C] {../data/fig/norm2/matrix.dat};
                             \addplot[white, ultra thick, mark=*] table {../data/fig/norm2/matrix_path.dat};
+                        \end{axis}
+                    \end{tikzpicture}\\
+                    &
+                    \\[1em]
+                    &
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            ymin=-2,
+                            ymax=2,
+                            hide x axis,
+                            hide y axis,
+                            width=\textwidth,
+                            height=\axisdefaultheight]
+                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
                         \end{axis}
                     \end{tikzpicture}
                 \end{tabular}

@@ -13,7 +13,7 @@ restricted area.
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
-            \resizebox {0.6\textwidth} {!} {
+            \resizebox {0.57\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         xmin=0,
@@ -31,26 +31,10 @@ restricted area.
                     \end{axis}
                 \end{tikzpicture}
             } & \quad
-            \resizebox {0.3\textwidth} {!} {
+            \resizebox {0.33\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
-                    \\[-1.7\textwidth]
-                    &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin=0,
-                            xmax=47,
-                            ymin=-100,
-                            ymax=0,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\axisdefaultheight]
-                            \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
-                        \end{axis}
-                    \end{tikzpicture} \\
-                    &
-                    \\[1em]
+                    \\[-1.55\textwidth]
                     \begin{turn}{90}
                         \begin{tikzpicture}
                             \begin{axis}[
@@ -82,6 +66,22 @@ restricted area.
                                 mesh/cols=48,
                                 point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
                             \addplot[white, ultra thick, mark=*] table {../data/fig/scb/matrix_path.dat};
+                        \end{axis}
+                    \end{tikzpicture}\\
+                    &
+                    \\[1em]
+                    &
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            ymin=-100,
+                            ymax=0,
+                            hide x axis,
+                            hide y axis,
+                            width=\textwidth,
+                            height=\axisdefaultheight]
+                            \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
                         \end{axis}
                     \end{tikzpicture}
                 \end{tabular}
