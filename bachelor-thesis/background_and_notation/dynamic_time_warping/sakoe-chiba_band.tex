@@ -1,5 +1,12 @@
 \subsubsection{Sakoe-Chiba Band} \label{sakoe-chiba_band}
-\cite{sakoe1978dynamic}
+Plain DTW uses a full distance matrix to calculate the similarity between two time series as shown on the right plot of
+figure \ref{fig:dynamictimewarping}. This can allow DTW to match a data point at the beginning of a time series to a
+data point at the end of the compared time series. To prevent such scenarios it is a common approach to restrict the
+area of the distance matrix. Popular constraints are the Sakoe-Chiba band \cite{sakoe1978dynamic} and the Itakura
+parallelogram \cite{itakura1975minimum}. This thesis will focus only on the Sakoe-Chiba band. The adjustment window or
+the width of the Sakoe-Chiba band can be sclaed in a general context by a percentage factor of the compared time series
+length. Figure \ref{fig:scb} clarifies the influence of a 20\% Sakoe-Chiba band on DTW compared to figure
+\ref{fig:dynamictimewarping} with plain DTW.
 
 \begin{figure}
     \begin{center}
