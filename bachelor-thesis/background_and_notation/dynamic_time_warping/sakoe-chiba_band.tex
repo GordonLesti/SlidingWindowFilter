@@ -25,7 +25,7 @@
             \resizebox {0.3\textwidth} {!} {
                 \begin{tabular}{ll}
                     &
-                    \\[-1.5\textwidth]
+                    \\[-1.7\textwidth]
                     &
                     \begin{tikzpicture}
                         \begin{axis}[
@@ -37,7 +37,7 @@
                             hide y axis,
                             width=\textwidth,
                             height=\axisdefaultheight]
-                            \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
+                            \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
                         \end{axis}
                     \end{tikzpicture} \\
                     &
@@ -53,7 +53,7 @@
                                 hide y axis,
                                 width=\textwidth,
                                 height=\axisdefaultheight]
-                                \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
+                                \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
                             \end{axis}
                         \end{tikzpicture}
                     \end{turn} \hspace*{3em} &
@@ -71,8 +71,8 @@
                             \addplot[matrix plot*,
                                 shader=flat,
                                 mesh/cols=48,
-                                point meta=explicit] table[x=y, y=x, meta=C] {../data/fig/scb/matrix.dat};
-                            \addplot[white, ultra thick, mark=*] table[x=y, y=x] {../data/fig/scb/matrix_path.dat};
+                                point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
+                            \addplot[white, ultra thick, mark=*] table {../data/fig/scb/matrix_path.dat};
                         \end{axis}
                     \end{tikzpicture}
                 \end{tabular}

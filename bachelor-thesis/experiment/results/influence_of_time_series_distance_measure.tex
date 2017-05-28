@@ -1,9 +1,11 @@
 \subsubsection{Influence of Time Series Distance Measure} \label{influence_of_time_series_distance_measure}
 2346 different simulations have been tested that contain \textit{Mid} as window size determination and
-\textit{HAveD} as threshold determination in their configuration. The half of those simulations was
-using plain DTW and the other half used NDTW. Figure \ref{fig:distance_measure_result} illustrates the distribution of
-both subsets. It is clearly visible that NDTW reaches better $Recall_{\mu}$ values as DTW in the experiment, however
-also slightly worse $Precision_{\mu}$ values.
+\textit{HAveD} as threshold determination in their configuration. One third of those simulations was
+using plain DTW, one third used $\eta$DTW and one third used $\eta '$DTW. Figure \ref{fig:distance_measure_result}
+illustrates the distribution of all three subsets. It is clearly visible that $\eta$DTW reaches better $Recall_{\mu}$
+values as DTW in the experiment, however also slightly worse $Precision_{\mu}$ values. Furthermore is $\eta$DTW
+dominating $\eta '$DTW with the $Precision_{\mu}$ and $Recall_{\mu}$ values. The blob of poor performing simulations in
+the lower left corner of figure \ref{fig:distance_measure_result} are too small Sakoe-Chiba bands.
 
 \definecolor{light-gray}{gray}{0.8}
 
