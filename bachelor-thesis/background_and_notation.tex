@@ -1,10 +1,10 @@
 \section{Background and Notation} \label{background_and_notation}
 A time series $Q$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
 $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with $q_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
-function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. A common assumption for time series is that the
+function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. A common assumption for time series is that the
 containing data points are elements of the integer numbers $\mathbb{Z}$ or the real numbers $\mathbb{R}$. The distance
 measure function on these common domains is just the absolute value of the difference of two elements. A fundamental
-prerequisite for similarity measures on time series is often the distance measure function $D$ on the set
+prerequisite for similarity measures on time series is often the distance measure function $d$ on the set
 $\mathbb{U}$. Table~\ref{tab:notation} explains the basic notation that is used in this bachelor thesis.
 
 \begin{table}
@@ -13,11 +13,7 @@ $\mathbb{U}$. Table~\ref{tab:notation} explains the basic notation that is used 
             \textbf{Symbol} \qquad & \textbf{Description} & \qquad \textbf{Section}\\
             \hline
             $\mathbb{U}$ & a set containing all items of a domain & \qquad \ref{background_and_notation}\\
-            $D$ & a distance measure function on $\mathbb{U}$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
-                & \qquad \ref{background_and_notation}\\
-            $ADD$ & a summing function on $\mathbb{U}$ with $ADD: \mathbb{U} \times \mathbb{U} \to \mathbb{U}$
-                & \qquad \ref{background_and_notation}\\
-            $SMULT$ & a scalar multiplication function with $SMULT: \mathbb{R} \times \mathbb{U} \to \mathbb{U}$
+            $d$ & a distance measure function on $\mathbb{U}$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
                 & \qquad \ref{background_and_notation}\\
             $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
                 $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$ & \qquad \ref{background_and_notation}\\

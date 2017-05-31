@@ -10,20 +10,16 @@ measures have been tested as underlying measures for the Sliding Window Filter.
         $LNCE(Q) = \frac{1}{l - 1}CE(Q)$
     \end{center}
     \item \textbf{VAR:} The Sample Variance based on \cite{chan1983algorithms}. Given is a time series
-    $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 0$ over the domain set $\mathbb{U}$, a distance measure
-    function $D$ with $D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$, a summing function $ADD$ with
-    $ADD: \mathbb{U} \times \mathbb{U} \to \mathbb{U}$ and a scalar multiplication function $SMULT$ with
-    $SMULT: \mathbb{R} \times \mathbb{U} \to \mathbb{U}$. The Variance of a time series $Q$ can be calculated by the
-    following formula.
+    $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 0$ over the domain set $\mathbb{U}$ and a distance measure
+    function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. The Variance of a time series $Q$ can be
+    calculated by the following formula.
     \begin{center}
-        $VAR(Q) = \frac{1}{l}\sum \limits_{i=1}^{l} D(q_i, \bar{q})^2$
+        $VAR(Q) = \frac{1}{l}\sum \limits_{i=1}^{l} d(q_i, \bar{q})^2$
     \end{center}
     where
     \begin{center}
-        $\bar{q} = SMULT(\frac{1}{l}, \sum \limits_{i=1}^{l} q_i)$
+        $\bar{q} = \frac{1}{l} \sum \limits_{i=1}^{l} q_i$
     \end{center}
-    The sigma sum sign $\sum$ in the last formula is used under the context of the $ADD$ function between elements of
-    $\mathbb{U}$.
 \end{itemize}
 The passing interval of every filter has been tested with eleven different factors that increases the interval from
 100\% to maximum 300\%.
