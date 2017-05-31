@@ -40,9 +40,9 @@ table \ref{table:conversion}.
                         xmax=295,
                         xlabel=time,
                         ylabel=acceleration in $\frac{dm}{s^2}$]
-                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/raw.dat};
-                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/raw.dat};
-                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/raw.dat};
+                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/experimental_protocol/quantization/raw.dat};
+                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/experimental_protocol/quantization/raw.dat};
+                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/experimental_protocol/quantization/raw.dat};
                     \end{axis}
                 \end{tikzpicture}
             } &
@@ -57,11 +57,11 @@ table \ref{table:conversion}.
                         xlabel=time,
                         ylabel=acceleration in $\frac{dm}{s^2}$,
                         legend columns=4]
-                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/compressed.dat};
+                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/experimental_protocol/quantization/compressed.dat};
                         \addlegendentry{x-axis}
-                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/compressed.dat};
+                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/experimental_protocol/quantization/compressed.dat};
                         \addlegendentry{y-axis}
-                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/compressed.dat};
+                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/experimental_protocol/quantization/compressed.dat};
                         \addlegendentry{z-axis}
                     \end{axis}
                 \end{tikzpicture}
@@ -73,9 +73,9 @@ table \ref{table:conversion}.
                         xmax=52,
                         xlabel=time,
                         ylabel=converted acceleration]
-                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/evaluation/quantization/converted.dat};
-                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/evaluation/quantization/converted.dat};
-                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/evaluation/quantization/converted.dat};
+                        \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {experiment/experimental_protocol/quantization/converted.dat};
+                        \addplot[red, ultra thick, mark=none] table[x=t, y=y] {experiment/experimental_protocol/quantization/converted.dat};
+                        \addplot[green, ultra thick, mark=none] table[x=t, y=z] {experiment/experimental_protocol/quantization/converted.dat};
                     \end{axis}
                 \end{tikzpicture}
             }
