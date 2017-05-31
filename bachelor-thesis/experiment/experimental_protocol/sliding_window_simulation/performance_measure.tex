@@ -12,12 +12,14 @@ this point of view, a simulation is a multi-class classificator for the gesture 
 $C_{GesA}, C_{GesB}, \dots, C_{GesH}$. Common performance measures for multi-class classificator are $Precision_{\mu}$,
 $Recall_{\mu}$ and $F_{\beta}score_{\mu}$ as mentioned in \cite{sokolova2009systematic}.
 
-\begin{center}
-    \begin{tabular}{r c l}
-        $Precision_{\mu}$ & = &  $\frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fp_i)}$ \\
-        $Recall_{\mu}$ & = & $\frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fn_i)}$ \\
-        $F_{\beta}score_{\mu}$ & = & $\frac{(\beta^2 + 1)Precision_{\mu} Recall_{\mu}}{\beta^2 Precision_{\mu} + Recall_{\mu}}$
-    \end{tabular}
-\end{center}
+\begin{equation}
+    Precision_{\mu} = \frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fp_i)}
+\end{equation}
+\begin{equation}
+    Recall_{\mu} = \frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fn_i)}
+\end{equation}
+\begin{equation}
+    F_{\beta}score_{\mu} = \frac{(\beta^2 + 1)Precision_{\mu} Recall_{\mu}}{\beta^2 Precision_{\mu} + Recall_{\mu}}
+\end{equation}
 
 The $F_{1}score_{\mu}$ will be used in the following subsection to rank the different simulations.

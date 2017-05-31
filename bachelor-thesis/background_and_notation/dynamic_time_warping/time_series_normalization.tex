@@ -7,13 +7,13 @@ Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ 
 distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. The first time series normalization
 $\eta$ transforms every data
 point of the given time series $Q$ as follows.
-\begin{center}
-    $\eta (q) = q -\bar{q}$
-\end{center}
+\begin{equation}
+    \eta (q) = q -\bar{q}
+\end{equation}
 where $\bar{q}$ is the mean of the time series $Q$
-\begin{center}
-    $\bar{q} = \frac{1}{l} \sum \limits_{i=1}^{l} q_i$
-\end{center}
+\begin{equation}
+    \bar{q} = \frac{1}{l} \sum \limits_{i=1}^{l} q_i
+\end{equation}
 Figure \ref{fig:norm1} shows the impact of the $\eta$ normalization on DTW compared to plain DTW in figure
 \ref{fig:dynamictimewarping}.
 
@@ -102,13 +102,13 @@ Figure \ref{fig:norm1} shows the impact of the $\eta$ normalization on DTW compa
 \end{figure}
 
 The second time series normalization $\eta '$ transforms every data point of the given time series $Q$ as follows.
-\begin{center}
-    $\eta '(q) = \frac{\eta (q)}{\sigma}$
-\end{center}
+\begin{equation}
+    \eta '(q) = \frac{\eta (q)}{\sigma}
+\end{equation}
 where $\sigma$ is the standard deviation of the time series $Q$
-\begin{center}
-    $\sigma = \frac{1}{l-1} \sum \limits_{i=1}^{l} d(q_i, \bar{q})^2$
-\end{center}
+\begin{equation}
+    \sigma = \frac{1}{l-1} \sum \limits_{i=1}^{l} d(q_i, \bar{q})^2
+\end{equation}
 Figure \ref{fig:norm2} shows the impact of the $\eta '$ normalization on DTW compared to plain DTW in
 figure \ref{fig:dynamictimewarping}.
 
