@@ -6,9 +6,11 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \usepackage{rotating}
 \usepackage{tabularx}
 \usepackage{textcomp}
+\usepackage{tikz}
 \usepackage{url}
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
@@ -16,6 +18,7 @@
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 \usetikzlibrary{spy}
+\usetikzlibrary{shapes,arrows}
 \usetikzlibrary{pgfplots.colormaps}
 \usepgfplotslibrary{external}
 \tikzexternalize
@@ -25,8 +28,8 @@
     \graphicspath{{../img/}}
     \mainmatter
     \title{A Sliding Window Filter for Time Series Streams}
-    \subtitle{Bachelor thesis\\
-    \textnormal{\small{Supervisor: Stephan Spiegel}}}
+    \subtitle{Bachelor Thesis\\
+    \textnormal{\small{Supervisor: Dr. Stephan Spiegel}}}
     \titlerunning{A Sliding Window Filter for Time Series Streams}
     \author{Gordon Lesti\\
     313249\\
@@ -40,25 +43,31 @@
     \url{http://www.aot.tu-berlin.de/}}
     \toctitle{A Sliding Window Filter for Time Series Streams}
     \tocauthor{Gordon Lesti}
-    \pagenumbering{Roman}
+    \pagenumbering{roman}
     \let\oldaddcontentsline\addcontentsline
     \def\addcontentsline#1#2#3{}
     \maketitle
     \def\addcontentsline#1#2#3{\oldaddcontentsline{#1}{#2}{#3}}
 
+    \cleardoublepage
     \input{abstract.tex}
-    \clearpage
+    \cleardoublepage
+    \input{german_abstract.tex}
+    \cleardoublepage
     \input{statutory_declaration.tex}
+    \cleardoublepage
     \tableofcontents
-    \clearpage
+    \cleardoublepage
     \pagenumbering{arabic}
     \input{introduction.tex}
+    \cleardoublepage
     \input{background_and_notation.tex}
+    \cleardoublepage
     \input{sliding_window_filter.tex}
+    \cleardoublepage
     \input{experiment.tex}
+    \cleardoublepage
     \input{conclusion_and_future_work.tex}
-    \clearpage
+    \cleardoublepage
     \input{references.tex}
-    \clearpage
-    \input{attachment_abstract.tex}
 \end{document}

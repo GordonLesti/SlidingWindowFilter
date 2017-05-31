@@ -1,2 +1,34 @@
 \section{Sliding Window Filter} \label{sliding_window_filter}
 A scenario as described in section \ref{introduction} is given.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {0.7\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=7cm, text width=4cm] (extract) {Extract last subsequence from Q of size $w$, $Q[c-w,c]$};
+                    \node [decision, draw=blue, below of=extract] (filter) {$FILTER(Q[c-w,c])$};
+                    \node [block, below of=filter, node distance=2cm, text width=4cm] (nnc) {Find nearest neighbour $C$ in the training data to query $Q[c-w,c]$};
+                    \node [decision, below of=nnc] (decide) {$DTW(C, Q[c-w,c]) \leq t$};
+                    \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=4cm] (action) {Trigger event that $C$ similar query has been found and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continous time series stream $Q$} (extract);
+                    \path [line] (extract) -- (filter);
+                    \path [line] (nnc) -- (decide);
+                    \path [line] (decide) -- node {no} (sleeps);
+                    \path [line,dashed] (sleeps) -| (ctss);
+                    \path [line] (decide) -- node {yes} (action);
+                    \path [line,dashed] (action) -| (ctss);
+                    \path [line] (filter) -| node [near start] {is blocked} (sleeps);
+                    \path [line] (filter) -- node {can pass} (nnc);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+    \caption{Extended design for a sliding window application as in figure \ref{fig:swt}, plus the additional filter
+    highlighted in blue. The current time is stored in variable $c$. The variables $w$ for the window size, $s$ for
+    the step size and $threshold$ as DTW distance upper bound for a classification are predefined.}
+    \label{fig:swf}
+\end{figure}

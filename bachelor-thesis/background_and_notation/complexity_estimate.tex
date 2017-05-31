@@ -1,0 +1,8 @@
+\subsection{Complexity Estimate} \label{complexity_estimate}
+The Complexity Estimate (CE) is a complexity measure for time series and the authors of \cite{batista2011complexity}
+introduced one possible approach of a CE implementation. Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$
+with length $l$ over the domain set $\mathbb{U}$ and a distance measure function $D$ with
+$D: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$.
+\begin{center}
+    $CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{l-1} D(q_i, q_{i + 1})^2}$
+\end{center}

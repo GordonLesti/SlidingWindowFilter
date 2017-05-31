@@ -80,7 +80,8 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[blue, ultra thick] table {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addplot[blue, only marks, mark=x] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addplot[lightgray] table[y={create col/linear regression={y=Y}}] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
                         \addlegendentry{LNCE}
                     \end{axis}
                 \end{tikzpicture}
@@ -93,14 +94,15 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[red, ultra thick] table {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addplot[red, only marks, mark=x] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addplot[lightgray] table[y={create col/linear regression={y=Y}}] {../data/fig/nnc_calls_result/tradeoff-var.dat};
                         \addlegendentry{VAR}
                     \end{axis}
                 \end{tikzpicture}
             }
         \end{tabular}
     \end{center}
-    \caption{Trade-off curves between the $F_{1}score_{\mu}$ and the amount of blocked 1NN-DTW calls for both filter
+    \caption{Trade-off between the $F_{1}score_{\mu}$ and the amount of blocked 1NN-DTW calls for both filter
     types.}
     \label{fig:blur_factor_tradeoff}
 \end{figure}

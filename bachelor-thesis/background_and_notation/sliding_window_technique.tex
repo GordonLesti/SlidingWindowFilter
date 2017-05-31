@@ -1,0 +1,45 @@
+\subsection{Sliding Window Technique} \label{sliding_window_technique}
+Given is a continous time series data stream $Q$. The last subsequence of size $w$ is in the interest of the sliding
+window technique. All subsequences or time series data points of $Q$ that are further back as the window size $w$ are in
+this moment irrelevant. The sliding window application tries to classify this last subsequence of $Q$ with the 1NN-DTW
+approach. It is possible that the current subsequence is unclassifiable due to a too large DTW distance between the
+subsequence and the nearest neighbour. This task is managed by a predefined threshold value $t$ that works as upper
+bound for the DTW distance. The application will trigger an event in the case of a positive classification of the
+subsequence and an other application can react on this event. The sliding window application itself will wait until the
+time series data stream $Q$ grows on. Afterwards the process is repeated again. However the sliding window apllication
+will wait until the time series data stream $Q$ has grown by a predefined step size $s$. This can avoid the execution
+of the process continuously after every new data point in $Q$ if necessary. Figure \ref{fig:swt} illustrates the
+described process.
+
+\tikzstyle{decision} = [diamond, draw, fill=white!20, text width=12em, text badly centered, node distance=2cm, aspect=2, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=white!20, text width=5em, text centered, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\begin{figure}
+    \begin{center}
+        \resizebox {0.7\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=7cm, text width=4cm] (extract) {Extract last subsequence from Q of size $w$, $Q[c-w,c]$};
+                    \node [block, below of=extract, text width=4cm] (nnc) {Find nearest neighbour $C$ in the training data to query $Q[c-w,c]$};
+                    \node [decision, below of=nnc] (decide) {$DTW(C, Q[c-w,c]) \leq t$};
+                    \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=4cm] (action) {Trigger event that $C$ similar query has been found and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continous time series stream $Q$} (extract);
+                    \path [line] (extract) -- (nnc);
+                    \path [line] (nnc) -- (decide);
+                    \path [line] (decide) -- node {no} (sleeps);
+                    \path [line,dashed] (sleeps) -| (ctss);
+                    \path [line] (decide) -- node {yes} (action);
+                    \path [line,dashed] (action) -| (ctss);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+    \caption{Possible design for a sliding window application. The current time is stored in variable $c$. The variables
+    $w$ for the window size, $s$ for the step size and $threshold$ as DTW distance upper bound for a classification are
+    predefined.}
+    \label{fig:swt}
+\end{figure}
