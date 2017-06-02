@@ -72,7 +72,7 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
 \begin{figure}
     \begin{center}
         \begin{tabular}{cc}
-            \resizebox {0.445\textwidth} {!} {
+            \resizebox {0.45\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         legend pos=south west,
@@ -80,13 +80,13 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[blue, only marks, mark=x] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
-                        \addplot[lightgray] table[y={create col/linear regression={y=Y}}] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addplot[blue, only marks, mark=*] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                        \addplot[lightgray, domain=0.7:0.74] {-83543.0872*x^2+55746.6816*x+4892.4835};
                         \addlegendentry{LNCE}
                     \end{axis}
                 \end{tikzpicture}
             } &
-            \resizebox {0.455\textwidth} {!} {
+            \resizebox {0.45\textwidth} {!} {
                 \begin{tikzpicture}
                     \begin{axis}[
                         legend pos=south west,
@@ -94,8 +94,8 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
                         ylabel=\# blocked 1NN-DTW calls,
                         width=\axisdefaultwidth,
                         height=\axisdefaultwidth]
-                        \addplot[red, only marks, mark=x] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-var.dat};
-                        \addplot[lightgray] table[y={create col/linear regression={y=Y}}] {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addplot[red, only marks, mark=*] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                        \addplot[lightgray, domain=0.63:0.74] {-34477.4805*x^2+20729.4890*x+4884.5834};
                         \addlegendentry{VAR}
                     \end{axis}
                 \end{tikzpicture}
@@ -103,6 +103,6 @@ combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves f
         \end{tabular}
     \end{center}
     \caption{Trade-off between the $F_{1}score_{\mu}$ and the amount of blocked 1NN-DTW calls for both filter
-    types.}
+    types. The gray graphs are quadratic regressions to illustrate the trade-off as curve on the observed intervals.}
     \label{fig:blur_factor_tradeoff}
 \end{figure}
