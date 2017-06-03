@@ -11,61 +11,63 @@ the lower left corner of figure \ref{fig:distance_measure_result} are too small 
 
 \begin{figure}
     \begin{center}
-        \begin{tabular}{cc}
-            \resizebox {0.45\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        legend pos=south west,
-                        xmin=0.4,
-                        xmax=0.9,
-                        ymin=0.2,
-                        ymax=0.7,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$]
-                        \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
-                        \addlegendentry{DTW}
-                        \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
-                        \addlegendentry{$\eta$DTW}
-                        \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
-                        \addlegendentry{$\eta '$DTW}
-                        \addplot[lightgray, domain=0.4:0.9] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[lightgray, domain=0.4:0.9] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[lightgray, domain=0.4:0.9] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[lightgray, domain=0.4:0.9] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[lightgray, domain=0.4:0.9] {(0.7 * x) / (2 * x - 0.7)};
-                    \end{axis}
-                \end{tikzpicture}
-            } &
-            \resizebox {0.45\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=1,
-                        ymin=0,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100]
-                        \addplot[blue, only marks, mark size=0.4] table {../data/fig/distance_measure_result/dtw.dat};
-                        \addplot[red, only marks, mark size=0.4] table {../data/fig/distance_measure_result/ndtw.dat};
-                        \addplot[green, only marks, mark size=0.4] table {../data/fig/distance_measure_result/n1dtw.dat};
-                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \end{axis}
-                \end{tikzpicture}
-            }
-        \end{tabular}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xmin=0.4,
+                            xmax=0.9,
+                            ymin=0.2,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                            \addlegendentry{DTW}
+                            \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                            \addlegendentry{$\eta$DTW}
+                            \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                            \addlegendentry{$\eta '$DTW}
+                            \addplot[gray, domain=0.4:0.9] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.4:0.9] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.4:0.9] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.4:0.9] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.4:0.9] {(0.7 * x) / (2 * x - 0.7)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                            \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                            \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations with \textit{Mid} as window determination and
     \textit{HAveD} as threshold determination, separated by the used time series distance measures DTW, $\eta$DTW

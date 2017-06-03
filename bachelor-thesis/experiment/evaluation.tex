@@ -49,106 +49,108 @@ following results could have an other ranking under an other performance measure
 
 \begin{figure}
     \begin{center}
-        \begin{tabular}{ccc}
-            \resizebox {0.3\textwidth} {!} {
-                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=1,
-                        ymin=0,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100,
-                        colorbar horizontal,
-                        colormap/viridis high res,
-                        title=$F_{\frac{1}{2}}score_{\mu}$]
-                        \addplot[only marks, scatter, scatter src=explicit, mark size=0.4] table[x=x,y=y,meta=fscore] {../data/fig/result/f0.5score.dat};
-                        \addplot[lightgray, domain=0.081:1] {(0.25 * 0.1 * x) / (1.25 * x - 0.1)};
-                        \addplot[lightgray, domain=0.161:1] {(0.25 * 0.2 * x) / (1.25 * x - 0.2)};
-                        \addplot[lightgray, domain=0.25:1] {(0.25 * 0.3 * x) / (1.25 * x - 0.3)};
-                        \addplot[lightgray, domain=0.33:1] {(0.25 * 0.4 * x) / (1.25 * x - 0.4)};
-                        \addplot[lightgray, domain=0.41:1] {(0.25 * 0.5 * x) / (1.25 * x - 0.5)};
-                        \addplot[lightgray, domain=0.49:1] {(0.25 * 0.6 * x) / (1.25 * x - 0.6)};
-                        \addplot[lightgray, domain=0.57:1] {(0.25 * 0.7 * x) / (1.25 * x - 0.7)};
-                        \addplot[lightgray, domain=0.65:1] {(0.25 * 0.8 * x) / (1.25 * x - 0.8)};
-                        \addplot[lightgray, domain=0.73:1] {(0.25 * 0.9 * x) / (1.25 * x - 0.9)};
-                        \coordinate (spypoint) at (axis cs:0.8767619815,0.6115168539);
-                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                    \end{axis}
-                    \spy [size=2cm] on (spypoint)
-                        in node[fill=white] at (magnifyglass);
-                \end{tikzpicture}
-            }
-            &
-            \resizebox {0.3\textwidth} {!} {
-                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=1,
-                        ymin=0,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100,
-                        colorbar horizontal,
-                        colormap/viridis high res,
-                        title=$F_{1}score_{\mu}$]
-                        \addplot[only marks, scatter, scatter src=explicit, mark size=0.4] table[x=x,y=y,meta=fscore] {../data/fig/result/f1score.dat};
-                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
-                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                    \end{axis}
-                    \spy [size=2cm] on (spypoint)
-                        in node[fill=white] at (magnifyglass);
-                \end{tikzpicture}
-            }
-            &
-            \resizebox {0.3\textwidth} {!} {
-                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=1,
-                        ymin=0,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100,
-                        colorbar horizontal,
-                        colormap/viridis high res,
-                        title=$F_{2}score_{\mu}$]
-                        \addplot[only marks, scatter, scatter src=explicit, mark size=0.4] table[x=x,y=y,meta=fscore] {../data/fig/result/f2score.dat};
-                        \addplot[lightgray, domain=0.021:1] {(4 * 0.1 * x) / (5 * x - 0.1)};
-                        \addplot[lightgray, domain=0.041:1] {(4 * 0.2 * x) / (5 * x - 0.2)};
-                        \addplot[lightgray, domain=0.061:1] {(4 * 0.3 * x) / (5 * x - 0.3)};
-                        \addplot[lightgray, domain=0.081:1] {(4 * 0.4 * x) / (5 * x - 0.4)};
-                        \addplot[lightgray, domain=0.101:1] {(4 * 0.5 * x) / (5 * x - 0.5)};
-                        \addplot[lightgray, domain=0.121:1] {(4 * 0.6 * x) / (5 * x - 0.6)};
-                        \addplot[lightgray, domain=0.141:1] {(4 * 0.7 * x) / (5 * x - 0.7)};
-                        \addplot[lightgray, domain=0.17:1] {(4 * 0.8 * x) / (5 * x - 0.8)};
-                        \addplot[lightgray, domain=0.19:1] {(4 * 0.9 * x) / (5 * x - 0.9)};
-                        \coordinate (spypoint) at (axis cs:0.8124893942,0.6724719101);
-                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                    \end{axis}
-                    \spy [size=2cm] on (spypoint)
-                        in node[fill=white] at (magnifyglass);
-                \end{tikzpicture}
-            }
-        \end{tabular}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{ccc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100,
+                            colorbar horizontal,
+                            colormap/viridis high res,
+                            title=$F_{\frac{1}{2}}score_{\mu}$]
+                            \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result/f0.5score.dat};
+                            \addplot[gray, domain=0.081:1] {(0.25 * 0.1 * x) / (1.25 * x - 0.1)};
+                            \addplot[gray, domain=0.161:1] {(0.25 * 0.2 * x) / (1.25 * x - 0.2)};
+                            \addplot[gray, domain=0.25:1] {(0.25 * 0.3 * x) / (1.25 * x - 0.3)};
+                            \addplot[gray, domain=0.33:1] {(0.25 * 0.4 * x) / (1.25 * x - 0.4)};
+                            \addplot[gray, domain=0.41:1] {(0.25 * 0.5 * x) / (1.25 * x - 0.5)};
+                            \addplot[gray, domain=0.49:1] {(0.25 * 0.6 * x) / (1.25 * x - 0.6)};
+                            \addplot[gray, domain=0.57:1] {(0.25 * 0.7 * x) / (1.25 * x - 0.7)};
+                            \addplot[gray, domain=0.65:1] {(0.25 * 0.8 * x) / (1.25 * x - 0.8)};
+                            \addplot[gray, domain=0.73:1] {(0.25 * 0.9 * x) / (1.25 * x - 0.9)};
+                            \coordinate (spypoint) at (axis cs:0.8767619815,0.6115168539);
+                            \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                        \end{axis}
+                        \spy [size=2cm] on (spypoint)
+                            in node[fill=white] at (magnifyglass);
+                    \end{tikzpicture}
+                }
+                &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100,
+                            colorbar horizontal,
+                            colormap/viridis high res,
+                            title=$F_{1}score_{\mu}$]
+                            \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result/f1score.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                            \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                            \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                        \end{axis}
+                        \spy [size=2cm] on (spypoint)
+                            in node[fill=white] at (magnifyglass);
+                    \end{tikzpicture}
+                }
+                &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100,
+                            colorbar horizontal,
+                            colormap/viridis high res,
+                            title=$F_{2}score_{\mu}$]
+                            \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result/f2score.dat};
+                            \addplot[gray, domain=0.021:1] {(4 * 0.1 * x) / (5 * x - 0.1)};
+                            \addplot[gray, domain=0.041:1] {(4 * 0.2 * x) / (5 * x - 0.2)};
+                            \addplot[gray, domain=0.061:1] {(4 * 0.3 * x) / (5 * x - 0.3)};
+                            \addplot[gray, domain=0.081:1] {(4 * 0.4 * x) / (5 * x - 0.4)};
+                            \addplot[gray, domain=0.101:1] {(4 * 0.5 * x) / (5 * x - 0.5)};
+                            \addplot[gray, domain=0.121:1] {(4 * 0.6 * x) / (5 * x - 0.6)};
+                            \addplot[gray, domain=0.141:1] {(4 * 0.7 * x) / (5 * x - 0.7)};
+                            \addplot[gray, domain=0.17:1] {(4 * 0.8 * x) / (5 * x - 0.8)};
+                            \addplot[gray, domain=0.19:1] {(4 * 0.9 * x) / (5 * x - 0.9)};
+                            \coordinate (spypoint) at (axis cs:0.8124893942,0.6724719101);
+                            \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                        \end{axis}
+                        \spy [size=2cm] on (spypoint)
+                            in node[fill=white] at (magnifyglass);
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of the simulations measured on the $F_{\frac{1}{2}}score_{\mu}$ for
     the left plot, $F_{1}score_{\mu}$ for the plot in the middle and $F_{2}score_{\mu}$ for the right plot. The

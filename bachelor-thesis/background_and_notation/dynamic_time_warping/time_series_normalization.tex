@@ -19,30 +19,64 @@ Figure \ref{fig:norm1} shows the impact of the $\eta$ normalization on DTW compa
 
 \begin{figure}
     \begin{center}
-        \begin{tabular}{cc}
-            \resizebox {0.57\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=47,
-                        xlabel=time,
-                        ylabel=acceleration,
-                        width=\textwidth,
-                        height=\axisdefaultheight,
-                        reverse legend]
-                        \addplot[lightgray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm1/path.dat};
-                        \addplot[red, thick, mark=none] table {../data/fig/norm1/q.dat};
-                        \addlegendentry{Q}
-                        \addplot[blue, thick, mark=none] table {../data/fig/norm1/c.dat};
-                        \addlegendentry{C}
-                    \end{axis}
-                \end{tikzpicture}
-            } & \quad
-            \resizebox {0.33\textwidth} {!} {
-                \begin{tabular}{ll}
-                    &
-                    \\[-1.61\textwidth]
-                    \begin{turn}{90}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm1/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/norm1/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-40,
+                                    ymax=40,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm1/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/norm1/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
                         \begin{tikzpicture}
                             \begin{axis}[
                                 xmin=0,
@@ -51,48 +85,15 @@ Figure \ref{fig:norm1} shows the impact of the $\eta$ normalization on DTW compa
                                 ymax=40,
                                 hide x axis,
                                 hide y axis,
-                                width=\textwidth,
-                                height=\axisdefaultheight]
-                                \addplot[red, ultra thick, mark=none] table {../data/fig/norm1/q.dat};
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
                             \end{axis}
                         \end{tikzpicture}
-                    \end{turn} \hspace*{3em} &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            enlargelimits=false,
-                            ymin=0,
-                            ymax=47,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\textwidth,
-                            colorbar,
-                            colormap/viridis high res]
-                            \addplot[matrix plot*,
-                                mesh/cols=48,
-                                point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
-                            \addplot[white, ultra thick, mark=*] table {../data/fig/norm1/matrix_path.dat};
-                        \end{axis}
-                    \end{tikzpicture}\\
-                    &
-                    \\[1em]
-                    &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin=0,
-                            xmax=47,
-                            ymin=-40,
-                            ymax=40,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\axisdefaultheight]
-                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
-                        \end{axis}
-                    \end{tikzpicture}
-                \end{tabular}
-            }
-        \end{tabular}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
     \end{center}
     \caption{The same two time series $Q$ and $C$ from figure \ref{fig:dynamictimewarping} normalized by $\eta$. On the
     left plot both time series graphs, the gray lines are representing the warping path of plain DTW. The right plot
@@ -114,30 +115,64 @@ figure \ref{fig:dynamictimewarping}.
 
 \begin{figure}
     \begin{center}
-        \begin{tabular}{cc}
-            \resizebox {0.57\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=47,
-                        xlabel=time,
-                        ylabel=acceleration,
-                        width=\textwidth,
-                        height=\axisdefaultheight,
-                        reverse legend]
-                        \addplot[lightgray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm2/path.dat};
-                        \addplot[red, thick, mark=none] table {../data/fig/norm2/q.dat};
-                        \addlegendentry{Q}
-                        \addplot[blue, thick, mark=none] table {../data/fig/norm2/c.dat};
-                        \addlegendentry{C}
-                    \end{axis}
-                \end{tikzpicture}
-            } & \quad
-            \resizebox {0.33\textwidth} {!} {
-                \begin{tabular}{ll}
-                    &
-                    \\[-1.61\textwidth]
-                    \begin{turn}{90}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm2/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/norm2/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm2/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-2,
+                                    ymax=2,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm2/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm2/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/norm2/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
                         \begin{tikzpicture}
                             \begin{axis}[
                                 xmin=0,
@@ -146,48 +181,15 @@ figure \ref{fig:dynamictimewarping}.
                                 ymax=2,
                                 hide x axis,
                                 hide y axis,
-                                width=\textwidth,
-                                height=\axisdefaultheight]
-                                \addplot[red, ultra thick, mark=none] table {../data/fig/norm2/q.dat};
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
                             \end{axis}
                         \end{tikzpicture}
-                    \end{turn} \hspace*{3em} &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            enlargelimits=false,
-                            ymin=0,
-                            ymax=47,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\textwidth,
-                            colorbar,
-                            colormap/viridis high res]
-                            \addplot[matrix plot*,
-                                mesh/cols=48,
-                                point meta=explicit] table[meta=C] {../data/fig/norm2/matrix.dat};
-                            \addplot[white, ultra thick, mark=*] table {../data/fig/norm2/matrix_path.dat};
-                        \end{axis}
-                    \end{tikzpicture}\\
-                    &
-                    \\[1em]
-                    &
-                    \begin{tikzpicture}
-                        \begin{axis}[
-                            xmin=0,
-                            xmax=47,
-                            ymin=-2,
-                            ymax=2,
-                            hide x axis,
-                            hide y axis,
-                            width=\textwidth,
-                            height=\axisdefaultheight]
-                            \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
-                        \end{axis}
-                    \end{tikzpicture}
-                \end{tabular}
-            }
-        \end{tabular}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
     \end{center}
     \caption{The same two time series $Q$ and $C$ from figure \ref{fig:dynamictimewarping} normalized by $\eta '$. On the
     left plot both time series graphs, the gray lines are representing the warping path of plain DTW. The right plot

@@ -5,68 +5,68 @@ of the different records from different experimentees.
 
 \begin{figure}
     \begin{center}
-        \begin{tabular}{cc}
-            \resizebox {0.45\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0.2,
-                        xmax=1,
-                        ymin=0.2,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100]
-                        \addplot+[
-                            blue,
-                            only marks,
-                            nodes near coords,
-                            every node near coord/.style={at={(0.12,0.17)}, color=gray},
-                            point meta=explicit symbolic,
-                            mark size=0.5] table[x=x, y=y, meta=label] {../data/fig/experimentee_result/experimentee.dat};
-                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \end{axis}
-                \end{tikzpicture}
-            } &
-            \resizebox {0.45\textwidth} {!} {
-                \begin{tikzpicture}
-                    \begin{axis}[
-                        xmin=0,
-                        xmax=1,
-                        ymin=0,
-                        ymax=1,
-                        width=\axisdefaultwidth,
-                        height=\axisdefaultwidth,
-                        xlabel=$Precision_{\mu}$,
-                        ylabel=$Recall_{\mu}$,
-                        samples=100]
-                        \addplot+[
-                            blue,
-                            only marks,
-                            nodes near coords,
-                            every node near coord/.style={at={(-0.05,-0.01)}, color=gray},
-                            point meta=explicit symbolic,
-                            mark size=0.4] table[x=x, y=y, meta=label] {../data/fig/experimentee_result/experimentee.dat};
-                        \addplot[lightgray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                        \addplot[lightgray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                        \addplot[lightgray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                        \addplot[lightgray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                        \addplot[lightgray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                        \addplot[lightgray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                        \addplot[lightgray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                        \addplot[lightgray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                        \addplot[lightgray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \end{axis}
-                \end{tikzpicture}
-            }
-        \end{tabular}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0.2,
+                            xmax=1,
+                            ymin=0.2,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot+[
+                                blue,
+                                only marks,
+                                nodes near coords,
+                                every node near coord/.style={at={(0.12,0.17)}, color=black},
+                                point meta=explicit symbolic] table[x=x, y=y, meta=label] {../data/fig/experimentee_result/experimentee.dat};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot+[
+                                blue,
+                                only marks,
+                                nodes near coords,
+                                every node near coord/.style={at={(-0.05,0)}, color=black},
+                                point meta=explicit symbolic] table[x=x, y=y, meta=label] {../data/fig/experimentee_result/experimentee.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all 14 records from 14 different experimentees for the simulation
     that uses $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the input time series length, \textit{HAveD}
@@ -74,4 +74,103 @@ of the different records from different experimentees.
     zoomed version of the right plot. Gray lines are illustrating the distribution of $F_{1}score_{\mu}$ in
     $\frac{1}{10}$ steps.}
     \label{fig:experimentee_result}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tikzpicture}
+                \begin{axis}[
+                    xmin=0,
+                    xmax=2426,
+                    ymin=-16,
+                    ymax=16,
+                    title={\Huge $exp_1$},
+                    width=8\textwidth,
+                    height=\axisdefaultheight,
+                    xticklabels={,,},
+                    yticklabels={,,}]
+                    \addplot[blue, mark=none, opacity=0.4] table[x=t, y=x] {../data/fig/experimentee_result2/exp1.dat};
+                    \addplot[red, mark=none, opacity=0.4] table[x=t, y=y] {../data/fig/experimentee_result2/exp1.dat};
+                    \addplot[green, mark=none, opacity=0.4] table[x=t, y=z] {../data/fig/experimentee_result2/exp1.dat};
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(300, -16) (306, -16) (306, 16) (300, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(307, -16) (355, -16) (355, 16) (307, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(356, -16) (361, -16) (361, 16) (356, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(505, -16) (507, -16) (507, 16) (505, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(508, -16) (563, -16) (563, 16) (508, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(564, -16) (566, -16) (566, 16) (564, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(722, -16) (777, -16) (777, 16) (722, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(778, -16) (783, -16) (783, 16) (778, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(940, -16) (950, -16) (950, 16) (940, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(951, -16) (1012, -16) (1012, 16) (951, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(1013, -16) (1018, -16) (1018, 16) (1013, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(1312, -16) (1315, -16) (1315, 16) (1312, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(1316, -16) (1366, -16) (1366, 16) (1316, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(1367, -16) (1373, -16) (1373, 16) (1367, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(1685, -16) (1688, -16) (1688, 16) (1685, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(1689, -16) (1746, -16) (1746, 16) (1689, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(1747, -16) (1747, -16) (1747, 16) (1747, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(2082, -16) (2089, -16) (2089, 16) (2082, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(2090, -16) (2143, -16) (2143, 16) (2090, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(2144, -16) (2145, -16) (2145, 16) (2144, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(2311, -16) (2347, -16) (2347, 16) (2311, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(2317, -16) (2378, -16) (2378, 16) (2317, 16)} --cycle;
+                \end{axis}
+            \end{tikzpicture}
+        }
+        \resizebox {\textwidth} {!} {
+            \begin{tikzpicture}
+                \begin{axis}[
+                    xmin=0,
+                    xmax=2426,
+                    ymin=-16,
+                    ymax=16,
+                    title={\Huge $exp_2$},
+                    width=8\textwidth,
+                    height=\axisdefaultheight,
+                    xticklabels={,,},
+                    yticklabels={,,}]
+                    \addplot[blue, mark=none, opacity=0.4] table[x=t, y=x] {../data/fig/experimentee_result2/exp2.dat};
+                    \addplot[red, mark=none, opacity=0.4] table[x=t, y=y] {../data/fig/experimentee_result2/exp2.dat};
+                    \addplot[green, mark=none, opacity=0.4] table[x=t, y=z] {../data/fig/experimentee_result2/exp2.dat};
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(314, -16) (361, -16) (361, 16) (314, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(336, -16) (401, -16) (401, 16) (336, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(568, -16) (574, -16) (574, 16) (568, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, green, mark=none] coordinates
+                        {(575, -16) (635, -16) (635, 16) (575, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, red, mark=none] coordinates
+                        {(636, -16) (640, -16) (640, 16) (636, 16)} --cycle;
+                    \addplot+[fill, opacity=0.5, blue, mark=none] coordinates
+                        {(773, -16) (824, -16) (824, 16) (773, 16)} --cycle;
+                \end{axis}
+            \end{tikzpicture}
+        }
+    \end{center}
+    \caption{}
+    \label{fig:experimentee_result2}
 \end{figure}
