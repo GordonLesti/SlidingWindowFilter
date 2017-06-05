@@ -8,7 +8,7 @@ with length $l$, $C = (c_1,\allowbreak c_2,\allowbreak \dots,\allowbreak c_j,\al
 length $k$ over the domain set $\mathbb{U}$ and a distance measure function $d$ with
 $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. Calculating the DTW distance between the two time series $Q$ and $C$
 can be achieved by calculating a matrix $M$ of size $l \times k$ with the following rule.
-\begin{equation}
+\begin{equation} \label{eq:dtw}
     M_{i, j} = \begin{cases}
         d(q_i,c_j) & \text{if } i = 1 \wedge j = 1\\
         M_{i,j-1} + d(q_i,c_j) & \text{if } i = 1 \wedge j \neq 1\\

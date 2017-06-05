@@ -1,15 +1,13 @@
 \subsection{Sliding Window Technique} \label{sliding_window_technique}
 Given is a continous time series data stream $Q$. The last subsequence of size $w$ is in the interest of the sliding
 window technique. All subsequences or time series data points of $Q$ that are further back as the window size $w$ are in
-this moment irrelevant. The sliding window application tries to classify this last subsequence of $Q$ with the 1NN-DTW
-approach. It is possible that the current subsequence is unclassifiable due to a too large DTW distance between the
-subsequence and the nearest neighbour. This task is managed by a predefined threshold value $\epsilon$ that works as
-upper bound for the DTW distance. The application will trigger an event in the case of a positive classification of the
-subsequence and an other application can react on this event. The sliding window application itself will wait until the
-time series data stream $Q$ grows on. Afterwards the process is repeated again. However the sliding window apllication
-will wait until the time series data stream $Q$ has grown by a predefined step size $s$. This can avoid the execution
-of the process continuously after every new data point in $Q$ if necessary. Figure \ref{fig:swt} illustrates the
-described process.
+this moment irrelevant. The sliding window application tries to classify this last subsequence of $Q$ with the help of a
+time series classificator. This time series classificator makes his decisions based on a given time series training set.
+The application will trigger an event in the case of a positive classification of the subsequence and an other
+application can react on this event. The sliding window application itself will wait until the time series data stream
+$Q$ grows on. Afterwards the process is repeated again. However the sliding window apllication will wait until the time
+series data stream $Q$ has grown by a predefined step size $s$. This can avoid the execution of the process continuously
+after every new data point in $Q$ if necessary. Figure \ref{fig:swt} illustrates the described process.
 
 \tikzstyle{decision} = [diamond, draw, aspect=2, fill=white!20, text width=8em, text badly centered, node distance=2cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=white!20, text width=5em, text centered, minimum height=4em]
@@ -42,3 +40,8 @@ described process.
     variables $w$ for the window size and $s$ for the step size are predefined.}
     \label{fig:swt}
 \end{figure}
+
+The explained sliding window technique uses a generic time series classificator. However, in this bachelor thesis the
+generic time series classificator is replaced by 1NN-DTW. A time series window $Q[t-w,t]$ is considered classified as
+instance of class $K_i$ by 1NN-DTW if the DTW distance between $Q[t-w,t]$ and the nearest neighbour passes a predefined
+class threshold $\epsilon_i$. The following subsection will give some background to DTW.

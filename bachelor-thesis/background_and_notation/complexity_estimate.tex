@@ -3,6 +3,16 @@ The Complexity Estimate (CE) is a complexity measure for time series and the aut
 introduced one possible approach of a CE implementation. Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$
 with length $l$ over the domain set $\mathbb{U}$ and a distance measure function $d$ with
 $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$.
+
 \begin{equation}
     CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{l-1} d(q_i, q_{i + 1})^2}
+\end{equation}
+
+The CE would be a suitable time series measure for a measure based filter as mentioned in \ref{sliding_window_filter}.
+But the measure was created in \cite{batista2011complexity} under the assumption that two time series have the same
+length. Therefore a length normalized version CE fits better as underlying time series measure for a filter. The length
+normalized CE (LNCE) can be calculated as follows.
+
+\begin{equation}
+    LNCE(Q) = \frac{1}{l-1}CE(Q)
 \end{equation}

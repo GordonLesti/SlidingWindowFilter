@@ -3,23 +3,8 @@ The Sliding Window Filter has already been explained in section \ref{sliding_win
 measures have been tested as underlying measures for the Sliding Window Filter.
 
 \begin{itemize}
-    \item \textbf{LNCE:} Stands for length normalized CE. LNCE is CE divided by the length of the time series reduced by
-    one. Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 1$ over the domain set
-    $\mathbb{U}$ and the measure CE. The LNCE of a time series $Q$ can be calculated by the following formula.
-    \begin{equation}
-        LNCE(Q) = \frac{1}{l - 1}CE(Q)
-    \end{equation}
-    \item \textbf{VAR:} The Sample Variance based on \cite{chan1983algorithms}. Given is a time series
-    $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l > 0$ over the domain set $\mathbb{U}$ and a distance measure
-    function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. The Variance of a time series $Q$ can be
-    calculated by the following formula.
-    \begin{equation}
-        VAR(Q) = \frac{1}{l}\sum \limits_{i=1}^{l} d(q_i, \bar{q})^2
-    \end{equation}
-    where
-    \begin{equation}
-        \bar{q} = \frac{1}{l} \sum \limits_{i=1}^{l} q_i
-    \end{equation}
+    \item \textbf{LNCE:} The length normalized CE as mentioned in \ref{complexity_estimate}.
+    \item \textbf{VAR:} The Sample Variance as mentioned in \ref{sample_variance}.
 \end{itemize}
-The passing interval of every filter has been tested with eleven different factors that increases the interval from
-100\% to maximum 300\%.
+The passing filter interval of every filter has been tested with eleven different factors that increases the interval
+from 100\% to maximum 300\%.

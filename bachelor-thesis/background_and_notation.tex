@@ -1,4 +1,8 @@
 \section{Background and Notation} \label{background_and_notation}
+This section explains the basic sliding window technique as fundamental framework used in this thesis. Furthermore some
+background on the well known time series similarity measure DTW will be given. The sliding window filter will be
+expounded at the end of this section.
+
 A time series $Q$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
 $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with $q_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
 function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. A common assumption for time series is that the
@@ -23,11 +27,17 @@ $\mathbb{U}$. Table~\ref{tab:notation} explains the basic notation that is used 
             $t$ & the current time & \qquad\\
             $w$ & time series window size & \qquad \ref{sliding_window_technique}\\
             $s$ & time series step size & \qquad \ref{sliding_window_technique}\\
+            $K_i$ & a class of time series & \qquad\\
+            $\epsilon_i$ & the distance threshold of class $K_i$ & \qquad\\
             DTW & Dynamic Time Warping, a similarity measure for time series & \qquad \ref{dynamic_time_warping}\\
+            $\bar{q}$ & the mean of a time series $Q$ over the set $\mathbb{U}$, $\bar{q} \in \mathbb{U}$ & \qquad
+                \ref{time_series_normalization}\\
+            $\sigma$ & the standard deviation of a time series $Q$ over the set $\mathbb{U}$, $\sigma \in \mathbb{R}$ &
+                \qquad \ref{time_series_normalization}\\
             $\eta$, $\eta '$  & two different time series normalizations & \qquad \ref{time_series_normalization}\\
             CE & Complexity Estimate & \qquad \ref{complexity_estimate}\\
-            LNCE & Length normalized Complexity Estimate & \qquad \ref{sliding_window_filter_measures}\\
-            VAR & Sample Variance & \qquad \ref{sliding_window_filter_measures}\\
+            LNCE & Length normalized Complexity Estimate & \qquad \ref{complexity_estimate}\\
+            VAR & Sample Variance & \qquad \ref{sample_variance}\\
             \hline
         \end{tabularx}
     \end{center}
@@ -39,3 +49,4 @@ $\mathbb{U}$. Table~\ref{tab:notation} explains the basic notation that is used 
 \input{background_and_notation/dynamic_time_warping.tex}
 \input{background_and_notation/sliding_window_filter.tex}
 \input{background_and_notation/complexity_estimate.tex}
+\input{background_and_notation/sample_variance.tex}
