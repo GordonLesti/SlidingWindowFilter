@@ -1,1 +1,18 @@
-\subsection{Discussion} \label{discussion}
+\subsection{Discussion} \label{discussion} \label{instructions_review}
+The presented recording instructions in section \ref{data_recording_instructions} combined with the recording software
+in section \ref{recording_setup} have been created in front of this bachelor thesis and the experiment was performed
+while writing this thesis. Unfortunately do the instructions have some weaknesses that occurred during the experiment or
+while evaluating the produced data.
+
+\paragraph{Training Data Quantity} The instructions are containing only 8 instances of training gestures for 8 different
+classes. That made the determination of a threshold for a class very difficult. It would have been better to produce at
+least two or better three instances of a gesture for every class.
+
+\paragraph{Gesture Illustration Size} It was confusing for some experimentess that the gestures on the slides (j) to (q)
+had an other size as the gestures on slide (b) to (i) of figure \ref{fig:slides}. The recording had to be repeated,
+cause the experimentess performed the gesture scaled to the illustration size on the slide.
+
+Changing the recording instructions during the bachelor thesis due to the above mentioned weaknesses was no option. It
+is assumed that more instances for every class in the training data set would result in a better gesture detection.
+However, a bigger training set would also expand the passing filter interval in a more natural way. This would result
+in smaller blur factors to expand the passing interval of the filter.

@@ -17,7 +17,7 @@ package, xwiimote-bindings\footnote{https://github.com/dvdhrm/xwiimote-bindings}
 requirement was the main reason to implement the recording software in Python. For the GUI was choosen
 TkInter\footnote{https://wiki.python.org/moin/TkInter}.
 
-The first versin of the recording software had the major problem to control the GUI and the
+The first version of the recording software had the major problem to control the GUI and the
 processing of the Bluetooth data in one loop with a linear flow. That caused a stagnation in the Bluetooth data queue
 while loading new images in the GUI. This problem could be solved by two communicating threads and a preloading of the
 images. Unfortunately all until then existing records became unusable for the evaluation.

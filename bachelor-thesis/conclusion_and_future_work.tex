@@ -1,1 +1,17 @@
 \section{Conclusion and Future Work} \label{conclusion_and_future_work}
+The results of the experiment are showing that the sliding window filter can block a huge amount of useless 1NN-DTW
+calls without losing accuracy. It is possible to block more than 13\% of the 1NN-DTW calls without losing accuracy. By
+losing just a not noticeable amount of accuracy it is possible to block more than 39\% of the 1NN-DTW calls. Finding the
+right configuration for a sliding window application and the included filter was the biggest challenge. The dominating
+configuration has worked very well for the domain of accelerometer based gesture detection. More than 72\% of the
+gestures have been found right and only less than 4\% of the gestures have been wrongly detected under the best
+configuration. Impressive numbers under an amendable experiment setup.
+
+To rerun the experiment with an improved setup would probably result in more impressive consequences. Maybe not again
+with accelerometer based gesture detection. The setup was pretty time consuming for a huge amount of records during a
+bachelor thesis. Maybe something web based as mentioned in this
+post\footnote{https://gordonlesti.com/touch-signature-identification-with-javascript/}. This has the advantage that more
+experimentees would participate.
+
+Rerunning the evaluation of this experiment with data by other domains would be interesting to see if the approach of a
+sliding window filter works also in other typical time series areas.
