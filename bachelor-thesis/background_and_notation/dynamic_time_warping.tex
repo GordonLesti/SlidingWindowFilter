@@ -3,10 +3,11 @@ Dynamic Time Warping (DTW) is a widely used and robust distance measure for time
 to match even if they are out of phase in the time axis} \cite{keogh2002exact}. The following explaination to calculate
 the DTW distance is based on \cite{sart2010accelerating}.
 
-Given are two time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length
-$l$, $C = (c_1, c_2, \dots, c_j, \dots, c_k)$ with length $k$ over the domain set $\mathbb{U}$ and a distance measure
-function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. Calculating the DTW distance between the two time
-series $Q$ and $C$ can be achieved by calculating a matrix $M$ of size $l \times k$ with the following rule.
+Given are two time series $Q = (q_1,\allowbreak q_2,\allowbreak \dots,\allowbreak q_i,\allowbreak \dots,\allowbreak q_l)$
+with length $l$, $C = (c_1,\allowbreak c_2,\allowbreak \dots,\allowbreak c_j,\allowbreak \dots,\allowbreak c_k)$ with
+length $k$ over the domain set $\mathbb{U}$ and a distance measure function $d$ with
+$d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. Calculating the DTW distance between the two time series $Q$ and $C$
+can be achieved by calculating a matrix $M$ of size $l \times k$ with the following rule.
 \begin{equation}
     M_{i, j} = \begin{cases}
         d(q_i,c_j) & \text{if } i = 1 \wedge j = 1\\
