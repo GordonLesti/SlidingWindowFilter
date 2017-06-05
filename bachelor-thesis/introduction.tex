@@ -6,17 +6,17 @@ application, the time series window moves on and has to be evaluated again. This
 every time series window can be read only once. Dynamic Time Warping (DTW) in combination with a 1-Nearest-Neighbour
 (1NN) classification for the evaluation is an obvious approach for such a scenario. The downside, this approach is
 computationally too demanding for many realtime applications \cite{xi2006fast}. This disadvantage becomes even more
-tragic under the assumption that perhaps a large amout of incoming time series windows may cross a certain threshold to
-their nearest neighbour to be classified. Shall mean that not every incoming time series window can be matched to a
+tragic under the assumption that perhaps a large amout of incoming time series windows is unclassifiable due to a too
+large distance to the nearest neighbour. Shall mean that not every incoming time series window can be matched to a
 class.
 
-This bachelor thesis explains the approach of a Sliding Window Filter for time series in front of the 1NN in combination
+This bachelor thesis explains the approach of a Sliding Window Filter for time series ahead of the 1NN in combination
 with DTW (1NN-DTW) to reduce the execution of 1NN-DTW on unclassifiable time series windows. The condition for such a
-filter is linear complexity. Furthermore should the combination of the filter in front of the 1NN-DTW perform with a
+filter is linear complexity. Furthermore should the combination of the filter ahead of the 1NN-DTW perform with a
 similar accuracy as 1NN-DTW stand alone.
 
 An experiment that simulates an above described scenario was carried out to expose the surplus value
-of a filter in front of 1NN-DTW under the given conditions.
+of a filter ahead of 1NN-DTW under the given conditions.
 
 The rest of this bachelor thesis is organized as follows. Section \ref{background_and_notation} will explain the sliding
 window technique and basics around time series similarity measures that are used in this bachelor thesis. Furthermore

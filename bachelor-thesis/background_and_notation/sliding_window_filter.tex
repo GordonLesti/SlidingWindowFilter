@@ -50,12 +50,12 @@ Linear time and memory complexity are basic requirements for a measure to ensure
 filter. A filter instance based on a suitable time series measure has access to the same training set of time series as
 the classificator. The measure executed on every time series in the training set results in a maximum and a minimum
 value. Both values together will create an interval. This interval is called filter interval. Every measure value of the
-training set is in the boundaries of the filter interval. The approach of a measure based filter is that many
-classifiable time series windows will have a measure value inside of the interval and many unclassifiable time series
-windows will have a measure value outside of the interval boundaries. Incoming time series windows with a measure
-function value in the interval boundaries can pass to the classification and all other windows will be blocked. A factor
-can expand the filter interval to avoid the mistaken blocking of classifiable time series windows. This factor is called
-blur factor and is expressed as a percentage. The blur factor in a small example. Executed on a training set results the
-measure with the minimum value 10 and the maximum value 20. A blur factor of 160\% will result in a new filter interval
-of 7 and 23. Possible time series measure functions are mentioned in \ref{complexity_estimate} and
-\ref{sample_variance}.
+training set is inside of the boundaries of the filter interval. The approach of a measure based filter is that many
+classifiable time series windows should have a measure value inside of the interval and many unclassifiable time series
+windows should have a measure value outside of the interval boundaries. Incoming time series windows with a measure
+function value inside the interval boundaries can pass to the classification and all other windows will be blocked. A
+factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows. This factor
+is called blur factor and is expressed as a percentage number. Assumed that the left boundary of the filter interval is
+10 and the right boundary is 20. A blur factor of 160\% will result in a new filter interval of 7 and 23. The filter
+interval will be expanded artificially on the left and the right side. Possible time series measure functions are
+mentioned in \ref{complexity_estimate} and \ref{sample_variance}.

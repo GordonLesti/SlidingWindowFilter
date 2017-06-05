@@ -15,3 +15,8 @@ experimentees would participate.
 
 Rerunning the evaluation of this experiment with data by other domains would be interesting to see if the approach of a
 sliding window filter works also in other typical time series areas.
+
+The time series filter as presented in this thesis has been used only to block perhaps unclassifiable time series
+windows to reduce the execution of a cost intensive nearest neighbour classificator. That happend on the basis of the
+filter interval over all items of the training data independent from the different classes. It should be possible to
+create filter intervals for every class in the training set and to prune classes as candidate for the classificator.
