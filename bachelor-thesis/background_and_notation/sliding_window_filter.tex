@@ -7,22 +7,24 @@ A scenario as described in section \ref{introduction} is given.
             {\tiny
                 \begin{tikzpicture}[node distance = 1.5cm, auto]
                     \node [block] (sod) {sensors or devices};
-                    \node [block, right of=sod, node distance=7cm, text width=4cm] (extract) {Extract last subsequence from Q of size $w$, $Q[c-w,c]$};
-                    \node [decision, draw=blue, below of=extract] (filter) {$FILTER(Q[c-w,c])$};
-                    \node [block, below of=filter, node distance=2cm, text width=4cm] (nnc) {Find nearest neighbour $C$ in the training data to query $Q[c-w,c]$};
-                    \node [decision, below of=nnc] (decide) {$DTW(C, Q[c-w,c]) \leq t$};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, draw=blue, right of=extract, node distance=4cm, text width=2cm] (filter) {Time series filter};
+                    \node [decision, draw=blue, below of=filter] (filterdecide) {$Q[t-w,t]$ can pass?};
+                    \node [block, below of=filterdecide, node distance=2cm, text width=2cm] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc] (decide) {$Q[t-w,t]$ classifiable?};
                     \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
-                    \node [block, below of=decide, node distance=2cm, text width=4cm] (action) {Trigger event that $C$ similar query has been found and sleep for $w$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
 
                     \path [line,dashed] (sod) -- node (ctss) {Continous time series stream $Q$} (extract);
-                    \path [line] (extract) -- (filter);
+                    \path [line] (extract) -- node {$Q[t-w,t]$} (filter);
+                    \path [line] (filter) -- (filterdecide);
+                    \path [line] (filterdecide) -- node {yes} (nnc);
+                    \path [line] (filterdecide) -| node [near start] {no} (sleeps);
                     \path [line] (nnc) -- (decide);
                     \path [line] (decide) -- node {no} (sleeps);
                     \path [line,dashed] (sleeps) -| (ctss);
                     \path [line] (decide) -- node {yes} (action);
                     \path [line,dashed] (action) -| (ctss);
-                    \path [line] (filter) -| node [near start] {is blocked} (sleeps);
-                    \path [line] (filter) -- node {can pass} (nnc);
                 \end{tikzpicture}
             }
         }
