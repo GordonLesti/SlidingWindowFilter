@@ -5,17 +5,27 @@ acceleration data, the \textit{B} button is pressed down and the \textit{B} butt
 sending the acceleration data with an average gap of five milliseconds. Every event has been marked with the time
 in milliseconds that have passed since the starting of the experiment. The representing line in a recorded file for a
 acceleration data event is starting with the time in milliseconds followed by the acceleration data of all three axis.
-The acceleration data of a axis comes as integer value with the unit decimetre per second squared. A \textit{B} button
-down event is represented by a line also starting with the time in milliseconds followed by the keyword \textit{START}
-and a counter for the gesture. The \textit{B} button up event is the same with the keyword \textit{END} instead of
-\textit{START}. An example excerpt of a recorded file can look like this.\\\\
-\verb!3045 20 19 74!\\
-\verb!3050 16 12 70!\\
-\verb!3055 START 1!\\
-\verb!3055 14 13 88!\\
-\verb!3060 0 11 76!\\
+The acceleration data of a axis is transfered as integer value with the unit decimetre per second squared. A \textit{B}
+button down event is represented by a line also starting with the time in milliseconds followed by the keyword
+\textit{START} and a counter for the gesture. The \textit{B} button up event is the same with the keyword \textit{END}
+instead of \textit{START}. An example excerpt of a recorded file can look like the following.
 
-Line 1, 2, 4 and 5 are representations of acceleration data and line 3 marks the beginning of the first gesture
-triggered by a \textit{B} button down event. The recorded files will be evaluated in section \ref{evaluation}. All
+\medskip
+\noindent
+{\it Example excerpt of a recorded file}
+\begin{verbatim}
+3045 20 19 74
+3050 16 12 70
+3055 START 1
+3055 14 13 88
+3060 0 11 76
+\end{verbatim}
+\noindent
+{\small Line 1, 2, 4 and 5 are representations of acceleration data and line 3 marks the beginning of the first gesture
+triggered by a \textit{B} button down event.}
+
+\medskip
+
+The recorded files are evaluated in section \ref{evaluation}. All
 recorded files used in the evaluation are available on
 GitHub\footnote{https://github.com/GordonLesti/SlidingWindowFilter-evaluator/tree/master/src/main/resources}.

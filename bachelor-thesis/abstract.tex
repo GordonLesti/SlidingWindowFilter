@@ -1,13 +1,13 @@
 \renewcommand{\abstractname}{\normalsize Abstract.}
 \begin{abstract} \addcontentsline{toc}{section}{Abstract}
     \normalsize
-    A lot of devices with various sensors in the modern humans everyday life are producing constantly a diverse kind of
-    data. Obvious examples are smartphones, wearable devices like smartwatches and fitness tracker braclets. A
-    considerable part of the produced data comes continuously and can be interpreted as time series streams. For example
-    acceleration or vitality data. A real time evaluation of the time series stream presupposes possibly a constantly
+    Several devices with various sensors in the modern humans everyday life are producing a diverse kind of data
+    constantly. Common examples are smartphones, wearable devices like smartwatches and fitness tracker braclets. A
+    considerable part of the data is produced continuously and can be interpreted as time series streams. Examples are
+    acceleration or vitality data. A real time evaluation of the time series stream requires possibly a constantly
     running 1-Nearest-Neighbour (1NN) classification on the most recent time series window with a distance measure like
-    Dynamic Time Warping (DTW). The limited resources of wearable devices or microcontrollers forces to a frugal usage
-    of memory and running time.
+    Dynamic Time Warping (DTW). The limited resources of wearable devices or microcontrollers forces to use memory and
+    running time economically.
 
     This bachelor thesis explains the approach of a filter with linear complexity for time series ahead of a 1NN-DTW.
     The added value of a filter with cost efficient running time is to reduce the execution of a cost intensive 1NN-DTW

@@ -1,9 +1,9 @@
 \subsection{Sliding Window Filter} \label{sliding_window_filter}
 This section explains a sliding window filter and the way to embed the filter into a sliding window application as
 described in section \ref{sliding_window_technique}. A time series filter is in general a function that takes a time
-series as argument and returns true or false. One possible underlying inner functionality approach of the filter will be
-presented later in this section. The previous version of a sliding window application was to extract the current time
-series window and pass it directly to a time series classificator. This approach will be extended by embedding a time
+series as argument and returns true or false. One possible underlying inner functionality approach of the filter are
+presented later in this section. The previous version of a sliding window application is extracting the current time
+series window and passes it directly to a time series classificator. This approach is extended by embedding a time
 series filter directly after the extraction and ahead of the time series classificator. The time series filter has the
 task to prune the amount of time series windows that reach the classificator. Time series windows which would be
 assessed as unclassifiable by the classificator should be blocked by the filter as much as possible. Figure
@@ -49,13 +49,13 @@ such a time series measure function should be one time series and the result sho
 Linear time and memory complexity are basic requirements for a measure to ensure an acceptable performance of the
 filter. A filter instance based on a suitable time series measure has access to the same training set of time series as
 the classificator. The measure executed on every time series in the training set results in a maximum and a minimum
-value. Both values together will create an interval. This interval is called filter interval. Every measure value of the
+value. Both values together are creating an interval. This interval is called filter interval. Every measure value of the
 training set is inside of the boundaries of the filter interval. The approach of a measure based filter is that many
 classifiable time series windows should have a measure value inside of the interval and many unclassifiable time series
 windows should have a measure value outside of the interval boundaries. Incoming time series windows with a measure
-function value inside the interval boundaries can pass to the classification and all other windows will be blocked. A
-factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows. This factor
-is called blur factor and is expressed as a percentage number. Assumed that the left boundary of the filter interval is
-10 and the right boundary is 20. A blur factor of 160\% will result in a new filter interval of 7 and 23. The filter
-interval will be expanded artificially on the left and the right side. Possible time series measure functions are
-mentioned in \ref{complexity_estimate} and \ref{sample_variance}.
+function value inside the interval boundaries can pass to the classification. All other windows are blocked by the
+filter. A factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows.
+This factor is called blur factor and is expressed as a percentage number. Assumed that the left boundary of the filter
+interval is 10 and the right boundary is 20. A blur factor of 160\% will result in a new filter interval of 7 and 23.
+The filter interval will be expanded artificially on the left and the right side. Possible time series measure functions
+are mentioned in \ref{complexity_estimate} and \ref{sample_variance}.

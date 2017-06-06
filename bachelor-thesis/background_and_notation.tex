@@ -1,12 +1,12 @@
 \section{Background and Notation} \label{background_and_notation}
 This section explains the basic sliding window technique as fundamental framework used in this thesis. Furthermore some
-background on the well known time series similarity measure DTW will be given. The sliding window filter will be
-expounded at the end of this section.
+background on the well known time series similarity measure DTW is given. The sliding window filter is expounded at the
+end of this section.
 
 A time series $Q$ with the length $l$ over the domain set $\mathbb{U}$ is a sequence of data points
-$Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with $q_i \in \mathbb{U}$. On the set $\mathbb{U}$ exists a distance measure
-function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. Furthermore basic arithmetic operations like a
-summing function $\mathbb{U} \times \mathbb{U} \to \mathbb{R}$ and a scalar multiplication
+$Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with $q_i \in \mathbb{U}$. A distance measure function $d$ with
+$d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$ exists on the set $\mathbb{U}$. Furthermore basic arithmetic operations
+like a summing function $\mathbb{U} \times \mathbb{U} \to \mathbb{R}$ and a scalar multiplication
 $\mathbb{R} \times \mathbb{U} \to \mathbb{U}$ should be defined on $\mathbb{U}$. A common assumption for time series is
 that the containing data points are elements of the integer numbers $\mathbb{Z}$ or the real numbers $\mathbb{R}$. The
 distance measure function on these common domains is just the absolute value of the difference of two elements. A

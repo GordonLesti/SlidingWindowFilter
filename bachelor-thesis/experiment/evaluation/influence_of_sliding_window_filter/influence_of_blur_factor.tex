@@ -1,12 +1,12 @@
 \paragraph{Influence of Blur Factor} \label{influence_of_blur_factor}
-The blur factor for a Sliding Window Filter is expanding the interval that is accepting time series windows. A too small
-interval can lead to many false positive classifications and a too large interval may leads to too much 1NN-DTW calls.
-The underlying time series measure for a Sliding Window Filter is affecting the best performing blur factor for the
-filter. Eleven different blur factors have been tested for all three underlying time series measures. The influence of
-the blur factor for the filter will be tested for all three underlying time series measures and compared to the
+The blur factor for a sliding window filter is expanding the interval that is accepting time series windows. A too small
+interval can lead to many false positive classifications and a too large interval may lead to too much 1NN-DTW calls.
+The underlying time series measure for a sliding window filter is affecting the best performing blur factor for the
+filter. Eleven different blur factors were tested for all three underlying time series measures. The influence of
+the blur factor for the filter is tested for all three underlying time series measures and compared to the
 dominating configuration without filter. The right plot of figure \ref{fig:blur_factor_result} illustrates the influence
 of the blur factor on the $F_{1}score_{\mu}$. Only the LNCE estimate is reaching with the given blur factors the same
-$F_{1}score_{\mu}$ as the dominating configuration without filter. However all two filter types come also with small
+$F_{1}score_{\mu}$ as the dominating configuration without filter. However, the two filter types come also with small
 blur factors very close to the top $F_{1}score_{\mu}$ value.
 
 \begin{figure}
@@ -64,9 +64,9 @@ blur factors very close to the top $F_{1}score_{\mu}$ value.
     \label{fig:blur_factor_result}
 \end{figure}
 
-The left plot of figure \ref{fig:blur_factor_result} and also the table \ref{tab:result} shows that the presented
-filters can reach the same $F_{1}score_{\mu}$ value as the dominating simulation without filter. The question remains,
-how often are the presented filters blocking the 1NN-DTW calls. The right plot of figure \ref{fig:blur_factor_result}
+The left plot of figure \ref{fig:blur_factor_result} and also table \ref{tab:result} shows that the presented
+filters can reach the same $F_{1}score_{\mu}$ value as the dominating simulation without filter. The question remains on
+how often are the presented filters block the 1NN-DTW calls. The right plot of figure \ref{fig:blur_factor_result}
 illustrates the influence of the blur factor on the amount of 1NN-DTW calls. All two filter types remain clearly below
 the amount of 1NN-DTW calls of the dominating configuration without filter. Figure \ref{fig:blur_factor_tradeoff}
 combines both plots of figure \ref{fig:blur_factor_result} to trade-off curves for both filters.

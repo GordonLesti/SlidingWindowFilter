@@ -1,12 +1,12 @@
 \paragraph{Performance Measure} \label{performance_measure}
-The presented parameters for a Sliding Window Simulation are resulting in a huge amount of different configured
+The presented parameters for a sliding window simulation are resulting in a huge amount of different configured
 simulations. Every configured simulation tries to detect gestures in the test data stream for every experimentee. It can
 be argued how to compare the performance of those simulations. Have misrecognized gestures in the assessment more weight
-than correctly recognized or the other way around? It is no easy decision to weight the mistakes of a simulation against
+than correctly recognized or the other way around? It is no easy decision to weigh the mistakes of a simulation against
 the success of a simulation.
 
-All containing data points of a supposed detected gesture will be labeled by a simulation. Those labels can be compared
-to the original labels that have been made by the experimentee. This will result in true positive ($tp$), true negative
+All containing data points of a supposed detected gesture are labeled by a simulation. Those labels can be compared
+to the original labels that were made by the experimentee. This results in true positive ($tp$), true negative
 ($tn$), false positve ($fp$) and false negative ($fn$) labels for every gesture $GesA, GesB, \dots, GesH$. Seen from
 this point of view, a simulation is a multi-class classificator for the gesture classes
 $K_{GesA}, K_{GesB}, \dots, K_{GesH}$. Common performance measures for multi-class classificator are $Precision_{\mu}$,
@@ -22,4 +22,4 @@ $Recall_{\mu}$ and $F_{\beta}score_{\mu}$ as mentioned in \cite{sokolova2009syst
     F_{\beta}score_{\mu} = \frac{(\beta^2 + 1)Precision_{\mu} Recall_{\mu}}{\beta^2 Precision_{\mu} + Recall_{\mu}}
 \end{equation}
 
-The $F_{1}score_{\mu}$ will be used in the following subsection to rank the different simulations.
+The $F_{1}score_{\mu}$ is used in the following subsection to rank the different simulations.

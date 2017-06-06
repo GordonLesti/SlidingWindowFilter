@@ -1,10 +1,11 @@
 \subsection{Evaluation} \label{evaluation}
-All the different configurations together are resulting in 46920 different simulations that have been executed. The
-$Precision_{\mu}$ and $Recall_{\mu}$ of every simultaion has been computed and the result has been written to a
+All the different configurations together result in 46920 different simulations that were executed. The
+$Precision_{\mu}$ and $Recall_{\mu}$ of every simulation were computed and the result was written to a
 CSV\footnote{https://tools.ietf.org/html/rfc4180} file. The file can be found at
 GitHub\footnote{https://github.com/GordonLesti/SlidingWindowFilter-evaluator/releases/download/v1.0.1/swf-result.csv.zip}.
 Row one to ten of column one to nine of that file ordered by the $F_{1}score_{\mu}$ are presented by table
-\ref{tab:result}.
+\ref{tab:result}. A visible explaination of $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$ is given in section
+\ref{differentiation_according_to_gestures}.
 
 \begin{table}[H]
     \begin{center}
@@ -32,18 +33,18 @@ Row one to ten of column one to nine of that file ordered by the $F_{1}score_{\m
 	\label{tab:result}
 \end{table}
 
-The produced data can be explored with different approaches. As table \ref{tab:result} shows exists a dominating subset
-of configurations under the order of $F_{1}score_{\mu}$. Part of this dominating configuration are
+The produced data can be explored with different approaches. It exists a dominating subset of configurations under the
+order of $F_{1}score_{\mu}$, as table \ref{tab:result} shows. Part of this dominating configuration are as follows.
 \begin{itemize}
     \item \textbf{$\eta$DTW:} DTW with normalization $\eta$ and a Sakoe-Chiba band of 36\% as described in
     \ref{sakoe-chiba_band}
     \item \textbf{Mid:} window size determination as described in \ref{window_size_determination}
     \item \textbf{HAveD:} threshold determination as described in \ref{threshold_determination}
 \end{itemize}
-An evaluation on the average performance of a configuration appears not effective, since some options are depending on
-each other. Hereinafter will be examined how the results are changing if a simulation differs from the dominating
-configuration. The influence of the filter will be examined in the end. However, it should be mentioned that the
-following results could have an other ranking under an other performance measure as figure \ref{fig:result} shows.
+An evaluation on the average performance of a configuration appears not to be effective, since some options are depending on
+each other. Hereinafter is examined how the results are changing if a simulation differs from the dominating
+configuration. The influence of the filter is examined in the end. However, it should be mentioned that the
+following results could have an other ranking under another performance measure as figure \ref{fig:result} shows.
 
 \begin{figure}
     \begin{center}

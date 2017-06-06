@@ -1,7 +1,7 @@
 \subsubsection{Influence of Time Series Distance Measure} \label{influence_of_time_series_distance_measure}
-2346 different simulations have been tested that contain \textit{Mid} as window size determination and
-\textit{HAveD} as threshold determination in their configuration. One third of those simulations was
-using plain DTW, one third used $\eta$DTW and one third used $\eta '$DTW. Figure \ref{fig:distance_measure_result}
+2346 different simulations were tested that contain \textit{Mid} as window size determination and
+\textit{HAveD} as threshold determination in their configuration. One third of those simulations used plain DTW, one
+third used $\eta$DTW and one third used $\eta '$DTW. Figure \ref{fig:distance_measure_result}
 illustrates the distribution of all three subsets. It is clearly visible that $\eta$DTW reaches better $Recall_{\mu}$
 values as DTW in the experiment, however also slightly worse $Precision_{\mu}$ values. Furthermore is $\eta$DTW
 dominating $\eta '$DTW with the $Precision_{\mu}$ and $Recall_{\mu}$ values. The blob of poor performing simulations in
@@ -71,7 +71,7 @@ the lower left corner of figure \ref{fig:distance_measure_result} are too small 
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations with \textit{Mid} as window determination and
     \textit{HAveD} as threshold determination, separated by the used time series distance measures DTW, $\eta$DTW
-    or $\eta '$DTW. The left plot is just a zoomed version of the right plot. Gray lines are illustrating the
+    or $\eta '$DTW. The left plot is a zoomed version of the right plot. Gray lines are illustrating the
     distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:distance_measure_result}
 \end{figure}

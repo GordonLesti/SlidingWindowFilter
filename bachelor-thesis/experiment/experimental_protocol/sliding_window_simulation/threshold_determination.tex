@@ -2,9 +2,9 @@
 It is assumed that a large number of incoming time series windows should be unclassifiable. This can only be determined
 by specifying a threshold as upper bound for the distance between a time series window and its nearest neighbour. An
 intuitive approach for the threshold determinations would include knowledge about the distances between the instances of
-a class. This approach can not be tested in this experiment, cause the recording instructions do have the great weakness
+a class. This approach can not be tested in this experiment, because the recording instructions do have the great weakness
 to contain only one instance for every class in the training data as mentioned in section \ref{instructions_review}. The
-following threshold determinations have been tested.
+following threshold determinations were tested.
 
 \begin{itemize}
     \item \textbf{HMinD:} Stands for half minimum distance, this approach determinates the threshold for a class by the
@@ -15,7 +15,7 @@ following threshold determinations have been tested.
         half average of the minimum and maximum distance of the class to all other classes in the training data.
     \item \textbf{Peak:} Stands for peaking, this approach fakes already generated knowledge about the distance
         threshold by setting the threshold to the by a small factor increased distance between the only existing
-        training class instance and the test instance that has to be found. Two more intuitively chosen factors will be
+        training class instance and the test instance that has to be found. Two more intuitively chosen factors were
         tested, $\frac{11}{10}$ and $\frac{12}{10}$. The peaking approach exists only to judge the performance of other
         threshold determinations.
 \end{itemize}

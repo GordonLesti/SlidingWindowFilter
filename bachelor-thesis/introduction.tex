@@ -1,25 +1,24 @@
 \section{Introduction} \label{introduction}
-The scenario is an application that gets constantly data in form of a time series stream from one or more sensors. The
-application itself has in general no interest in a long term evaluation of the data. Only the most recent time series
-window has to be classified in the evaluation. The result of the evaluation will be stored or processed by an other
-application, the time series window moves on and has to be evaluated again. This process is repeating continuously and
-every time series window can be read only once. Dynamic Time Warping (DTW) in combination with a 1-Nearest-Neighbour
-(1NN) classification for the evaluation is an obvious approach for such a scenario. The downside, this approach is
-computationally too demanding for many realtime applications \cite{xi2006fast}. This disadvantage becomes even more
-tragic under the assumption that perhaps a large amout of incoming time series windows is unclassifiable due to a too
-large distance to the nearest neighbour. Shall mean that not every incoming time series window can be matched to a
-class.
+The scenario used for this thesis is an application which constantly receives data in form of a time series stream from
+one or more sensors. The application itself does not have a general interest in a long term evaluation of the data. Only
+the most recent time series window has to be classified in the evaluation. The result of the evaluation can be stored or
+processed by an other application, the time series window moves on and has to be evaluated again. This process is
+continuously repeated with every times series window being readable only once. Dynamic Time Warping (DTW) in combination
+with a 1-Nearest-Neighbour (1NN) classification for the evaluation is an obvious approach for such a scenario. The
+disadvantage is that this approach is computationally too demanding for many realtime applications \cite{xi2006fast}.
+This disadvantage becomes even more tragic under the assumption that perhaps a large amout of incoming time series
+windows is unclassifiable due to a too large distance to the nearest neighbour.
 
-This bachelor thesis explains the approach of a Sliding Window Filter for time series ahead of the 1NN in combination
+This bachelor thesis explains the approach of a sliding window filter for time series ahead of the 1NN in combination
 with DTW (1NN-DTW) to reduce the execution of 1NN-DTW on unclassifiable time series windows. The condition for such a
-filter is linear complexity. Furthermore should the combination of the filter ahead of the 1NN-DTW perform with a
-similar accuracy as 1NN-DTW stand alone.
+filter is linear complexity. Furthermore the combination of the filter ahead of the 1NN-DTW should perform with a
+similar accuracy as 1NN-DTW on its own.
 
-An experiment that simulates an above described scenario was carried out to expose the surplus value
-of a filter ahead of 1NN-DTW under the given conditions.
+An experiment that simulates an above described scenario was carried out to expose the additional benefit of a filter
+ahead of 1NN-DTW under the given conditions.%TODO double of
 
-The rest of this bachelor thesis is organized as follows. Section \ref{background_and_notation} will explain the sliding
-window technique and basics around time series similarity measures that are used in this bachelor thesis. Furthermore
-the sliding window filter will be described. The description of the experiment and the evaluation of the results are
-contained in section \ref{experiment}. Conclusions will be offered and future work suggested in section
-\ref{conclusion_and_future_work}.
+The bachelor thesis is organized as follows. Section \ref{background_and_notation} will explain the sliding window
+technique and basics around time series similarity measures that are used in this bachelor thesis. Furthermore
+the sliding window filter is described at the end of the same section. The description of the experiment and the
+evaluation of the results are contained in section \ref{experiment}. Conclusions are offered and future work
+is suggested in section \ref{conclusion_and_future_work}.

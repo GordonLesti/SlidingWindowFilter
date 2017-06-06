@@ -20,11 +20,11 @@ The DTW distance between the two time series $Q$ and $C$ is the entry $M_{l,k}$ 
 \begin{equation}
     DTW(Q, C) = M_{l,k}
 \end{equation}
-The detection of the warping path as result of the backtracking is irrelevant for the aim of this bachelor thesis.
+The detection of the warping path as a result of the backtracking is irrelevant for the aim of this bachelor thesis.
 Figure \ref{fig:dynamictimewarping} illustrates DTW for two time series $Q$ and $C$ that contain recorded data from one
-acceleration sensor. DTW shown as above has time and space complexity of $\mathcal{O}(lk)$. When ignoring the
-warping path as result the algorithm can easely reduce the space complexity to $\mathcal{O}(min(l, k))$. This can be
-achieved by keeping only the last important enties in space that are necessary to calculate the final entriy $M_{l,k}$
+acceleration sensor. DTW, shown as above, has time and space complexity of $\mathcal{O}(lk)$. When ignoring the
+warping path as a result the algorithm can easely reduce the space complexity to $\mathcal{O}(min(l, k))$. This can be
+achieved by keeping only the last important entries in space that are necessary to calculate the final entriy $M_{l,k}$
 of the matrix.
 
 \begin{figure}
@@ -106,9 +106,9 @@ of the matrix.
         }
     \end{center}
     \caption{Two time series $Q$ and $C$ containing recorded and compressed data from one acceleration sensor. On the
-    left plot both time series graphs, the gray lines are representing the warping path of plain DTW. The right plot
+    left plot are both time series graphs, the gray lines are representing the warping path of plain DTW. The right plot
     shows the associated matrix containing the distances between the time series data points. Starting in the lower left
-    corner and ending in the upper right corner, the warping path is illustrated as white graph.}
+    corner and ending in the upper right corner, the warping path is illustrated as a white graph.}
     \label{fig:dynamictimewarping}
 \end{figure}
 

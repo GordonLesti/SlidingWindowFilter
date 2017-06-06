@@ -1,16 +1,16 @@
 \subsubsection{Sliding Window Simulation} \label{sliding_window_simulation}
-A Sliding Window Simulation walks with a given window size and step size over the simulated acceleration time series
+A sliding window simulation walks with a given window size and step size over the simulated acceleration time series
 stream of an experimentee and tries to identify as many gestures as possible. The simulated acceleration time series
 stream of an experimentee starts after the slide (j) of figure \ref{fig:slides} and ends in slide (r) of figure
-\ref{fig:slides}. The Sliding Window Simulation is not able to read the labels of an gesture in the simulated
-acceleration time series. Furthermore a Sliding Window Simulation gets the gestures of an experimentee from slide (b)
+\ref{fig:slides}. The sliding window simulation is not able to read the labels of an gesture in the simulated
+acceleration time series. Furthermore a sliding window simulation gets the gestures of an experimentee from slide (b)
 to (i) in figure \ref{fig:slides} as training data.
 
-Such a simulation is not free of parameters. Two parameters have already been mentioned, the window size and the steps
-size. In addition as parameters are the choice of the distance measure for time series, the threshold that marks
-unclassifiable windows and the measure used for the Sliding Window Filter with a blur factor. All those parameters and
-their options will be explained and mentioned in the following section. Furthermore a performance measure to compare the
-different configured simulations will be explained.
+Such a simulation is not free of parameters. Two parameters are already mentioned, the window size and the steps
+size. In addition to parameters being the choice of the distance measure for time series, the threshold that marks
+unclassifiable windows and the measure used for the sliding window filter with a blur factor. All those parameters and
+their options are explained and mentioned in the following section. Furthermore a performance measure to compare the
+different configured simulations is explained.
 
 \input{experiment/experimental_protocol/sliding_window_simulation/window_size_determination.tex}
 \input{experiment/experimental_protocol/sliding_window_simulation/step_size_determination.tex}

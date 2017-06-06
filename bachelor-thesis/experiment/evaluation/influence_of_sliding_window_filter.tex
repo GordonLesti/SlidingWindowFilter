@@ -1,9 +1,9 @@
 \subsubsection{Influence of Sliding Window Filter} \label{influence_of_sliding_window_filter}
-23 different simulations have been tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the input
+23 different simulations were tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the input
 time series length, \textit{HAveD} as threshold determination and \textit{Mid} as window size determination. One of
 those simulations has no filter, the other 22 simulations have a filter with the underlying time series measure LNCE or
 VAR in combination with eleven different blur factors. Figure \ref{fig:sliding_window_filter_result} illustrates the
-distribution of the three subsets. 20 simulations are reaching a $F_{1}score_{\mu}$ value bigger or equal to 0.7. Every
+distribution of the three subsets. 20 simulations are reaching a $F_{1}score_{\mu}$ value greater or equal to 0.7. Every
 underlying time series measure for the filter is represented in those 20 simulations. One simulation with a filter
 reaches the same $F_{1}score_{\mu}$ as the best performing simulation without filter.
 
@@ -67,7 +67,7 @@ reaches the same $F_{1}score_{\mu}$ as the best performing simulation without fi
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
     36\% depending on the input time series length, \textit{HAveD} as threshold determination and \textit{Mid} as window
-    size determination, separated by the used Sliding Window Filter. The left plot is just a zoomed version of the right
+    size determination, separated by the used sliding window filter. The left plot is a zoomed version of the right
     plot. Gray lines are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:sliding_window_filter_result}
 \end{figure}

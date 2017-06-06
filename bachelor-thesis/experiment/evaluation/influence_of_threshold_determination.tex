@@ -1,10 +1,10 @@
 \subsubsection{Influence of Threshold Determination} \label{influence_of_threshold_determination}
-115 different simulations have been tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the
-input time series length and \textit{Mid} as window size determination. Three different offical approaches have been
+115 different simulations were tested that use $\eta$DTW with a Sakoe-Chiba band of size 36\% depending on the
+input time series length and \textit{Mid} as window size determination. Three different offical approaches were
 tested for the threshold determination, \textit{HAveD}, \textit{HMidD} and \textit{HMinD}. Furthermore two unoffical
 approaches to double check the performance of the offical approaches, \textit{Peak} with a factor of 1.1 and 1.2. Every
 approach has respectively 23 different simulations. Figure \ref{fig:threshold_result} illustrates the distribution of
-the five subsets. The \textit{HAveD} and the \textit{HMidD} approaches are reaching the best $F_{1}score_{\mu}$ values,
+the five subsets. The \textit{HAveD} and the \textit{HMidD} approaches reach the best $F_{1}score_{\mu}$ values,
 \textit{HAveD} a bit better as \textit{HMidD}. Surprising is the poor performance of both \textit{Peak} approaches,
 their low $Precision_{\mu}$ values are the reason for this. Remarkable are the top $Precision_{\mu}$ values of the
 \textit{HMinD} threshold determination.
@@ -80,7 +80,7 @@ their low $Precision_{\mu}$ values are the reason for this. Remarkable are the t
     \end{center}
     \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
     36\% depending on the input time series length and \textit{Mid} as window size determination, separated by the used
-    threshold determination. The left plot is just a zoomed version of the right plot. Gray lines are illustrating the
+    threshold determination. The left plot is a zoomed version of the right plot. Gray lines are illustrating the
     distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
     \label{fig:threshold_result}
 \end{figure}
