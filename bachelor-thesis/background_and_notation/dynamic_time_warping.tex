@@ -1,6 +1,6 @@
 \subsection{Dynamic Time Warping} \label{dynamic_time_warping}
 Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes
-to match even if they are out of phase in the time axis} \cite{keogh2002exact}. The following explaination to calculate
+to match even if they are out of phase in the time axis} \cite{keogh2002exact}. The following explanation to calculate
 the DTW distance is based on \cite{sart2010accelerating}.
 
 Given are two time series $Q = (q_1,\allowbreak q_2,\allowbreak \dots,\allowbreak q_i,\allowbreak \dots,\allowbreak q_l)$
@@ -23,8 +23,8 @@ The DTW distance between the two time series $Q$ and $C$ is the entry $M_{l,k}$ 
 The detection of the warping path as a result of the backtracking is irrelevant for the aim of this bachelor thesis.
 Figure \ref{fig:dynamictimewarping} illustrates DTW for two time series $Q$ and $C$ that contain recorded data from one
 acceleration sensor. DTW, shown as above, has time and space complexity of $\mathcal{O}(lk)$. When ignoring the
-warping path as a result the algorithm can easely reduce the space complexity to $\mathcal{O}(min(l, k))$. This can be
-achieved by keeping only the last important entries in space that are necessary to calculate the final entriy $M_{l,k}$
+warping path as a result the algorithm can easily reduce the space complexity to $\mathcal{O}(min(l, k))$. This can be
+achieved by keeping only the last important entries in space that are necessary to calculate the final entry $M_{l,k}$
 of the matrix.
 
 \begin{figure}

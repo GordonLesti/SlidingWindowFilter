@@ -23,7 +23,7 @@ assessed as unclassifiable by the classificator should be blocked by the filter 
                     \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
                     \node [block, below of=decide, node distance=2cm, text width=2cm] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
 
-                    \path [line,dashed] (sod) -- node (ctss) {Continous time series stream $Q$} (extract);
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
                     \path [line] (extract) -- node {$Q[t-w,t]$} (filter);
                     \path [line] (filter) -- (filterdecide);
                     \path [line] (filterdecide) -- node {yes} (nnc);
