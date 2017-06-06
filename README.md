@@ -15,6 +15,11 @@ Just run the following command and file `proposal/proposal.pdf` will be created.
 (cd proposal && pdflatex proposal.tex)
 ```
 
+Just run the following command and file `bachelor-thesis/bachelor-thesis.pdf` will be created.
+```bash
+(cd bachelor-thesis && pdflatex bachelor-thesis.tex)
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
