@@ -78,21 +78,21 @@ distribution of the different records from different experimentees.
 
 The performance measures to rank different sliding window simulations $Precision_{\mu}$, $Recall_{\mu}$ and
 $F_{1}score_{\mu}$ are explained in section \ref{performance_measure}. However, those measures do not show how often a
-gesture has been detected by a simulation. Therefore figure \ref{fig:experimentee_result2} illustrates all detected
-gestures for all 14 records under the best performing simulation. The green rectangles in the figure are true positives,
+gesture was detected by a simulation. Therefore figure \ref{fig:experimentee_result2} illustrates all detected
+gestures for all 14 test stream records under the best performing simulation. The green rectangles in the figure are true positives,
 the red rectangles are false positives and the blue rectangles are false negatives. True negatives are invisble. The
 blue and red rectangles can overlap. User marked gestures are visible by combining the green with the blue rectangles.
 The pretended gestures detected by the simulation are visible by combining the green with the red rectangles. All green
 rectangles of an experimentee summed up and divided by the sum of the green and red rectangles are resulting in the
 $Precision_{\mu}$ value. The green rectangles summed up and divided by the sum of the green and blue rectangles are
-resulting in the $Recall_{\mu}$ value. Those calculations have been made over all records for all 46920 different
+resulting in the $Recall_{\mu}$ value. Those calculations are made over all test stream records for all 46920 different
 simulations in section \ref{evaluation}.
 
 A gesture is considered as detected if a green rectangle in figure \ref{fig:experimentee_result2} is surround by small
-red or blue rectangles. Overall 81 out of 112 gestures have been detected right. A gesture is considered as wrongly
-detected if a blue and a red rectangle are overlapping. Overall 4 out of 112 gestures have been detected wrongly. A
-stand alone blue rectangle is considered as missed gesture. Overall 27 out of 112 gestures have been missed by the
-simulation. A stand alone red rectangle does not exist surprisingly in this simulation. Experimentee $exp_4$ and
+red or blue rectangles. 81 out of 112 gestures were detected right. A gesture is considered as wrongly
+detected if a blue and a red rectangle are overlapping. 4 out of 112 gestures were detected wrongly. A
+stand alone blue rectangle is considered as missed gesture. 27 out of 112 gestures were missed by the
+simulation. A stand alone red rectangle does not exist in this simulation surprisingly. Experimentee $exp_4$ and
 $exp_{13}$ are reaching a $F_{1}score_{\mu}$ greater than 0.9 and in both cases all eight gestures have been detected
 right.
 
@@ -607,7 +607,7 @@ right.
             \end{axis}
         \end{tikzpicture}
     }
-    \caption{An illustration of all 14 records from $exp_1$ at the top to $exp_14$ at the bottom under the best
+    \caption{An illustration of all 14 test streams from $exp_1$ at the top to $exp_14$ at the bottom under the best
     performing gesture detection simulation. The green rectangles are true positive marks of a gesture class. The red
     rectangles are marking false positives of a gesture class the blue rectangles are marking false negatives. True
     negatives are invisible.}

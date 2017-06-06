@@ -1,7 +1,7 @@
 \subsection{Sliding Window Filter} \label{sliding_window_filter}
 This section explains a sliding window filter and the way to embed the filter into a sliding window application as
 described in section \ref{sliding_window_technique}. A time series filter is in general a function that takes a time
-series as argument and returns true or false. One possible underlying inner functionality approach of the filter are
+series as argument and returns true or false. One possible underlying inner functionality approach of the filter is
 presented later in this section. The previous version of a sliding window application is extracting the current time
 series window and passes it directly to a time series classificator. This approach is extended by embedding a time
 series filter directly after the extraction and ahead of the time series classificator. The time series filter has the
@@ -55,7 +55,7 @@ classifiable time series windows should have a measure value inside of the inter
 windows should have a measure value outside of the interval boundaries. Incoming time series windows with a measure
 function value inside the interval boundaries can pass to the classification. All other windows are blocked by the
 filter. A factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows.
-This factor is called blur factor and is expressed as a percentage number. Assumed that the left boundary of the filter
-interval is 10 and the right boundary is 20. A blur factor of 160\% will result in a new filter interval of 7 and 23.
-The filter interval will be expanded artificially on the left and the right side. Possible time series measure functions
-are mentioned in \ref{complexity_estimate} and \ref{sample_variance}.
+This factor is called blur factor and is expressed as a percentage number. Assumed is a simple example, the left
+boundary of the filter interval is 10 and the right boundary is 20. A blur factor of 160\% will result in a new filter
+interval of 7 and 23. The filter interval will be expanded artificially on the left and the right side. Possible time
+series measure functions are mentioned in \ref{complexity_estimate} and \ref{sample_variance}.

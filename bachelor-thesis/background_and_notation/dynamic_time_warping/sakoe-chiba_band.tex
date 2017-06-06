@@ -6,10 +6,10 @@ area of the distance matrix. Popular constraints are the Sakoe-Chiba band \cite{
 parallelogram \cite{itakura1975minimum}. This thesis will focus only on the Sakoe-Chiba band. The adjustment window or
 the width of the Sakoe-Chiba band can be scaled in a general context by a percentage factor of the compared time series
 length. Figure \ref{fig:scb} clarifies the influence of a 20\% Sakoe-Chiba band on DTW compared to figure
-\ref{fig:dynamictimewarping} with plain DTW. The implementation of a constraint can be easily achieved by setting the
-distance between two data point to positive infinity if the associated entry in the distance matrix is outside of the
-restricted area. The equation \ref{eq:dtw} can be expanded by a dominating $\infty$ case if $i$ and $j$ do not pass the
-condition.
+\ref{fig:dynamictimewarping} with plain DTW. The maximum Sakoe-Chiba band size are 200\%, but this would result in plain
+DTW. The implementation of a constraint can be easily achieved by setting the distance between two data points to
+positive infinity if the associated entry in the distance matrix is outside of the restricted area. The equation
+\ref{eq:dtw} can be expanded by a dominating $\infty$ case if $i$ and $j$ do not pass the condition.
 
 \begin{figure}
     \begin{center}

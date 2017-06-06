@@ -2,8 +2,8 @@
 The blur factor for a sliding window filter is expanding the interval that is accepting time series windows. A too small
 interval can lead to many false positive classifications and a too large interval may lead to too much 1NN-DTW calls.
 The underlying time series measure for a sliding window filter is affecting the best performing blur factor for the
-filter. Eleven different blur factors were tested for all three underlying time series measures. The influence of
-the blur factor for the filter is tested for all three underlying time series measures and compared to the
+filter. Eleven different blur factors were tested for the two different underlying time series measures. The influence of
+the blur factor for the filter is tested for the two underlying time series measures and compared to the
 dominating configuration without filter. The right plot of figure \ref{fig:blur_factor_result} illustrates the influence
 of the blur factor on the $F_{1}score_{\mu}$. Only the LNCE estimate is reaching with the given blur factors the same
 $F_{1}score_{\mu}$ as the dominating configuration without filter. However, the two filter types come also with small
