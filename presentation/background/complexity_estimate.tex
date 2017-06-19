@@ -1,0 +1,45 @@
+\subsection{Complexity Estimate}
+
+\begin{frame}{Complexity Estimate}
+    \begin{itemize}
+        \item Invented by Gustavo Enrique de Almeida Prado Alves Batista, Xiaoyue Wang and Eamonn Keogh in 2011
+            \cite{batista2011complexity}
+        \pause
+        \item A possible approach to measure the complexity of a time series
+        \pause
+        \item Linear complexity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Complexity Estimate}{Calculation}
+    \begin{block}{Given}
+        \begin{itemize}
+            \item A domain set $\mathbb{U}$
+            \pause
+            \item A distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
+            \pause
+        \end{itemize}
+    \end{block}
+    \begin{block}{Input}
+        \begin{itemize}
+            \item A time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ over the domain set
+                $\mathbb{U}$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Complexity Estimate}{Calculation}
+    \begin{block}{Calculation}
+        \begin{itemize}
+            \item $CE(Q) = \sqrt[2]{\sum \limits_{i=1}^{l-1} d(q_i, q_{i + 1})^2}$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Length Normalized Complexity Estimate}{Calculation}
+    \begin{block}{Calculation}
+        \begin{itemize}
+            \item $LNCE(Q) = \frac{1}{l-1}CE(Q)$
+        \end{itemize}
+    \end{block}
+\end{frame}

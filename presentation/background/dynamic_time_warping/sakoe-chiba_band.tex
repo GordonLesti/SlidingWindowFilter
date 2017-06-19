@@ -1,0 +1,251 @@
+\subsubsection{Sakoe-Chiba Band}
+
+\begin{frame}{Sakoe-Chiba Band}
+    \begin{itemize}
+        \item Invented by Hiroaki Sakoe and Seibi Chiba in 1978 \cite{sakoe1978dynamic}
+        \pause
+        \item Restricts the DTW warping path in matrix $M$ to a adjustment window
+        \pause
+        \item Adjustment window or band can be scaled percentage to input time series length
+        \pause
+        \item Implementation by setting $M_{i,j}$ to $\infty$ if $i$ and $j$ are outside of band
+    \end{itemize}
+\end{frame}
+
+\begin{frame}<handout:0>{Sakoe-Chiba Band}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture} \\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Sakoe-Chiba Band}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/scb/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/scb/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    shader=flat,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Sakoe-Chiba Band}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/scb/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/scb/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/scb/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    shader=flat,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/scb/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}

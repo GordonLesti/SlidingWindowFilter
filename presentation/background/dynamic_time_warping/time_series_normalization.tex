@@ -1,0 +1,608 @@
+\subsubsection{Time Series Normalization}
+
+\begin{frame}{Time Series Normalization}
+    \begin{itemize}
+        \item z-normalization or Z-scoring time series is common prior DTW calculation \cite{ding2008querying}
+        \pause
+        \item Two different time series normalizations $\eta$ and $\eta '$ from \cite{das1998rule}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Time Series Normalization}{Calculation}
+    \begin{block}{Given}
+        \begin{itemize}
+            \item A domain set $\mathbb{U}$
+            \pause
+            \item A distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
+            \pause
+        \end{itemize}
+    \end{block}
+    \begin{block}{Input}
+        \begin{itemize}
+            \item A time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ over the domain set
+                $\mathbb{U}$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Time Series Normalization $\eta$}{Calculation}
+    \begin{block}{Calculation}
+        \begin{itemize}
+            \item Every data point $q$ of $Q$ will be transformed by $\eta$
+            \pause
+            \item $\eta (q) = q -\bar{q}$
+            \pause
+        \end{itemize}
+    \end{block}
+    \begin{block}{Mean of $Q$}
+        \begin{itemize}
+            \item $\bar{q} = \frac{1}{l} \sum \limits_{i=1}^{l} q_i$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}<handout:0>{Time Series Normalization $\eta$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture} \\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Time Series Normalization $\eta$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/norm1/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-40,
+                                    ymax=40,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm1/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-40,
+                                ymax=40,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Time Series Normalization $\eta$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm1/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/norm1/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-40,
+                                    ymax=40,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm1/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/norm1/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-40,
+                                ymax=40,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Time Series Normalization $\eta '$}{Calculation}
+    \begin{block}{Calculation}
+        \begin{itemize}
+            \item Every data point $q$ of $Q$ will be transformed by $\eta '$
+            \pause
+            \item $\eta '(q) = \frac{\eta (q)}{\sigma}$
+            \pause
+        \end{itemize}
+    \end{block}
+    \begin{block}{Standard deviation of $Q$}
+        \begin{itemize}
+            \item $\sigma = \frac{1}{l-1} \sum \limits_{i=1}^{l} d(q_i, \bar{q})^2$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}<handout:0>{Time Series Normalization $\eta '$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture} \\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Time Series Normalization $\eta '$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/norm1/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-40,
+                                    ymax=40,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm1/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm1/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-40,
+                                ymax=40,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm1/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Time Series Normalization $\eta '$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/norm2/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm2/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-2,
+                                    ymax=2,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm2/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm2/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-2,
+                                ymax=2,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Time Series Normalization $\eta '$}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/norm2/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/norm2/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/norm2/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-2,
+                                    ymax=2,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/norm2/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/norm2/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/norm2/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-2,
+                                ymax=2,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/norm2/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}

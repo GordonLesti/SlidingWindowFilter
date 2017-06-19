@@ -8,3 +8,5 @@
 *.md5
 *.auxlock
 *.out
+*.nav
+*.snm

@@ -1,0 +1,113 @@
+\subsection{Sliding Window Technique}
+
+\tikzstyle{decision} = [diamond, draw, aspect=2, fill=white!20, text width=8em, text badly centered, node distance=2cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=white!20, text width=5em, text centered, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\begin{frame}<handout:0>{Sliding Window Technique}{Workflow}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm, color=white] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, right of=extract, node distance=4cm, text width=2cm, color=white] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc, color=white] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [block, left of=decide, node distance=3cm, color=white] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm, color=white] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Sliding Window Technique}{Workflow}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, right of=extract, node distance=4cm, text width=2cm, color=white] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc, color=white] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [block, left of=decide, node distance=3cm, color=white] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm, color=white] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
+                    \path [line] (extract) -- node {$Q[t-w,t]$} (nnc);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Sliding Window Technique}{Workflow}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, right of=extract, node distance=4cm, text width=2cm] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [block, left of=decide, node distance=3cm, color=white] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm, color=white] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
+                    \path [line] (extract) -- node {$Q[t-w,t]$} (nnc);
+                    \path [line] (nnc) -- (decide);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}<handout:0>{Sliding Window Technique}{Workflow}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, right of=extract, node distance=4cm, text width=2cm] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm, color=white] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
+                    \path [line] (extract) -- node {$Q[t-w,t]$} (nnc);
+                    \path [line] (nnc) -- (decide);
+                    \path [line] (decide) -- node {no} (sleeps);
+                    \path [line,dashed] (sleeps) -| (ctss);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Sliding Window Technique}{Workflow}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            {\tiny
+                \begin{tikzpicture}[node distance = 1.5cm, auto]
+                    \node [block] (sod) {sensors or devices};
+                    \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
+                    \node [block, right of=extract, node distance=4cm, text width=2cm] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
+                    \node [block, below of=decide, node distance=2cm, text width=2cm] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+
+                    \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
+                    \path [line] (extract) -- node {$Q[t-w,t]$} (nnc);
+                    \path [line] (nnc) -- (decide);
+                    \path [line] (decide) -- node {no} (sleeps);
+                    \path [line,dashed] (sleeps) -| (ctss);
+                    \path [line] (decide) -- node {yes} (action);
+                    \path [line,dashed] (action) -| (ctss);
+                \end{tikzpicture}
+            }
+        }
+    \end{center}
+\end{frame}
