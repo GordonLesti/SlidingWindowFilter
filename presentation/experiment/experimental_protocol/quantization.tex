@@ -1,0 +1,101 @@
+\subsubsection{Quantization}
+
+\begin{frame}{Quantization}
+    Quantization based on \textit{uWave} \cite{liu2009uwave}
+    \pause
+    \begin{block}{Compressing}
+        \begin{itemize}
+            \item Recorded acceleration data were compressed to an average value for a window size of 50
+                ms and a step length of 30 ms
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{Conversion}
+        \begin{itemize}
+            \item The compressed records are converted into 33 different levels
+            \begin{center}
+                \footnotesize
+                \begin{tabular}{ll}
+                    \textbf{Acceleration data ($a$) in $\frac{dm}{s^2}$} & \qquad \textbf{Converted value}\\
+                    \hline
+                    $a > 200$ & \qquad 16\\
+                    $100 < a < 200$ & \qquad 11 to 15 (five levels linearly)\\
+                    $0 < a < 100$ & \qquad 1 to 10 (ten levels linearly)\\
+                    $a = 0$ & \qquad 0\\
+                    $-100 < a < 0$ & \qquad -1 to - 10 (ten levels linearly)\\
+                    $-200 < a < -100$ & \qquad -11 to - 15 (five levels linearly)\\
+                    $a < -200$ & \qquad -16
+                \end{tabular}
+            \end{center}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Quantization}{Example - raw acceleration data}
+    \begin{center}
+        \begin{tikzpicture}
+            \pgfplotsset{every axis legend/.append style={
+        		at={(0.5,1.03)},
+        		anchor=south}}
+            \begin{axis}[
+                xmin=1,
+                xmax=295,
+                xlabel=time,
+                ylabel=acceleration in $\frac{dm}{s^2}$,
+                legend columns=4]
+                \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {../data/fig/quantization/raw.dat};
+                \addlegendentry{x-axis}
+                \addplot[red, ultra thick, mark=none] table[x=t, y=y] {../data/fig/quantization/raw.dat};
+                \addlegendentry{y-axis}
+                \addplot[green, ultra thick, mark=none] table[x=t, y=z] {../data/fig/quantization/raw.dat};
+                \addlegendentry{z-axis}
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Quantization}{Example - compressed acceleration data}
+    \begin{center}
+        \begin{tikzpicture}
+            \pgfplotsset{every axis legend/.append style={
+                at={(0.5,1.03)},
+                anchor=south}}
+            \begin{axis}[
+                xmin=1,
+                xmax=52,
+                xlabel=time,
+                ylabel=acceleration in $\frac{dm}{s^2}$,
+                legend columns=4]
+                \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {../data/fig/quantization/compressed.dat};
+                \addlegendentry{x-axis}
+                \addplot[red, ultra thick, mark=none] table[x=t, y=y] {../data/fig/quantization/compressed.dat};
+                \addlegendentry{y-axis}
+                \addplot[green, ultra thick, mark=none] table[x=t, y=z] {../data/fig/quantization/compressed.dat};
+                \addlegendentry{z-axis}
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Quantization}{Example - compressed \& converted acceleration data}
+    \begin{center}
+        \begin{tikzpicture}
+            \pgfplotsset{every axis legend/.append style={
+                at={(0.5,1.03)},
+                anchor=south}}
+            \begin{axis}[
+                xmin=1,
+                xmax=52,
+                xlabel=time,
+                ylabel=converted acceleration,
+                legend columns=4]
+                \addplot[blue, ultra thick, mark=none] table[x=t, y=x] {../data/fig/quantization/converted.dat};
+                \addlegendentry{x-axis}
+                \addplot[red, ultra thick, mark=none] table[x=t, y=y] {../data/fig/quantization/converted.dat};
+                \addlegendentry{y-axis}
+                \addplot[green, ultra thick, mark=none] table[x=t, y=z] {../data/fig/quantization/converted.dat};
+                \addlegendentry{z-axis}
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
