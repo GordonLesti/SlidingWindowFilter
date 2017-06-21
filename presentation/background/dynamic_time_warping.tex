@@ -3,7 +3,7 @@
 \begin{frame}{Dynamic Time Warping}
     \begin{itemize}
         \item A widely used and robust distance measure for time series
-        \pause
+        
         \item \textit{"Allowing similar shapes to match even if they are out of phase in the time axis"}
             \cite{keogh2002exact}
     \end{itemize}
@@ -13,16 +13,16 @@
     \begin{block}{Given}
         \begin{itemize}
             \item A domain set $\mathbb{U}$
-            \pause
+            
             \item A distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
-            \pause
+            
         \end{itemize}
     \end{block}
     \begin{block}{Input}
         \begin{itemize}
             \item A time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ over the domain set
                 $\mathbb{U}$
-            \pause
+            
             \item A time series $C = (c_1, c_2, \dots, c_j, \dots, c_k)$ with length $k$ over the domain set
                 $\mathbb{U}$
         \end{itemize}
@@ -33,14 +33,14 @@
     \begin{block}{Distance Calculation}
         \begin{itemize}
             \item Calculation of Matrix $M$ with size $l \times k$ based on \cite{sart2010accelerating}
-            \pause
+            
             \item {\small $M_{i, j} = \begin{cases}
                 d(q_i,c_j) & \text{if } i = 1 \wedge j = 1\\
                 M_{i,j-1} + d(q_i,c_j) & \text{if } i = 1 \wedge j \neq 1\\
                 M_{i-1,j} + d(q_i,c_j) & \text{if } i \neq 1 \wedge j = 1\\
                 min(M_{i-1,j}, M_{i-1,j-1}, M_{i,j-1}) + d(q_i,c_j) & \text{if } i \neq 1 \wedge j \neq 1
             \end{cases}$ }
-            \pause
+            
             \item $M_{l,k}$ is DTW distance between $Q$ and $C$
         \end{itemize}
     \end{block}

@@ -3,7 +3,7 @@
 \begin{frame}{Time Series Normalization}
     \begin{itemize}
         \item z-normalization or Z-scoring time series is common prior DTW calculation \cite{ding2008querying}
-        \pause
+        
         \item Two different time series normalizations $\eta$ and $\eta '$ from \cite{das1998rule}
     \end{itemize}
 \end{frame}
@@ -12,9 +12,9 @@
     \begin{block}{Given}
         \begin{itemize}
             \item A domain set $\mathbb{U}$
-            \pause
+            
             \item A distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$
-            \pause
+            
         \end{itemize}
     \end{block}
     \begin{block}{Input}
@@ -29,9 +29,9 @@
     \begin{block}{Calculation}
         \begin{itemize}
             \item Every data point $q$ of $Q$ will be transformed by $\eta$
-            \pause
+            
             \item $\eta (q) = q -\bar{q}$
-            \pause
+            
         \end{itemize}
     \end{block}
     \begin{block}{Mean of $Q$}
@@ -281,9 +281,9 @@
     \begin{block}{Calculation}
         \begin{itemize}
             \item Every data point $q$ of $Q$ will be transformed by $\eta '$
-            \pause
+            
             \item $\eta '(q) = \frac{\eta (q)}{\sigma}$
-            \pause
+            
         \end{itemize}
     \end{block}
     \begin{block}{Standard deviation of $Q$}

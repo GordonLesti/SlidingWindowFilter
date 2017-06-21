@@ -2,26 +2,26 @@
     \begin{center}
         \begin{itemize}
             \item A sliding window simulation is a multi-class classificator
-            \pause
+            
             \item Every gesture is a class with:
-            \pause
+            
             \begin{itemize}
                 \item \textbf{tp:} True positve
-                \pause
+                
                 \item \textbf{tn:} True negative
-                \pause
+                
                 \item \textbf{fp:} False positive
-                \pause
+                
                 \item \textbf{fn:} False negative
             \end{itemize}
-            \pause
+            
             \item Multi-class classifier performance measures mentioned in \cite{sokolova2009systematic}:
-            \pause
+            
             \begin{itemize}
                 \item $Precision_{\mu}$
-                \pause
+                
                 \item $Recall_{\mu}$
-                \pause
+                
                 \item $F_{\beta}score_{\mu}$
             \end{itemize}
         \end{itemize}
@@ -32,7 +32,7 @@
     \begin{center}
         \begin{itemize}
             \item Amount of correct matches in relation to all matches
-            \pause
+            
             \item $Precision_{\mu} = \frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fp_i)}$
         \end{itemize}
     \end{center}
@@ -42,7 +42,7 @@
     \begin{center}
         \begin{itemize}
             \item Amount of correct matches in relation to all possible correct matches
-            \pause
+            
             \item $Recall_{\mu} = \frac{\sum \limits_{i=1}^{l} tp_i}{\sum \limits_{i=1}^{l} (tp_i + fn_i)}$
         \end{itemize}
     \end{center}
@@ -52,7 +52,7 @@
     \begin{center}
         \begin{itemize}
             \item $Precision_{\mu}$ and $Recall_{\mu}$ in relation
-            \pause
+            
             \item $F_{\beta}score_{\mu} = \frac{(\beta^2 + 1)Precision_{\mu} Recall_{\mu}}{\beta^2 Precision_{\mu} + Recall_{\mu}}$
         \end{itemize}
     \end{center}

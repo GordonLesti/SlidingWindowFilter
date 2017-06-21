@@ -3,11 +3,11 @@
 \begin{frame}{Sakoe-Chiba Band}
     \begin{itemize}
         \item Invented by Hiroaki Sakoe and Seibi Chiba in 1978 \cite{sakoe1978dynamic}
-        \pause
+        
         \item Restricts the DTW warping path in matrix $M$ to a adjustment window
-        \pause
+        
         \item Adjustment window or band can be scaled percentage to input time series length
-        \pause
+        
         \item Implementation by setting $M_{i,j}$ to $\infty$ if $i$ and $j$ are outside of band
     \end{itemize}
 \end{frame}

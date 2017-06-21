@@ -103,15 +103,15 @@
 \begin{frame}{Sliding Window Filter}{Idea}
     \begin{itemize}
         \item A time series measure with linear complexity
-        \pause
+
         \item The training data set produces minimum and maximum values of the measure
-        \pause
+
         \item Minimum and maximum value are creating an interval
-        \pause
+
         \item Every query time series passes the filter with a measure value inside the interval
-        \pause
+
         \item Every other query is blocked
-        \pause
+
         \item The passing interval can be scaled by a blur factor
     \end{itemize}
 \end{frame}
