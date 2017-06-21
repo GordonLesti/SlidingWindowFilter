@@ -1,0 +1,72 @@
+\subsubsection{Influence of Threshold Determination}
+
+\begin{frame}{Influence of Threshold Determination}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xmin=0.4,
+                            xmax=1,
+                            ymin=0.1,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
+                            \addlegendentry{HAveD}
+                            \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
+                            \addlegendentry{HMidD}
+                            \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
+                            \addlegendentry{HMinD}
+                            \addplot[violet, only marks, mark size=1] table {../data/fig/threshold_result/peak110.dat};
+                            \addlegendentry{Peak (1.1)}
+                            \addplot[cyan, only marks, mark size=1] table {../data/fig/threshold_result/peak120.dat};
+                            \addlegendentry{Peak (1.2)}
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
+                            \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
+                            \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
+                            \addplot[violet, only marks, mark size=1] table {../data/fig/threshold_result/peak110.dat};
+                            \addplot[cyan, only marks, mark size=1] table {../data/fig/threshold_result/peak120.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}

@@ -1,0 +1,37 @@
+\begin{frame}{Influence of Sakoe-Chiba Band Size}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            ymin=0.65,
+                            xmax=80,
+                            xlabel=band size in \% depending on input time series,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=200,
+                            ymin=0,
+                            ymax=1,
+                            xlabel=band size in \% depending on input time series,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}

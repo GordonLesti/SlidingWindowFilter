@@ -1,0 +1,87 @@
+\begin{frame}{Influence of Blur Factor}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south east,
+                            xmin=100,
+                            xmax=300,
+                            ymin=0.6,
+                            ymax=0.75,
+                            xlabel=filter interval size in \%,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/blur_factor_result/lnce.dat};
+                            \addlegendentry{LNCE}
+                            \addplot[red, ultra thick] table {../data/fig/blur_factor_result/var.dat};
+                            \addlegendentry{VAR}
+                            \addplot[dotted, black, domain=100:300] {0.738393631276109};
+                            \addlegendentry{No Filter}
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south east,
+                            xmin=100,
+                            xmax=300,
+                            ymin=0,
+                            ymax=5500,
+                            xlabel=filter interval size in \%,
+                            ylabel=\# 1NN-DTW calls,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/nnc_calls_result/lnce.dat};
+                            \addlegendentry{LNCE}
+                            \addplot[red, ultra thick] table {../data/fig/nnc_calls_result/var.dat};
+                            \addlegendentry{VAR}
+                            \addplot[dotted, black, domain=100:300] {4893};
+                            \addlegendentry{No Filter}
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Influence of Blur Factor}{Trade-off}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xlabel=$F_{1}score_{\mu}$,
+                            ylabel=\# blocked 1NN-DTW calls,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth]
+                            \addplot[blue, only marks, mark=*] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-lnce.dat};
+                            \addplot[gray, domain=0.7:0.74] {-83543.0872*x^2+55746.6816*x+4892.4835};
+                            \addlegendentry{LNCE}
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xlabel=$F_{1}score_{\mu}$,
+                            ylabel=\# blocked 1NN-DTW calls,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth]
+                            \addplot[red, only marks, mark=*] table[y=Y] {../data/fig/nnc_calls_result/tradeoff-var.dat};
+                            \addplot[gray, domain=0.63:0.74] {-34477.4805*x^2+20729.4890*x+4884.5834};
+                            \addlegendentry{VAR}
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
