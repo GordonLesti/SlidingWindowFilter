@@ -10,14 +10,34 @@ The final paper of my bachelor degree.
 
 ## Run
 
+Some LaTex files will require a `llncs.cls` file in the same directory.
+
+### Proposal
+
 Just run the following command and file `proposal/proposal.pdf` will be created.
 ```bash
 (cd proposal && pdflatex proposal.tex)
 ```
 
+### Bachelor Thesis
+
 Just run the following command and file `bachelor-thesis/bachelor-thesis.pdf` will be created.
 ```bash
 (cd bachelor-thesis && pdflatex bachelor-thesis.tex)
+```
+
+### Presentation
+
+Just run the following command and file `presentation/presentation.pdf` will be created.
+```bash
+(cd presentation && pdflatex presentation.tex)
+```
+
+### Paper
+
+Just run the following command and file `paper/paper.pdf` will be created.
+```bash
+(cd paper && pdflatex paper.tex)
 ```
 
 ## License
