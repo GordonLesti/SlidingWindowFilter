@@ -1,13 +1,13 @@
 \newpage
 \section{Introduction} \label{introduction}
 
-As time goes by things change, and those who understand change can adapt accordingly. This basic principle is also reflected in today's digital society, where sensor-equipped devices measure our environment and online algorithms inform humans or other machines about relevant trends and events. Applications range from gesture recognition for human-computer interaction \cite{liu2009uwave} over event detection for smart home controll \cite{spiegel2015metering} to frequent pattern mining for engine optimization \cite{spiegel2015driving} and scene detection in video content \cite{acar2011mediaeval} . \\
+As time goes by things change, and those who understand change can adapt accordingly. This basic principle is also reflected in today's digital society, where sensor-equipped devices measure our environment and online algorithms process the continuous measurements in quasi real-time in order to inform humans or cognitive systems about relevant trends and events. 
 
+Depending on the domain researchers either speak about events, patterns, or scenes that they aim to detect or recognize in time series, sensor, or data streams. Applications range from gesture recognition for human-computer interaction \cite{liu2009uwave} over event detection for smart home control \cite{spiegel2015metering} to frequent pattern mining for engine optimization \cite{spiegel2015driving} and scene detection for video content \cite{acar2011mediaeval}.
 
+Commonly online algorithms for data streams employ the popular sliding window technique [?], which observes the most recent sensor measurements and moves along the time axis as new measurements arrive. Usually each window is examined for a set of predefined events, which requires the comparison between all preliminary learned instances of the corresponding temporal pattern and the current time series segment.
 
-
-- Context: Data Streams, Event Detection, Applications
-
+Depending in the measurement frequency, window and step size, as well as number of preliminary learned instances and classes, the  \\
 
 - Problem: Mobile Devices, Time and Space Complexity
 - Solution: Filtering Technique
