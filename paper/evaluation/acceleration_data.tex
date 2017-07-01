@@ -2,5 +2,48 @@
 
 For the empirical evaluation a data set of 14 records by different experimentees is used. Every record contains
 acceleration data produced by a Wii
-Remote\texttrademark~Plus\footnote{https://www.nintendo.com/ Wii U is a trademark of Nintendo.} controller. The records
-are available on the projects homepage\footnote{https://gordonlesti.com/a-sliding-window-filter-for-time-series-streams/}.
+Remote\texttrademark~Plus\footnote{https://www.nintendo.com/ Wii U is a trademark of Nintendo.} controller. An
+experimentee performed eight gestures with the controller as training data. The same eight gestures were performed a
+second time mixed with physical activities as test time series stream. Figure \ref{fig:record} illustrates an example
+record. The records are available on the projects
+homepage\footnote{https://gordonlesti.com/a-sliding-window-filter-for-time-series-streams/}.
+
+\begin{figure}
+    \resizebox {\textwidth} {!} {
+        \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,
+                xmax=3176,
+                ymin=-16,
+                ymax=16,
+                width=10*\axisdefaultwidth,
+                height=\axisdefaultheight,
+                xticklabels={,,},
+                yticklabels={,,}]
+                \addplot[blue, mark=none, opacity=0.4] table[x=t, y=x] {../data/fig/record1/timeseries.dat};
+                \addplot[red, mark=none, opacity=0.4] table[x=t, y=y] {../data/fig/record1/timeseries.dat};
+                \addplot[green, mark=none, opacity=0.4] table[x=t, y=z] {../data/fig/record1/timeseries.dat};
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(38, -16) (89, -16) (89, 16) (38, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(123, -16) (177, -16) (177, 16) (123, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(201, -16) (256, -16) (256, 16) (201, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(282, -16) (355, -16) (355, 16) (282, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(388, -16) (439, -16) (439, 16) (388, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(473, -16) (530, -16) (530, 16) (473, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(568, -16) (624, -16) (624, 16) (568, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(672, -16) (749, -16) (749, 16) (672, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1057, -16) (1106, -16) (1106, 16) (1057, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1258, -16) (1313, -16) (1313, 16) (1258, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1472, -16) (1527, -16) (1527, 16) (1472, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1690, -16) (1772, -16) (1772, 16) (1690, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(2066, -16) (2116, -16) (2116, 16) (2066, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(2439, -16) (2497, -16) (2497, 16) (2439, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(2840, -16) (2895, -16) (2895, 16) (2840, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(3061, -16) (3137, -16) (3137, 16) (3061, 16)} --cycle;
+            \end{axis}
+        \end{tikzpicture}
+    }
+    \caption{An example record. The first eight blue rectangles are training gestures. Everything after the eighth
+    blue rectangle is the test time series stream containing the same eight gestures performed a second time mixed with
+    physical activities.}
+    \label{fig:record}
+\end{figure}
