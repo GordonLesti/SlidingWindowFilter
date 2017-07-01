@@ -1,0 +1,32 @@
+\subsection{Data Preparation} \label{data_preparation}
+
+All recorded data were quantized before evaluation. The authors of \cite{liu2009uwave} have two reasons for that,
+the length of the time series were reduced for DTW in order to improve computation efficiency and the recorded time
+series was transformed with a stable time gab between the data points.
+
+\paragraph{Compressing} The recorded acceleration data were compressed to an average value for a window size of 50
+ms and a step length of 30 ms.
+
+\paragraph{Conversion} The compressed records are converted into 33 different levels that are summarized in
+table \ref{table:conversion}.
+
+\begin{table}
+    \begin{center}
+        \begin{tabularx}{\textwidth}{XX}
+            \hline
+            \textbf{Acceleration data ($a$) in $\frac{dm}{s^2}$} & \textbf{Converted value}\\
+            \hline
+            $a > 200$ & 16\\
+            $100 < a < 200$ & 11 to 15 (five levels linearly)\\
+            $0 < a < 100$ & 1 to 10 (ten levels linearly)\\
+            $a = 0$ & 0\\
+            $-100 < a < 0$ & -1 to - 10 (ten levels linearly)\\
+            $-200 < a < -100$ & -11 to - 15 (five levels linearly)\\
+            $a < -200$ & -16\\
+            \hline
+        \end{tabularx}
+    \end{center}
+    \caption{Table shows the conversion rules of the recorded acceleration data. In contrast to \cite{liu2009uwave} are
+    $100\frac{dm}{s^2}$ the steps threshold and not $1g$.}
+	\label{table:conversion}
+\end{table}
