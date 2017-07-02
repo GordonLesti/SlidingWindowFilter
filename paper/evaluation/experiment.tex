@@ -1,0 +1,99 @@
+\subsection{Experiment} \label{experiment}
+
+An online sliding window application can be configured and implemented in many different ways. The following five main
+configurations with their associated options are used in this paper.
+
+\begin{itemize}
+    \item The \textbf{Window Size} defines the size of the observed time series window. Four different approaches were
+        tested.
+        \begin{itemize}
+            \item The \textbf{Max} approach works with the maximum length of the training gestures.
+            \item The \textbf{Min} approach works with the minimum length of the training gestures.
+            \item The \textbf{Ave} approach works with the average length of the training gestures.
+            \item The \textbf{Mid} approach works with the average length between the maximum and minimum of the
+                training gestures.
+        \end{itemize}
+    \item The \textbf{Step Size} defines the gap size between the observed time series windows. This values is
+        intuitively defined to one tenth of the window size.
+    \item The \textbf{Time Series Distance Measure} calculates the distance between the observed time series window and
+        a training gesture. This time series distance calcualtion is the fundamental for a nearest neighbour
+        classification on time series. DTW is the only approach in this experiment. Both compared time series are
+        prepared by three different methods before calculating the simularity with DTW. Once with the $\eta$
+        normalization, once the $\eta '$ nrmalization and once without normalization. In addition DTW is combined with
+        34 different Sakoe-Chiba band sizes from 2 \% to 200 \%.
+    \item The \textbf{Threshold} defines for every gesture class the upper bound of the time series distance measure
+        between the observed time series window and a training gesture. A time series window is detected as a specific
+        gesture if the neareast neighbour associated with the window is an instance of the same gesture class and the
+        distance between those two time series is less than or equal the threshold of the gesture class. Three different
+        approaches were tested as threshold determination.
+        \begin{itemize}
+            \item The \textbf{HMinD} approach determines the threshold of a gesture class by the half minimum distance
+                of a class to all other gesture classes in the training data set.
+            \item The \textbf{HAveD} approach determines the threshold of a gesture class by the half average distance
+                of a class to all other gesture classes in the training data set.
+            \item The \textbf{HMidD} approach determines the threshold of a gesture class by the half average of the
+                minimum and maximum distance of a class to all other gesture classes in the training data set.
+        \end{itemize}
+    \item The \textbf{Time Series Filter Measure} is the fundamental of the presented filter approach. Two different
+        time series measures are tested agains simulations without filter.
+        \begin{itemize}
+            \item The \textbf{LNCE} measure is the length normalized Complexity Estimate of a time series.
+            \item The \textbf{VAR} measure is the sample variance of a time series.
+        \end{itemize}
+        Both approaches are tested with eleven different factors that increased the size of the passing filter interval
+        from 100 \% to 300 \%.
+\end{itemize}
+
+An example result of a configured online gesture detection simulation is illustrated by figure \ref{fig:experiment}.
+True positive class detections are shown as green rectangles, false positive class detections are shown as red
+rectangles and false negative class detections are shown as blue rectangles. Apart from the not always avoidable small
+false detections around the green rectangles, are seven gestures detected correctly and one gesture is falsely detected
+in the presented example.
+
+\begin{figure}
+    \resizebox {\textwidth} {!} {
+        \begin{tikzpicture}
+            \begin{axis}[
+                xmin=0,
+                xmax=2426,
+                ymin=-16,
+                ymax=16,
+                width=10*\axisdefaultwidth,
+                height=\axisdefaultheight,
+                xticklabels={,,},
+                yticklabels={,,}]
+                \addplot[blue, mark=none, opacity=0.4] table[x=t, y=x] {../data/fig/experimentee_result2/exp1.dat};
+                \addplot[red, mark=none, opacity=0.4] table[x=t, y=y] {../data/fig/experimentee_result2/exp1.dat};
+                \addplot[green, mark=none, opacity=0.4] table[x=t, y=z] {../data/fig/experimentee_result2/exp1.dat};
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(294, -16) (307, -16) (307, 16) (294, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(307, -16) (357, -16) (357, 16) (307, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(357, -16) (359, -16) (359, 16) (357, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(497, -16) (508, -16) (508, 16) (497, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(508, -16) (562, -16) (562, 16) (508, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(562, -16) (564, -16) (564, 16) (562, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(712, -16) (722, -16) (722, 16) (712, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(722, -16) (777, -16) (777, 16) (722, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(777, -16) (778, -16) (778, 16) (777, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(940, -16) (945, -16) (945, 16) (940, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(945, -16) (1010, -16) (1010, 16) (945, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1010, -16) (1023, -16) (1023, 16) (1010, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(1310, -16) (1316, -16) (1316, 16) (1310, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(1316, -16) (1367, -16) (1367, 16) (1316, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(1367, -16) (1375, -16) (1375, 16) (1367, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(1681, -16) (1689, -16) (1689, 16) (1681, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(1689, -16) (1746, -16) (1746, 16) (1689, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(1746, -16) (1748, -16) (1748, 16) (1746, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(2082, -16) (2090, -16) (2090, 16) (2082, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, green, mark=none] coordinates {(2090, -16) (2146, -16) (2146, 16) (2090, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(2146, -16) (2147, -16) (2147, 16) (2146, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, blue, mark=none] coordinates {(2311, -16) (2388, -16) (2388, 16) (2311, 16)} --cycle;
+                \addplot+[fill, opacity=0.5, red, mark=none] coordinates {(2297, -16) (2362, -16) (2362, 16) (2297, 16)} --cycle;
+            \end{axis}
+        \end{tikzpicture}
+    }
+    \caption{An example result of a simulated online gesture detection on a test time series stream. Green rectangles
+    are illustrating true positives of a gesture class, red rectangles are illustrating false positives of a gesture
+    class and blue rectangles are illustrating false negatives of a gesture class. True negatives are white resp.
+    transparent.}
+    \label{fig:experiment}
+\end{figure}
