@@ -329,13 +329,12 @@ filter. However, the two filter types come also with small factors very close to
     \label{fig:blur_factor_result}
 \end{figure}
 
-\paragraph{Differentiation according to Gestures} Also interesting are the different results depending on the gesture. For this purpose the focus is again on the best
-performing simulation without filter. Figure \ref{fig:gesture_result} shows the $Precision$ and $Recall$ values for
-every gesture over all records. The best recognized gesture measured under $F_{1}score$ for the best performing
-simulation is gesture $A$.
+\paragraph{Differentiation according to Gestures} Also interesting are the different results depending on the gesture.
+Figure \ref{fig:gesture_result} shows the $Precision$ and $Recall$ values for
+every gesture over all records on the best performing simulation.
 
 \begin{figure}
-    \begin{minipage}{0.5\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \resizebox {\textwidth} {!} {
             \begin{tikzpicture}
                 \begin{axis}[
@@ -368,7 +367,7 @@ simulation is gesture $A$.
             \end{tikzpicture}
         }
     \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.55\textwidth}
         \caption{$Precision$ and $Recall$ of all gestures over all records for the simulation that uses $\eta$DTW with a
         Sakoe-Chiba band of size 36\% depending on the input time series length, \textit{HAveD} as threshold determination
         and \textit{Mid} as window size determination without any filter. Gesture $A$ is the first of all eight gestures
