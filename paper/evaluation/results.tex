@@ -268,7 +268,11 @@ reaches the same $F_{1}score_{\mu}$ as the best performing simulation without fi
     \end{minipage}
 \end{figure}
 
-\paragraph{Influence of Filter Interval Size}
+\paragraph{Influence of Filter Interval Size} The filter interval size has influence on the performed
+$F_{1}score_{\mu}$ and on the amount of nearest neighbour classification calls. The right plot of figure
+\ref{fig:blur_factor_result} illustrates the influence of the filter interval size on the $F_{1}score_{\mu}$. Only the
+LNCE estimate is reaching with the given factors the same $F_{1}score_{\mu}$ as the dominating configuration without
+filter. However, the two filter types come also with small factors very close to the top $F_{1}score_{\mu}$ value.
 
 \begin{figure}
     \begin{center}
@@ -319,8 +323,56 @@ reaches the same $F_{1}score_{\mu}$ as the best performing simulation without fi
             \end{tabular}
         }
     \end{center}
-    \caption{The left plot shows the $F_{1}score_{\mu}$ depending on the blur factor that expands the size of the filter
-    interval in \%. The right plot shows the amount of 1NN-DTW calls depending on the blur factor that expands the size
+    \caption{The left plot shows the $F_{1}score_{\mu}$ depending on the factor that expands the size of the filter
+    interval in \%. The right plot shows the amount of 1NN-DTW calls depending on the factor that expands the size
     of the filter interval in \%.}
     \label{fig:blur_factor_result}
+\end{figure}
+
+\paragraph{Differentiation according to Gestures} Also interesting are the different results depending on the gesture. For this purpose the focus is again on the best
+performing simulation without filter. Figure \ref{fig:gesture_result} shows the $Precision$ and $Recall$ values for
+every gesture over all records. The best recognized gesture measured under $F_{1}score$ for the best performing
+simulation is gesture $A$.
+
+\begin{figure}
+    \begin{minipage}{0.5\textwidth}
+        \resizebox {\textwidth} {!} {
+            \begin{tikzpicture}
+                \begin{axis}[
+                    xmin=0,
+                    xmax=1,
+                    ymin=0,
+                    ymax=1,
+                    width=\axisdefaultwidth,
+                    height=\axisdefaultwidth,
+                    xlabel=$Precision$,
+                    ylabel=$Recall$,
+                    samples=100,
+                    legend pos=outer north east]
+                    \addplot+[
+                        blue,
+                        only marks,
+                        nodes near coords,
+                        every node near coord/.style={at={(-0.05,0)}, color=black},
+                        point meta=explicit symbolic] table[x=x, y=y, meta=label] {../data/fig/gesture_result/gesture.dat};
+                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                \end{axis}
+            \end{tikzpicture}
+        }
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \caption{$Precision$ and $Recall$ of all gestures over all records for the simulation that uses $\eta$DTW with a
+        Sakoe-Chiba band of size 36\% depending on the input time series length, \textit{HAveD} as threshold determination
+        and \textit{Mid} as window size determination without any filter. Gesture $A$ is the first of all eight gestures
+        and gesture $H$ is the eighth gesture. Gray lines are illustrating the distribution of $F_{1}score$ in $\frac{1}{10}$ steps.}
+        \label{fig:gesture_result}
+    \end{minipage}
 \end{figure}
