@@ -21,11 +21,11 @@ assessed as unclassifiable by the classificator should be blocked by the filter 
                     \node [block] (sod) {sensors or devices};
                     \node [block, right of=sod, node distance=6cm, text width=2cm] (extract) {Extract last subsequence from Q of size $w$, $Q[t-w,t]$};
                     \node [block, draw=blue, right of=extract, node distance=4cm, text width=2cm] (filter) {Time series filter};
-                    \node [decision, draw=blue, below of=filter] (filterdecide) {$Q[t-w,t]$ can pass?};
-                    \node [block, below of=filterdecide, node distance=2cm, text width=2cm] (nnc) {Time series classificator};
-                    \node [decision, below of=nnc] (decide) {$Q[t-w,t]$ classifiable?};
+                    \node [decision, draw=blue, below of=filter, node distance=1.5cm] (filterdecide) {$Q[t-w,t]$ can pass?};
+                    \node [block, below of=filterdecide, node distance=1.5cm, text width=2cm] (nnc) {Time series classificator};
+                    \node [decision, below of=nnc, node distance=1.5cm] (decide) {$Q[t-w,t]$ classifiable?};
                     \node [block, left of=decide, node distance=3cm] (sleeps) {Sleep for $s$ time};
-                    \node [block, below of=decide, node distance=2cm, text width=2cm] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
+                    \node [block, below of=decide, node distance=1.5cm, text width=2cm] (action) {Trigger event that $Q[t-w,t]$ has been classified and sleep for $w$ time};
 
                     \path [line,dashed] (sod) -- node (ctss) {Continuous time series stream $Q$} (extract);
                     \path [line] (extract) -- node {$Q[t-w,t]$} (filter);
@@ -41,7 +41,7 @@ assessed as unclassifiable by the classificator should be blocked by the filter 
             }
         }
     \end{center}
-    \caption{Extended design for a sliding window application as in figure \ref{fig:swt}, plus the additional filter
+    \caption{Design for a sliding window application, the additional filter is
     highlighted in blue. The current time is stored in variable $c$. The variables $w$ for the window size and $s$ for
     the step size are predefined.}
     \label{fig:swf}
