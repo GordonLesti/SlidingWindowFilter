@@ -1,3 +1,29 @@
 \section{Background and Notation} \label{background_and_notation}
+This section explains the basic sliding window technique as fundamental framework used in this paper. Furthermore some
+background on the well known time series similarity measure DTW is given. Table~\ref{tab:notation} explains the basic
+notation that is used in this paper.
+
+\begin{table}
+    \begin{center}
+        \begin{tabularx}{\textwidth}{c X}
+            \hline
+            \textbf{Symbol} \qquad & \textbf{Description}\\
+            \hline
+            $\mathbb{U}$ & a set containing all items of a domain\\
+            $d$ & a distance measure function on $\mathbb{U}$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
+            $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
+                $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$\\
+            $Q[i,j]$ & a subsequence time series of $Q$ over the set $\mathbb{U}$ with
+                $Q[i,j] = (q_i, q_{i+1}, \dots, q_{j})$\\
+            $\bar{q}$ & the mean of a time series $Q$ over the set $\mathbb{U}$, $\bar{q} \in \mathbb{U}$\\
+            $\sigma$ & the standard deviation of a time series $Q$ over the set $\mathbb{U}$, $\sigma \in \mathbb{R}$\\
+            $\eta$, $\eta '$  & two different time series normalizations\\
+            \hline
+        \end{tabularx}
+    \end{center}
+    \caption{Basic notation.}
+	\label{tab:notation}
+\end{table}
 
 \input{background_and_notation/sliding_window_technique.tex}
+\input{background_and_notation/dynamic_time_warping.tex}

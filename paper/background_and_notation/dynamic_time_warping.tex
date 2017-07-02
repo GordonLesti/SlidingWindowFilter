@@ -1,0 +1,96 @@
+\subsection{Dynamic Time Warping} \label{dynamic_time_warping}
+Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes
+to match even if they are out of phase in the time axis} \cite{keogh2002exact}. Plain DTW uses a full distance matrix to
+calculate the similarity between two time series. This can allow DTW to match a data point at the beginning of a time series to a
+data point at the end of the compared time series. To prevent such scenarios, it is a common approach to restrict the
+area of the distance matrix. Popular constraints are the Sakoe-Chiba band \cite{sakoe1978dynamic} and the Itakura
+parallelogram \cite{itakura1975minimum}. This paper will focus only on the Sakoe-Chiba band. The adjustment window or
+the width of the Sakoe-Chiba band can be scaled in a general context by a percentage factor of the compared time series
+length. Figure \ref{fig:scb} clarifies the influence of a 20\% Sakoe-Chiba band. The maximum Sakoe-Chiba band size are
+200\%, but this would result in plain DTW.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/scb/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/scb/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/scb/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    shader=flat,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/scb/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture}\\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/scb/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{Two time series $Q$ and $C$ compared with DTW and a Sakoe-Chiba band size 20 \%. The left plot shows the
+    time series graphs with warping path and the right plot shows the associated distance matrix.}
+    \label{fig:scb}
+\end{figure}
+
+\input{background_and_notation/dynamic_time_warping/time_series_normalization.tex}
