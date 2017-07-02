@@ -1,0 +1,17 @@
+\subsection{Sliding Window Technique} \label{sliding_window_technique}
+Given is a continuous time series data stream $Q$. The last subsequence of size $w$ is in the interest of the sliding
+window technique. All subsequences or time series data points of $Q$ that are back even further as the window size $w$
+are in this moment irrelevant. The sliding window application tries to classify this last subsequence of $Q$ with the
+help of a time series classificator. This time series classificator makes its decisions based on a given time series
+training set. The application triggers an event in the case of a positive classification of the subsequence and an other
+application can react on this event.
+
+The sliding window application remains idle until the time series data stream $Q$
+grows. Afterwards, the process is repeated again. However, the sliding window application waits until the time series
+data stream $Q$ has grown by a predefined step size $s$. If necessary, this stepwise approach can avoid the execution of
+the process continuously after every new data point in $Q$.
+
+The explained sliding window technique uses a generic time series classificator. However, in this paper the
+generic time series classificator is replaced by 1NN-DTW. A time series window $Q[t-w,t]$ is classified as instance of
+class $K_i$ by 1NN-DTW if the DTW distance between $Q[t-w,t]$ and the nearest neighbour passes a predefined
+class threshold $\epsilon_i$. The following subsection gives some background of DTW.
