@@ -1,3 +1,425 @@
 \subsection{Results} \label{results}
 
-28152 different configured simulations are obtained by the presented options in section \ref{experiment}.
+28152 different configured simulations are obtained by the presented options in section \ref{experiment}. The best
+performing configurations are reaching a $F_{1}score_{\mu}$ around 0.7384. Two configurations achieve the best
+$F_{1}score_{\mu}$. One simulation works with and one without the presented filter approach. Both configurations use
+the same options apart from the filter. Those dominating configuration options are the following.
+\begin{itemize}
+    \item \textbf{$\eta$DTW}, Dynamic Time Warping combined with the $\eta$ normalization and a Sakoe-Chiba band size of
+        36 \% as time series distance measure.
+    \item \textbf{Mid} as window size determination.
+    \item \textbf{HAveD} as threshold determination.
+\end{itemize}
+Hereinafter, is inspected the influence of those options by changing step by step only one part of the
+dominating configuration. Afterwards, the influence of the time series filter measure on the $F_{1}score_{\mu}$ and on
+the amount of nearest neighbour classification calls is examined. Finally, the performance of the different gestures
+under the best performing simulation is shown.
+
+\paragraph{Influence of Normalization} To illustrate the influence of the normalization the focus is on the set of
+simulations that use \textit{Mid} as window size determination and \textit{HAveD} as threshold determination. The
+Sakoe-Chiba band size is arbitrary and discussed in following paragraph on a smaller subset. Figure
+\ref{fig:distance_measure_result} illustrates the influence of the normalization. DTW combined with the $\eta$
+normalization reaches the best $F_{1}score_{\mu}$. The small cloud in the left corner with lower $F_{1}score_{\mu}$
+values are too small Sakoe-Chiba band sizes.
+
+\definecolor{light-gray}{gray}{0.8}
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xmin=0.4,
+                            xmax=0.9,
+                            ymin=0.2,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                            \addlegendentry{DTW}
+                            \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                            \addlegendentry{$\eta$DTW}
+                            \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                            \addlegendentry{$\eta '$DTW}
+                            \addplot[gray, domain=0.4:0.9] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.4:0.9] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.4:0.9] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.4:0.9] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.4:0.9] {(0.7 * x) / (2 * x - 0.7)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                            \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                            \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations with \textit{Mid} as window determination and
+    \textit{HAveD} as threshold determination, separated by the used time series distance measures DTW, $\eta$DTW
+    or $\eta '$DTW. The left plot is a zoomed version of the right plot. Gray lines are illustrating the
+    distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \label{fig:distance_measure_result}
+\end{figure}
+
+\paragraph{Influence of Sakoe-Chiba Band Size} The influence of the Sakoe-Chiba band size on the dominating
+configuration is shown on the subset of simulations that use DTW in combination with the $\eta$ normalization,
+\textit{Mid} as window size determination and \textit{HAveD} as threshold determination. Figure
+\ref{fig:sakoe-chiba_band_result} illustrates the influence of the Sakoe-Chiba band size on the $F_{1}score_{\mu}$ for
+the best performing simulation without filter. There is a maximum at 36\% band size.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            ymin=0.65,
+                            xmax=80,
+                            xlabel=band size in \% depending on input time series,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=200,
+                            ymin=0,
+                            ymax=1,
+                            xlabel=band size in \% depending on input time series,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band. The left plot is a zoomed and scaled
+    version of the right plot.}
+    \label{fig:sakoe-chiba_band_result}
+\end{figure}
+
+\paragraph{Influence of Threshold Determination} Three different threshold determinations approaches are tested. The
+influence of the threshold determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
+36 \% in combination with the $\eta$ normalization and \textit{Mid} as window size determination. Figure
+\ref{fig:threshold_result} illustrates the distribution of the three approaches. The \textit{HAveD} and the
+\textit{HMidD} approaches reach the best $F_{1}score_{\mu}$ values, \textit{HAveD} a bit better as \textit{HMidD}.
+Remarkable are the top $Precision_{\mu}$ values of the \textit{HMinD} threshold determination.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south west,
+                            xmin=0.5,
+                            xmax=1,
+                            ymin=0.2,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
+                            \addlegendentry{HAveD}
+                            \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
+                            \addlegendentry{HMidD}
+                            \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
+                            \addlegendentry{HMinD}
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
+                            \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
+                            \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
+    36\% depending on the input time series length and \textit{Mid} as window size determination, separated by the used
+    threshold determination. The left plot is a zoomed version of the right plot. Gray lines are illustrating the
+    distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \label{fig:threshold_result}
+\end{figure}
+
+\paragraph{Influence of Window Size Determination} Four different window size determination approaches are tested. The
+influence of the window size determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
+36 \% in combination with the $\eta$ normalization and \textit{HAveD} as threshold determination. Figure
+\ref{fig:window_size_result} illustrates the distribution of the four approaches. It is clearly visible that the
+\textit{Mid} window size determination reaches the best $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$
+values in the experiment. The \textit{Ave} window size determination achieves also much better performance as
+\textit{Max} and \textit{Min}.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=north west,
+                            xmin=0.5,
+                            xmax=1,
+                            ymin=0.2,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
+                            \addlegendentry{Ave}
+                            \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
+                            \addlegendentry{Max}
+                            \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
+                            \addlegendentry{Mid}
+                            \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
+                            \addlegendentry{Min}
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
+                            \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
+                            \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
+                            \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
+    36\% depending on the input time series length and \textit{HAveD} as threshold determination, separated
+    by the used window size determination. The left plot is a zoomed version of the right plot. Gray lines are
+    illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \label{fig:window_size_result}
+\end{figure}
+
+\paragraph{Influence of Time Series Filter Measure} The paragraphs and plots above are showing the effects of the
+different configurations to find the best performing and dominating simulations. Interesting in this paragraph is the
+influence of the different filter approaches on the dominating configuration. Figure
+\ref{fig:sliding_window_filter_result} illustrates the influence of the time series filter measures on the performance
+of the dominating configuration. 20 simulations are reaching a $F_{1}score_{\mu}$ value greater or equal to 0.7. Every
+underlying time series measure for the filter is represented in those 20 simulations. One simulation with a filter
+reaches the same $F_{1}score_{\mu}$ as the best performing simulation without filter.
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=north west,
+                            xmin=0.7,
+                            xmax=0.9,
+                            ymin=0.5,
+                            ymax=0.7,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, mark=o, only marks] table {../data/fig/sliding_window_filter_result/lnce.dat};
+                            \addlegendentry{LNCE}
+                            \addplot[red, mark=triangle, only marks] table {../data/fig/sliding_window_filter_result/var.dat};
+                            \addlegendentry{VAR}
+                            \addplot[black, mark=square, only marks] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                            \addlegendentry{No Filter}
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=1,
+                            ymin=0,
+                            ymax=1,
+                            width=\axisdefaultwidth,
+                            height=\axisdefaultwidth,
+                            xlabel=$Precision_{\mu}$,
+                            ylabel=$Recall_{\mu}$,
+                            samples=100]
+                            \addplot[blue, mark=o, only marks] table {../data/fig/sliding_window_filter_result/lnce.dat};
+                            \addplot[red, mark=triangle, only marks] table {../data/fig/sliding_window_filter_result/var.dat};
+                            \addplot[black, mark=square, only marks] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                            \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                            \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                            \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                            \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                            \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                            \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                            \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                            \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                            \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ of all simulations that use $\eta$DTW with a Sakoe-Chiba band of size
+    36\% depending on the input time series length, \textit{HAveD} as threshold determination and \textit{Mid} as window
+    size determination, separated by the used sliding window filter. The left plot is a zoomed version of the right
+    plot. Gray lines are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \label{fig:sliding_window_filter_result}
+\end{figure}
+
+\paragraph{Influence of Filter Interval Size}
+
+\begin{figure}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south east,
+                            xmin=100,
+                            xmax=300,
+                            ymin=0.6,
+                            ymax=0.75,
+                            xlabel=filter interval size in \%,
+                            ylabel=$F_{1}score_{\mu}$,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/blur_factor_result/lnce.dat};
+                            \addlegendentry{LNCE}
+                            \addplot[red, ultra thick] table {../data/fig/blur_factor_result/var.dat};
+                            \addlegendentry{VAR}
+                            \addplot[dotted, black, domain=100:300] {0.738393631276109};
+                            \addlegendentry{No Filter}
+                        \end{axis}
+                    \end{tikzpicture}
+                } &
+                \resizebox {!} {\height} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            legend pos=south east,
+                            xmin=100,
+                            xmax=300,
+                            ymin=0,
+                            ymax=5500,
+                            xlabel=filter interval size in \%,
+                            ylabel=\# 1NN-DTW calls,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight]
+                            \addplot[blue, ultra thick] table {../data/fig/nnc_calls_result/lnce.dat};
+                            \addlegendentry{LNCE}
+                            \addplot[red, ultra thick] table {../data/fig/nnc_calls_result/var.dat};
+                            \addlegendentry{VAR}
+                            \addplot[dotted, black, domain=100:300] {4893};
+                            \addlegendentry{No Filter}
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{tabular}
+        }
+    \end{center}
+    \caption{The left plot shows the $F_{1}score_{\mu}$ depending on the blur factor that expands the size of the filter
+    interval in \%. The right plot shows the amount of 1NN-DTW calls depending on the blur factor that expands the size
+    of the filter interval in \%.}
+    \label{fig:blur_factor_result}
+\end{figure}
