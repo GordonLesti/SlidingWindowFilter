@@ -1,7 +1,12 @@
 \subsection{Sliding Window Technique} \label{sliding_window_technique}
-Given is a continuous time series data stream $Q$. The last subsequence of size $w$ is in the interest of the sliding
-window technique. All subsequences or time series data points of $Q$ that are back even further as the window size $w$
-are in this moment irrelevant. The sliding window application tries to classify this last subsequence of $Q$ with the
+
+Given a continuous time series stream $Q$, the sliding window technique examines the $w$ most recent data points and moves $s$ steps along the time axis as new measurements arrive, where $w$ and $s$ are referred to as window and step size. This technique has the advantage that it does not need to store the never-ending stream of data, but it also implies that measurements can only be considered for further data analysis as long as they are located within the current window. 
+
+In most applications, each window is passed to a data processing unit, which performs some kind of time series classification, clustering, or anomaly detection. For example in online gesture recognition, one could employ a nearest neighbor classifier that compares each window to a training set of preliminary learned time series instances. In case that a time series segment was classified as   
+
+...
+
+The sliding window application tries to classify this last subsequence of $Q$ with the
 help of a time series classificator. This time series classificator makes its decisions based on a given time series
 training set. The application triggers an event in the case of a positive classification of the subsequence and an other
 application can react on this event.
