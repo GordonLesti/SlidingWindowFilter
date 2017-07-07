@@ -1,7 +1,6 @@
 \section{Background and Notation} \label{background_and_notation}
-This section explains the basic sliding window technique as fundamental framework used in this paper. Furthermore some
-background on the well known time series similarity measure DTW is given. Table~\ref{tab:notation} explains the basic
-notation that is used in this paper.
+
+This section gives more background on the sliding window technique \cite{keogh2004sliding}, DTW distance measure \cite{keogh2002exact}, and time series normalization \cite{das1998rule}, which are fundamental building blocks of our conducted online gesture recognition study \cite{lesti2017filter}. Table \ref{tab:notation} introduces the notation that we use for formal problem description.
 
 \begin{table}
     \begin{center}
@@ -10,7 +9,7 @@ notation that is used in this paper.
             \textbf{Symbol} \qquad & \textbf{Description}\\
             \hline
             $\mathbb{U}$ & a set containing all items of a domain\\
-            $d$ & a distance measure function on $\mathbb{U}$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
+            $d$ & a distance function on $\mathbb{U}$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
             $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
                 $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$\\
             $Q[i,j]$ & a subsequence time series of $Q$ over the set $\mathbb{U}$ with
@@ -21,7 +20,7 @@ notation that is used in this paper.
             \hline
         \end{tabularx}
     \end{center}
-    \caption{Basic notation.}
+    \caption{Notation used for formal problem description.}
 	\label{tab:notation}
 \end{table}
 
