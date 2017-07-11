@@ -1,20 +1,24 @@
-\subsubsection{Time Series Normalization} \label{time_series_normalization}
-When using DTW to determine the similarity of two time series, it is a common approach to z-normalize or Z-score the
-time series in front of the calculation \cite{ding2008querying}. In \cite{das1998rule} two different time series
-normalizations are presented. Both time series normalizations $\eta$ and $\eta '$ are explained in the following
-section.
+\subsection{Time Series Normalization} \label{time_series_normalization}
 
-Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$ with length $l$ over the domain set $\mathbb{U}$ and a
-distance measure function $d$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$. The first time series normalization
-$\eta$ transforms every data
-point of the given time series $Q$ as follows.
-\begin{equation}
-    \eta (q) = q -\bar{q}
-\end{equation}
-where $\bar{q}$ is the mean of the time series $Q$.
+Literature on time series mining \cite{ding2008querying,spiegel2015diss} suggests to normalize all (sub-)sequences before measuring their dissimilarity by means of a distance measure. Multiple time series normalization techniques have been proposed \cite{das1998rule}, where two of them are compared in this study.
 
-The second time series normalization $\eta '$ transforms every data point of the given time series $Q$ as follows.
+Given is a time series $Q = (q_1, \dots, q_n)$ of length $n$, we can compute its means $\mu$ and standard deviation $\sigma$ as followed:
+
+\begin{equation*}
+\mu = \frac{1}{n} \sum_{i=1}^{n} q_i 	\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; 	\sigma = \frac{1}{n} \sum_{i=1}^{n} (q_i - \mu)^2
+\end{equation*}
+
+Having defined the mean $\mu$ and standard deviation $\sigma$, we can normalize each data point $q_i$ (with $1\leq i \leq n$) of a time series $Q = (q_1, \dots, q_n)$ in one of the two following ways \cite{das1998rule}:
+
 \begin{equation}
-    \eta '(q) = \frac{\eta (q)}{\sigma}
+q_i = q_i - \mu
 \end{equation}
-where $\sigma$ is the standard deviation of the time series $Q$.
+
+\begin{equation}
+q_i = \frac{q_i - \mu}{\sigma}
+\label{eqn:zscore}
+\end{equation}
+
+where Equation \ref{eqn:zscore} is commonly known as the Z-score. For the sake of simplicity we refer to A and B normalization for the rest of the paper.
+
+
