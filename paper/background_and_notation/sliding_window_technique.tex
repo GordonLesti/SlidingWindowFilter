@@ -2,21 +2,4 @@
 
 Given a continuous time series stream $Q$, the sliding window technique examines the $w$ most recent data points and moves $s$ steps along the time axis as new measurements arrive, where $w$ and $s$ are referred to as window and step size. This technique has the advantage that it does not need to store the never-ending stream of data, but it also implies that measurements can only be considered for further data analysis as long as they are located within the current window. 
 
-In most applications, each window is passed to a data processing unit, which performs some kind of time series classification, clustering, or anomaly detection. For example in online gesture recognition, one could employ a nearest neighbor classifier that compares each window to a training set of preliminary learned time series instances. In case that a time series segment was classified as   
-
-...
-
-The sliding window application tries to classify this last subsequence of $Q$ with the
-help of a time series classificator. This time series classificator makes its decisions based on a given time series
-training set. The application triggers an event in the case of a positive classification of the subsequence and an other
-application can react on this event.
-
-The sliding window application remains idle until the time series data stream $Q$
-grows. Afterwards, the process is repeated again. However, the sliding window application waits until the time series
-data stream $Q$ has grown by a predefined step size $s$. If necessary, this stepwise approach can avoid the execution of
-the process continuously after every new data point in $Q$.
-
-The explained sliding window technique uses a generic time series classificator. However, in this paper the
-generic time series classificator is replaced by 1NN-DTW. A time series window $Q[t-w,t]$ is classified as instance of
-class $K_i$ by 1NN-DTW if the DTW distance between $Q[t-w,t]$ and the nearest neighbour passes a predefined
-class threshold $\epsilon_i$.
+In most applications, each window is passed to a data processing unit, which performs some kind of time series classification, clustering, or anomaly detection. For example in online gesture recognition \cite{lesti2017filter}, one can employ a nearest neighbor classifier, which compares each window to a training set of preliminary learned time series instances. In case that the current window $Q[t-w,t]$ is similar to one of the known gestures, where similar means that the time series distance falls below a certain threshold, a corresponding action can be triggered. A popular distance measure for gestures \cite{liu2009uwave} and other warped time series is described in the following subsection.
