@@ -1,13 +1,6 @@
 \subsection{Dynamic Time Warping} \label{dynamic_time_warping}
-Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes
-to match even if they are out of phase in the time axis} \cite{keogh2002exact}. Plain DTW uses a full distance matrix to
-calculate the similarity between two time series. This can allow DTW to match a data point at the beginning of a time series to a
-data point at the end of the compared time series. To prevent such scenarios, it is a common approach to restrict the
-area of the distance matrix. Popular constraints are the Sakoe-Chiba band \cite{sakoe1978dynamic} and the Itakura
-parallelogram \cite{itakura1975minimum}. This paper will focus only on the Sakoe-Chiba band. The size of the Sakoe-Chiba
-band can be scaled in a general context by a percentage factor of the compared time series
-length. Figure \ref{fig:scb} clarifies the influence of a 20\% Sakoe-Chiba band. The maximum Sakoe-Chiba band size are
-200\%, but this would result in plain DTW.
+
+Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes to match even if they are out of phase in the time axis} \cite{keogh2002exact}. Traditionally DTW computes a full distance matrix to find an optimal warping path, where possible nonlinear alignments between a pair of time series include matches of early time points of the first sequence with late time points of the second sequence. To prevent pathological alignments, the size of the warping window can be constraint, for instance, by the Sakoe-Chiba band \cite{sakoe1978dynamic} or the Itakura parallelogram \cite{itakura1975minimum}. Figure \ref{fig:scb} illustrates the DTW distance measure using a Sakoe-Chiba band of 20\%, where the percentage of the warping window refers to the length of the compared time series. 
 
 \begin{figure}
     \begin{minipage}{0.69\textwidth}
@@ -89,8 +82,8 @@ length. Figure \ref{fig:scb} clarifies the influence of a 20\% Sakoe-Chiba band.
         }
     \end{minipage}\hfill
     \begin{minipage}{0.3\textwidth}
-        \caption{Two time series $Q$ and $C$ compared with DTW and a Sakoe-Chiba band size 20 \%. The left plot shows the
-        time series graphs with warping path and the right plot shows the associated distance matrix.}
+        \caption{Two time series $Q$ and $C$ compared by means of DTW with a Sakoe-Chiba band of 20\% time series length. 
+        The left plot illustrates the nonlinear alignment between the two sequences and the right plot shows the optimal warping path within the specified band.}
         \label{fig:scb}
     \end{minipage}
 \end{figure}
