@@ -1,9 +1,10 @@
 \subsection{Results} \label{results}
 
-28152 different configured simulations are obtained by the presented options in section \ref{experiment}. The best
-performing configurations are reaching a $F_{1}score_{\mu}$ around 0.7384. Two configurations achieve the best
-$F_{1}score_{\mu}$. One simulation works with and one without the presented filter approach. Both configurations use
-the same options apart from the filter. Those dominating configuration options are the following.
+28152 different configured simulations are obtained by the presented options in section \ref{experiment}. All
+simulations with associated $Precision_{\mu}$ and $Recall_{\mu}$ value are illustrated by figure \ref{fig:result}.a. The
+best performing configurations are reaching a $F_{1}score_{\mu}$ around 0.7384. Two configurations
+achieve the best $F_{1}score_{\mu}$. One simulation works with and one without the presented filter approach. Both
+configurations use the same options apart from the filter. Those dominating configuration options are the following.
 \begin{itemize}
     \item \textbf{$\eta$DTW}, Dynamic Time Warping combined with the $\eta$ normalization and a Sakoe-Chiba band size of
         36 \% as time series distance measure.
@@ -15,10 +16,247 @@ dominating configuration. Afterwards, the influence of the time series filter me
 the amount of nearest neighbour classification calls is examined. Finally, the performance of the different gestures
 under the best performing simulation is shown.
 
+\begin{figure}
+    \begin{tabular}{lclc}
+        a) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$,
+                        samples=100,
+                        colorbar horizontal,
+                        colormap/viridis high res,
+                        title=All Simulations]
+                        \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result2/result.dat};
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                    \end{axis}
+                    \spy [size=2cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        } &
+        b) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        title=Influence of Normalization,
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$,
+                        samples=100,
+                        legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                        \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                        \addlegendentry{DTW}
+                        \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                        \addlegendentry{$\eta$DTW}
+                        \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                        \addlegendentry{$\eta '$DTW}
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                    \end{axis}
+                    \spy [size=2cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        } \\
+        c) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        title=Influence of Threshold Determination,
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$,
+                        samples=100,
+                        legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                        \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
+                        \addlegendentry{HAveD}
+                        \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
+                        \addlegendentry{HMidD}
+                        \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
+                        \addlegendentry{HMinD}
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                    \end{axis}
+                    \spy [size=2cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        } &
+        d) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        title=Influence of Window Size Determination,
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$,
+                        samples=100,
+                        legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                        \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
+                        \addlegendentry{Ave}
+                        \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
+                        \addlegendentry{Max}
+                        \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
+                        \addlegendentry{Mid}
+                        \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
+                        \addlegendentry{Min}
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                    \end{axis}
+                    \spy [size=2cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        } \\
+        e) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                    \begin{axis}[
+                        title=Influence of Time Series Filter Measure,
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\mu}$,
+                        ylabel=$Recall_{\mu}$,
+                        samples=100,
+                        legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                        \addplot[blue, mark=o, only marks] table {../data/fig/sliding_window_filter_result/lnce.dat};
+                        \addlegendentry{LNCE}
+                        \addplot[red, mark=triangle, only marks] table {../data/fig/sliding_window_filter_result/var.dat};
+                        \addlegendentry{VAR}
+                        \addplot[black, mark=x, only marks] table {../data/fig/sliding_window_filter_result/nofilter.dat};
+                        \addlegendentry{No Filter}
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                        \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                        \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                    \end{axis}
+                    \spy [size=2cm] on (spypoint)
+                        in node[fill=white] at (magnifyglass);
+                \end{tikzpicture}
+            }
+        } &
+        f) &
+        \adjustbox{valign=t}{
+            \resizebox {0.45\textwidth} {!} {
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=0,
+                        xmax=1,
+                        ymin=0,
+                        ymax=1,
+                        width=\axisdefaultwidth,
+                        height=\axisdefaultwidth,
+                        xlabel=$Precision_{\phantom{\mu}}$,
+                        ylabel=$Recall_{\phantom{\mu}}$,
+                        samples=100,
+                        title=Differentiation according to Gestures,
+                        legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                        \addplot+[
+                            blue,
+                            only marks,
+                            nodes near coords,
+                            every node near coord/.style={at={(-0.05,0)}, color=black},
+                            point meta=explicit symbolic] table[x=x, y=y, meta=label] {../data/fig/gesture_result/gesture.dat};
+                        \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                        \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                        \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                        \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                        \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                        \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                        \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                        \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                        \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                    \end{axis}
+                \end{tikzpicture}
+            }
+        }
+    \end{tabular}
+    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the influences of the different configurations. The
+        magnifying glass is focusing on the best simulation measured on the underlying $F_{1}score_{\mu}$. Gray lines
+        are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+        \label{fig:result}
+\end{figure}
+
 \paragraph{Influence of Normalization} To illustrate the influence of the normalization the focus is on the set of
 simulations that use \textit{Mid} as window size determination and \textit{HAveD} as threshold determination. The
-Sakoe-Chiba band size is arbitrary and discussed in following paragraph on a smaller subset. The left top plot of figure
-\ref{fig:result} illustrates the influence of the normalization. DTW combined with the $\eta$
+Sakoe-Chiba band size is arbitrary and discussed in following paragraph on a smaller subset. Figure
+\ref{fig:result}.b illustrates the influence of the normalization. DTW combined with the $\eta$
 normalization reaches the best $F_{1}score_{\mu}$. The small cloud in the left corner with lower $F_{1}score_{\mu}$
 values are too small Sakoe-Chiba band sizes.
 
@@ -41,7 +279,7 @@ the best performing simulation without filter. There is a maximum at 36\% band s
                     xlabel=band size in \% depending on input time series,
                     ylabel=$F_{1}score_{\mu}$,
                     width=\axisdefaultwidth,
-                    height=0.75*\axisdefaultheight]
+                    height=0.5*\axisdefaultheight]
                     \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
                 \end{axis}
             \end{tikzpicture}
@@ -55,181 +293,26 @@ the best performing simulation without filter. There is a maximum at 36\% band s
 
 \paragraph{Influence of Threshold Determination} Three different threshold determinations approaches are tested. The
 influence of the threshold determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
-36 \% in combination with the $\eta$ normalization and \textit{Mid} as window size determination. The right top plot of
-figure \ref{fig:result} illustrates the distribution of the three approaches. The \textit{HAveD} and the
+36 \% in combination with the $\eta$ normalization and \textit{Mid} as window size determination. Figure
+\ref{fig:result}.c illustrates the distribution of the three approaches. The \textit{HAveD} and the
 \textit{HMidD} approaches reach the best $F_{1}score_{\mu}$ values, \textit{HAveD} a bit better as \textit{HMidD}.
 Remarkable are the top $Precision_{\mu}$ values of the \textit{HMinD} threshold determination.
 
 \paragraph{Influence of Window Size Determination} Four different window size determination approaches are tested. The
 influence of the window size determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
-36 \% in combination with the $\eta$ normalization and \textit{HAveD} as threshold determination. The left bottom plot
-of figure \ref{fig:result} illustrates the distribution of the four approaches. It is clearly visible that the
+36 \% in combination with the $\eta$ normalization and \textit{HAveD} as threshold determination. Figure
+\ref{fig:result}.d illustrates the distribution of the four approaches. It is clearly visible that the
 \textit{Mid} window size determination reaches the best $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$
 values in the experiment. The \textit{Ave} window size determination achieves also much better performance as
 \textit{Max} and \textit{Min}.
 
 \paragraph{Influence of Time Series Filter Measure} The paragraphs and plots above are showing the effects of the
 different configurations to find the best performing and dominating simulations. Interesting in this paragraph is the
-influence of the different filter approaches on the dominating configuration. The right bottom plot of figure
-\ref{fig:result} illustrates the influence of the time series filter measures on the performance
+influence of the different filter approaches on the dominating configuration. Figure \ref{fig:result}.e illustrates the
+influence of the time series filter measures on the performance
 of the dominating configuration. 20 simulations are reaching a $F_{1}score_{\mu}$ value greater or equal to 0.7. Every
 underlying time series measure for the filter is represented in those 20 simulations. One simulation with a filter
 reaches the same $F_{1}score_{\mu}$ as the best performing simulation without filter.
-
-\begin{figure}
-    \begin{tabular}{cc}
-        \resizebox {0.5\textwidth} {!} {
-            \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                \begin{axis}[
-                    title=Influence of Normalization,
-                    xmin=0,
-                    xmax=1,
-                    ymin=0,
-                    ymax=1,
-                    width=\axisdefaultwidth,
-                    height=\axisdefaultwidth,
-                    xlabel=$Precision_{\mu}$,
-                    ylabel=$Recall_{\mu}$,
-                    samples=100,
-                    legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
-                    \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
-                    \addlegendentry{DTW}
-                    \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
-                    \addlegendentry{$\eta$DTW}
-                    \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
-                    \addlegendentry{$\eta '$DTW}
-                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
-                    \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                \end{axis}
-                \spy [size=2cm] on (spypoint)
-                    in node[fill=white] at (magnifyglass);
-            \end{tikzpicture}
-        } &
-        \resizebox {0.5\textwidth} {!} {
-            \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                \begin{axis}[
-                    title=Influence of Threshold Determination,
-                    xmin=0,
-                    xmax=1,
-                    ymin=0,
-                    ymax=1,
-                    width=\axisdefaultwidth,
-                    height=\axisdefaultwidth,
-                    xlabel=$Precision_{\mu}$,
-                    ylabel=$Recall_{\mu}$,
-                    samples=100,
-                    legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
-                    \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
-                    \addlegendentry{HAveD}
-                    \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
-                    \addlegendentry{HMidD}
-                    \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
-                    \addlegendentry{HMinD}
-                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
-                    \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                \end{axis}
-                \spy [size=2cm] on (spypoint)
-                    in node[fill=white] at (magnifyglass);
-            \end{tikzpicture}
-        } \\
-        \resizebox {0.5\textwidth} {!} {
-            \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                \begin{axis}[
-                    title=Influence of Window Size Determination,
-                    xmin=0,
-                    xmax=1,
-                    ymin=0,
-                    ymax=1,
-                    width=\axisdefaultwidth,
-                    height=\axisdefaultwidth,
-                    xlabel=$Precision_{\mu}$,
-                    ylabel=$Recall_{\mu}$,
-                    samples=100,
-                    legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
-                    \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
-                    \addlegendentry{Ave}
-                    \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
-                    \addlegendentry{Max}
-                    \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
-                    \addlegendentry{Mid}
-                    \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
-                    \addlegendentry{Min}
-                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
-                    \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                \end{axis}
-                \spy [size=2cm] on (spypoint)
-                    in node[fill=white] at (magnifyglass);
-            \end{tikzpicture}
-        } &
-        \resizebox {0.5\textwidth} {!} {
-            \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
-                \begin{axis}[
-                    title=Influence of Time Series Filter Measure,
-                    xmin=0,
-                    xmax=1,
-                    ymin=0,
-                    ymax=1,
-                    width=\axisdefaultwidth,
-                    height=\axisdefaultwidth,
-                    xlabel=$Precision_{\mu}$,
-                    ylabel=$Recall_{\mu}$,
-                    samples=100,
-                    legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
-                    \addplot[blue, mark=o, only marks] table {../data/fig/sliding_window_filter_result/lnce.dat};
-                    \addlegendentry{LNCE}
-                    \addplot[red, mark=triangle, only marks] table {../data/fig/sliding_window_filter_result/var.dat};
-                    \addlegendentry{VAR}
-                    \addplot[black, mark=x, only marks] table {../data/fig/sliding_window_filter_result/nofilter.dat};
-                    \addlegendentry{No Filter}
-                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                    \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
-                    \coordinate (magnifyglass) at (axis cs:0.2,0.8);
-                \end{axis}
-                \spy [size=2cm] on (spypoint)
-                    in node[fill=white] at (magnifyglass);
-            \end{tikzpicture}
-        } \\
-    \end{tabular}
-    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the influences of the different configurations. The
-        magnifying glass is focusing on the best simulation measured on the underlying $F_{1}score_{\mu}$. Gray lines
-        are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
-        \label{fig:result}
-\end{figure}
 
 \paragraph{Influence of Filter Interval Size} The filter interval size has influence on the performed
 $F_{1}score_{\mu}$ and on the amount of nearest neighbour classification calls. The right plot of figure
@@ -293,48 +376,5 @@ filter. However, the two filter types come also with small factors very close to
 \end{figure}
 
 \paragraph{Differentiation according to Gestures} Also interesting are the different results depending on the gesture.
-Figure \ref{fig:gesture_result} shows the $Precision$ and $Recall$ values for
+Figure \ref{fig:result}.e shows the $Precision$ and $Recall$ values for
 every gesture over all records on the best performing simulation.
-
-\begin{figure}
-    \begin{minipage}{0.4\textwidth}
-        \resizebox {\textwidth} {!} {
-            \begin{tikzpicture}
-                \begin{axis}[
-                    xmin=0,
-                    xmax=1,
-                    ymin=0,
-                    ymax=1,
-                    width=\axisdefaultwidth,
-                    height=\axisdefaultwidth,
-                    xlabel=$Precision$,
-                    ylabel=$Recall$,
-                    samples=100,
-                    legend pos=outer north east]
-                    \addplot+[
-                        blue,
-                        only marks,
-                        nodes near coords,
-                        every node near coord/.style={at={(-0.05,0)}, color=black},
-                        point meta=explicit symbolic] table[x=x, y=y, meta=label] {../data/fig/gesture_result/gesture.dat};
-                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
-                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
-                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
-                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
-                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
-                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
-                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
-                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
-                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
-                \end{axis}
-            \end{tikzpicture}
-        }
-    \end{minipage}\hfill
-    \begin{minipage}{0.55\textwidth}
-        \caption{$Precision$ and $Recall$ of all gestures over all records for the simulation that uses $\eta$DTW with a
-        Sakoe-Chiba band of size 36\% depending on the input time series length, \textit{HAveD} as threshold determination
-        and \textit{Mid} as window size determination without any filter. Gesture $A$ is the first of all eight gestures
-        and gesture $H$ is the eighth gesture. Gray lines are illustrating the distribution of $F_{1}score$ in $\frac{1}{10}$ steps.}
-        \label{fig:gesture_result}
-    \end{minipage}
-\end{figure}

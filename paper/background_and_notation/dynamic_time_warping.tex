@@ -1,9 +1,9 @@
 \subsection{Dynamic Time Warping} \label{dynamic_time_warping}
 
-Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes to match even if they are out of phase in the time axis} \cite{keogh2002exact}. Traditionally DTW computes a full distance matrix to find an optimal warping path, where possible nonlinear alignments between a pair of time series include matches of early time points of the first sequence with late time points of the second sequence. To prevent pathological alignments, the size of the warping window can be constraint, for instance, by the Sakoe-Chiba band \cite{sakoe1978dynamic} or the Itakura parallelogram \cite{itakura1975minimum}. Figure \ref{fig:scb} illustrates the DTW distance measure using a Sakoe-Chiba band of 20\%, where the percentage of the warping window refers to the length of the compared time series. 
+Dynamic Time Warping (DTW) is a widely used and robust distance measure for time series, \textit{allowing similar shapes to match even if they are out of phase in the time axis} \cite{keogh2002exact}. Traditionally DTW computes a full distance matrix to find an optimal warping path, where possible nonlinear alignments between a pair of time series include matches of early time points of the first sequence with late time points of the second sequence. To prevent pathological alignments, the size of the warping window can be constraint, for instance, by the Sakoe-Chiba band \cite{sakoe1978dynamic} or the Itakura parallelogram \cite{itakura1975minimum}. Figure \ref{fig:scb} illustrates the DTW distance measure using a Sakoe-Chiba band of 20\%, where the percentage of the warping window refers to the length of the compared time series.
 
 \begin{figure}
-    \begin{minipage}{0.69\textwidth}
+    \begin{center}
         \resizebox {\textwidth} {!} {
             \begin{tabular}{cc}
                 \resizebox* {!} {0.3\textwidth} {
@@ -80,12 +80,10 @@ Dynamic Time Warping (DTW) is a widely used and robust distance measure for time
                 }
             \end{tabular}
         }
-    \end{minipage}\hfill
-    \begin{minipage}{0.3\textwidth}
-        \caption{Two time series $Q$ and $C$ compared by means of DTW with a Sakoe-Chiba band of 20\% time series length. 
+    \end{center}
+    \caption{Two time series $Q$ and $C$ compared by means of DTW with a Sakoe-Chiba band of 20\% time series length.
         The left plot illustrates the nonlinear alignment between the two sequences and the right plot shows the optimal warping path within the specified band.}
-        \label{fig:scb}
-    \end{minipage}
+    \label{fig:scb}
 \end{figure}
 
 \input{background_and_notation/dynamic_time_warping/time_series_normalization.tex}
