@@ -1,13 +1,11 @@
 \section{Filtering Approach} \label{filtering_approach}
-This section explains a sliding window filter and the way to embed the filter into a sliding window application. A time
-series filter is in general a function that takes a time
-series as argument and returns true or false. One possible underlying inner functionality approach of the filter is
-presented later in this section. The previous version of a sliding window application is extracting the current time
-series window and passes it directly to a time series classificator. This approach is extended by embedding a time
-series filter directly after the extraction and ahead of the time series classificator. The time series filter has the
-task to prune the amount of time series windows that reach the classificator. Time series windows which would be
-assessed as unclassifiable by the classificator should be blocked by the filter as much as possible. Figure
-\ref{fig:swf} illustrates the way of embedding the time series filter into the workflow of a sliding window application.
+
+This section does not only explain the concept of our proposed filtering approach, but also describes how to integrate our filter into the well-known and widely-used sliding window technique, as shown in Figure \ref{fig:swf}.  
+
+In general, the sliding window filter considers the most recent measurements in a data stream. The considered measurements are usually passed to a classifier, which aims at categorizing the current time series subsequence. In case that the current subsequence was assigned to a known category or class, a corresponding action is triggered and the next non-overlapping window, $w$ steps along the time axis, is examined. If the current subsequence just contains noise and no category was assigned, the next overlapping window, $s$ steps along the arrow of time, is processed. The main limitation of this traditional sliding window technique is its computational complexity, which increases with growing window size, shrinking step size, higher sample rate, and larger training set. %This is due to the fact that more windows require more classifications, which in turn often involve computational expensive operations. 
+
+For instance, given a data stream of length $l {=} 10090$, a window size of $w {=} 100$, and a step size of $s {=} 10$, we need to classify $(l - (w - s)) / s = 1000$ windows. Moreover, assuming $20$ training time series, classifying $1000$ windows by means of the nearest neighbor approach requires exactly $20*1000=20K$ dissimilarity comparisons. In case that we employ unconstrained DTW as time series distance measure, we need to compute $20K$ full warping matrices, each of them containing $w*w = 10K$ cells, resulting in a total amount of $200M$ distance operations. 
+
 
 \tikzstyle{decision} = [diamond, draw, aspect=2, fill=white!20, text width=8em, text badly centered, node distance=2cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=white!20, text width=5em, text centered, minimum height=4em]
@@ -41,29 +39,16 @@ assessed as unclassifiable by the classificator should be blocked by the filter 
             }
         }
     \end{center}
-    \caption{Design for a sliding window application, the additional filter is
-    highlighted in blue. The current time is stored in variable $c$. The variables $w$ for the window size and $s$ for
-    the step size are predefined.}
+    \caption{Flowchart of sliding window technique with filter, highlighted in blue. The current time is denoted by $t$. Window and step size are denoted by $w$ and $s$ respectively.}
     \label{fig:swf}
 \end{figure}
 
-The integration of the time series filter into a sliding window application is described above. An underlying inner
-functionality approach of a time series filter is the usage of a simple time series measures function. The argument of
-such a time series measure function should be one time series and the result should be an element of $\mathbb{R}$.
-Linear time and memory complexity are basic requirements for a measure to ensure an acceptable performance of the
-filter. A filter instance based on a suitable time series measure has access to the same training set of time series as
-the classificator. The measure executed on every time series in the training set results in a maximum and a minimum
-value. Both values together are creating an interval. This interval is called filter interval. Every measure value of the
-training set is inside of the boundaries of the filter interval. The approach of a measure based filter is that many
-classifiable time series windows should have a measure value inside of the interval and many unclassifiable time series
-windows should have a measure value outside of the interval boundaries. Incoming time series windows with a measure
-function value inside the interval boundaries can pass to the classification. All other windows are blocked by the
-filter. A factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows.
-This factor is expressed as a percentage number. Assumed is a simple example, the left
-boundary of the filter interval is 10 and the right boundary is 20. A factor of 160\% will result in a new filter
-interval of 7 and 23. The filter interval will be expanded artificially on the left and the right side. Possible time
-series measure functions are a length normalized version of the Complexity Estimate \cite{batista2011complexity} and the
-sample variance based on \cite{chan1983algorithms}.
+In order to reduce the large number of computational expensive dissimilarity comparisons, we propose to employ a sliding window filter, which is capable of separating signal from noise, only passing promising time series subsequences to the classifier. In that sense, the proposed filter can also be considered as a binary classifier, which prunes windows that are likely to be noise and forwards subsequences that exhibit similar properties as the training time series. Since we aim at replacing expensive dissimilarity comparisons with quadratic complexity, measuring indicative properties should be less demanding and, ideally, exhibit linear complexity. The performance of a filter  
+
+
+% A time series filter is in general a function that takes a time series as argument and returns true or false. One possible underlying inner functionality approach of the filter is presented later in this section. The previous version of a sliding window application is extracting the current time series window and passes it directly to a time series classificator. This approach is extended by embedding a time series filter directly after the extraction and ahead of the time series classificator. The time series filter has the task to prune the amount of time series windows that reach the classificator. Time series windows which would be assessed as unclassifiable by the classificator should be blocked by the filter as much as possible. Figure \ref{fig:swf} illustrates the way of embedding the time series filter into the workflow of a sliding window application.
+
+%The integration of the time series filter into a sliding window application is described above. An underlying inner functionality approach of a time series filter is the usage of a simple time series measures function. The argument of such a time series measure function should be one time series and the result should be an element of $\mathbb{R}$. Linear time and memory complexity are basic requirements for a measure to ensure an acceptable performance of the filter. A filter instance based on a suitable time series measure has access to the same training set of time series as the classificator. The measure executed on every time series in the training set results in a maximum and a minimum value. Both values together are creating an interval. This interval is called filter interval. Every measure value of the training set is inside of the boundaries of the filter interval. The approach of a measure based filter is that many classifiable time series windows should have a measure value inside of the interval and many unclassifiable time series windows should have a measure value outside of the interval boundaries. Incoming time series windows with a measure function value inside the interval boundaries can pass to the classification. All other windows are blocked by the filter. A factor can expand the filter interval to avoid the mistakenly blocking of classifiable time series windows. This factor is expressed as a percentage number. Assumed is a simple example, the left boundary of the filter interval is 10 and the right boundary is 20. A factor of 160\% will result in a new filter interval of 7 and 23. The filter interval will be expanded artificially on the left and the right side. Possible time series measure functions are a length normalized version of the Complexity Estimate \cite{batista2011complexity} and the sample variance based on \cite{chan1983algorithms}.
 
 Given is a time series $Q = (q_1, q_2, \dots, q_i, \dots, q_l)$
 with length $l$ over the domain set $\mathbb{U}$ and a distance measure function $d$ with

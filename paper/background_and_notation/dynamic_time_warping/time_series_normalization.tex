@@ -1,8 +1,8 @@
 \subsection{Time Series Normalization} \label{time_series_normalization}
 
-Literature on time series mining \cite{ding2008querying,spiegel2015diss} suggests to normalize all (sub-)sequences before measuring their dissimilarity by means of a distance measure. Multiple time series normalization techniques have been proposed \cite{das1998rule}, where two of them are compared in this study.
+Literature on time series mining \cite{ding2008querying,spiegel2015diss} suggests to normalize all (sub-)sequences before measuring their pair-wise dissimilarity by means of a distance measure. There are multiple ways to normalize time series, where two common techniques \cite{das1998rule} are compared  in this study.
 
-Given is a time series $Q = (q_1, \dots, q_n)$ of length $n$, we can compute its means $\mu$ and standard deviation $\sigma$ as followed:
+Given is a time series $Q = (q_1, \dots, q_n)$ of length $n$, we can compute its mean $\mu$ and standard deviation $\sigma$ as followed:
 
 \begin{equation*}
 \mu = \frac{1}{n} \sum_{i=1}^{n} q_i 	\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; 	\sigma = \frac{1}{n} \sum_{i=1}^{n} (q_i - \mu)^2
@@ -11,14 +11,14 @@ Given is a time series $Q = (q_1, \dots, q_n)$ of length $n$, we can compute its
 Having defined the mean $\mu$ and standard deviation $\sigma$, we can normalize each data point $q_i$ (with $1\leq i \leq n$) of a time series $Q = (q_1, \dots, q_n)$ in one of the two following ways \cite{das1998rule}:
 
 \begin{equation}
-q_i = q_i - \mu
+\eta(q_i) = q_i - \mu
 \end{equation}
 
 \begin{equation}
-q_i = \frac{q_i - \mu}{\sigma}
+z(q_i) = \frac{q_i - \mu}{\sigma}
 \label{eqn:zscore}
 \end{equation}
 
-where Equation \ref{eqn:zscore} is commonly known as the Z-score. For the sake of simplicity we refer to A and B normalization for the rest of the paper.
+Equation \ref{eqn:zscore} is commonly known as the Z-score. For the sake of simplicity we refer to $\eta$ and $z$ normalization \cite{das1998rule} for the rest of the paper.
 
 
