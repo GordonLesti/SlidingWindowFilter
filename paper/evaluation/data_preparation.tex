@@ -1,11 +1,7 @@
 \subsection{Data Preparation} \label{data_preparation}
 
-All recorded data were quantized before evaluation. The authors of \cite{liu2009uwave} have two reasons for that,
-the length of the time series were reduced for DTW in order to improve computation efficiency and the recorded time
-series was transformed with a stable time gab between the data points.
+All of our data records are resampled and quantized before further analysis. In general, dimensionality and cardinality reduction of time series is performed to ease and accelerate data processing by providing a more compact representation of equidistant measurements \cite{liu2009uwave}.
 
-\paragraph{Compressing} The recorded acceleration data were compressed to an average value for a window size of 50
-ms and a step length of 30 ms.
+\paragraph{Resampling:} The recorded acceleration data was resampled by means of the moving average technique, using a window size of 50 ms and step size of 30 ms.
 
-\paragraph{Conversion} The compressed records are converted into 33 different integer levels between -16 and 16 as done
-in \cite{liu2009uwave}.
+\paragraph{Quantization:} The resampled records were converted into time series with 33 different integer levels between -16 and 16, like suggested in related work \cite{liu2009uwave}.
