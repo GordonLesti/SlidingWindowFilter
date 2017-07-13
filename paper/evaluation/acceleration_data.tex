@@ -1,12 +1,7 @@
-\subsection{Acceleration Data} \label{acceleration_data}
+\subsection{Data Aggregation} \label{acceleration_data}
 
-For the empirical evaluation a data set of 14 records by different experimentees is used. Every record contains
-acceleration data produced by a Wii
-Remote\texttrademark~Plus\footnote{https://www.nintendo.com/ Wii U is a trademark of Nintendo.} controller. An
-experimentee performed eight gestures with the controller as training data. The same eight gestures were performed a
-second time mixed with physical activities as test time series stream. Figure \ref{fig:record} illustrates an example
-record. The records are available on the projects
-homepage \cite{lesti2017filter}.
+We employed a Wii Remote\texttrademark~Plus\footnote{https://www.nintendo.com/ Wii U is a trademark of Nintendo.} controller to record different gestures for multiple users. Each user performed 8 gestures, first in a controlled environment to record clean training samples and afterwards in noisy environment to record a test time series stream, which includes all predetermined gestures as well as acceleration data that corresponds to other physical activities.
+All records are available for download on our project website \cite{lesti2017filter}. A sample record containing both training and test gestures is illustrated in Figure \ref{fig:record}.
 
 \begin{figure}
     \resizebox {\textwidth} {!} {
@@ -42,8 +37,6 @@ homepage \cite{lesti2017filter}.
             \end{axis}
         \end{tikzpicture}
     }
-    \caption{An example record with the length of 98 seconds. The first eight blue rectangles are training gestures.
-    Everything after the eighth blue rectangle is the test time series stream containing the same eight gestures
-    performed a second time mixed with physical activities.}
+    \caption{An sample record of 98 seconds length, containing 8 training gestures at the very beginning, directly followed by a test time series stream that comprises the same 8 gestures mixed with acceleration data of various physical activities. Gestures are highlighted by blue rectangles and are also marked in the recorded data. Note that the length of gestures can vary for training and test set as well as for different records.}
     \label{fig:record}
 \end{figure}
