@@ -64,11 +64,11 @@ Further tests on the applicability of the sliding window filter as well as our i
                         samples=100,
                         legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
                         \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
-                        \addlegendentry{DTW}
+                        \addlegendentry{no}
                         \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
-                        \addlegendentry{$\eta$DTW}
+                        \addlegendentry{$\eta$-norm}
                         \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
-                        \addlegendentry{$z$DTW}
+                        \addlegendentry{$z$-norm}
                         \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
                         \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
                         \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
@@ -247,22 +247,18 @@ Further tests on the applicability of the sliding window filter as well as our i
     Gray lines indicate the $F_{1}score_{\mu}$ distribution in $\frac{1}{10}$ steps.}
         \label{fig:result}
 \end{figure}
-
-
-\paragraph{Influence of Normalization} To illustrate the influence of the normalization the focus is on the set of
-simulations that use \textit{Mid} as window size determination and \textit{HAveD} as threshold determination. The
-Sakoe-Chiba band size is arbitrary and discussed in following paragraph on a smaller subset. Figure
-\ref{fig:result}.b illustrates the influence of the normalization. DTW combined with the $\eta$
-normalization reaches the best $F_{1}score_{\mu}$. The small cloud in the left corner with lower $F_{1}score_{\mu}$
-values are too small Sakoe-Chiba band sizes.
-
 \definecolor{light-gray}{gray}{0.8}
 
-\paragraph{Influence of Sakoe-Chiba Band Size} The influence of the Sakoe-Chiba band size on the dominating
-configuration is shown on the subset of simulations that use DTW in combination with the $\eta$ normalization,
-\textit{Mid} as window size determination and \textit{HAveD} as threshold determination. Figure
-\ref{fig:sakoe-chiba_band_result} illustrates the influence of the Sakoe-Chiba band size on the $F_{1}score_{\mu}$ for
-the best performing simulation without filter. There is a maximum at 36\% band size.
+
+\paragraph{Normalization:} 
+
+The influence of the time series normalization is illustrated in Figure \ref{fig:result}(b). We compare $\eta$, $z$, and no normalization, with \textit{Mid} window size and \textit{HAveD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved by means of the $\eta$ normalization, which corresponds to the data points shown in the magnifying glass. The point cloud in the lower left corner of plot \ref{fig:result}(b) are parameter settings with rather small warping band. 
+
+
+\paragraph{Warping Band:} 
+
+The influence of the Sakoe-Chiba band in combination with the DTW distance is shown below in Figure \ref{fig:sakoe-chiba_band_result}. 
+For this experiment we selected only the dominating parameter settings, with $\eta$ normalization, \textit{Mid} window size, and and \textit{HAveD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved with a band with of 36 \% time series length.
 
 \begin{figure}
     \begin{minipage}{0.55\textwidth}
@@ -282,39 +278,32 @@ the best performing simulation without filter. There is a maximum at 36\% band s
         }
     \end{minipage}\hfill
     \begin{minipage}{0.4\textwidth}
-        \caption{The $F_{1}score_{\mu}$ depending on the size of the Sakoe-Chiba band size.}
+        \caption{Performance with varying Sakoe-Chiba band width.}
         \label{fig:sakoe-chiba_band_result}
     \end{minipage}
 \end{figure}
 
-\paragraph{Influence of Threshold Determination} Three different threshold determinations approaches are tested. The
-influence of the threshold determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
-36 \% in combination with the $\eta$ normalization and \textit{Mid} as window size determination. Figure
-\ref{fig:result}.c illustrates the distribution of the three approaches. The \textit{HAveD} and the
-\textit{HMidD} approaches reach the best $F_{1}score_{\mu}$ values, \textit{HAveD} a bit better as \textit{HMidD}.
-Remarkable are the top $Precision_{\mu}$ values of the \textit{HMinD} threshold determination.
 
-\paragraph{Influence of Window Size Determination} Four different window size determination approaches are tested. The
-influence of the window size determination is shown on the subset of simulations that use DTW with Sakoe-Chiba band size
-36 \% in combination with the $\eta$ normalization and \textit{HAveD} as threshold determination. Figure
-\ref{fig:result}.d illustrates the distribution of the four approaches. It is clearly visible that the
-\textit{Mid} window size determination reaches the best $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$
-values in the experiment. The \textit{Ave} window size determination achieves also much better performance as
-\textit{Max} and \textit{Min}.
+\paragraph{Dissimilarity Threshold:} 
 
-\paragraph{Influence of Time Series Filter Measure} The paragraphs and plots above are showing the effects of the
-different configurations to find the best performing and dominating simulations. Interesting in this paragraph is the
-influence of the different filter approaches on the dominating configuration. Figure \ref{fig:result}.e illustrates the
-influence of the time series filter measures on the performance
-of the dominating configuration. 20 simulations are reaching a $F_{1}score_{\mu}$ value greater or equal to 0.7. Every
-underlying time series measure for the filter is represented in those 20 simulations. One simulation with a filter
-reaches the same $F_{1}score_{\mu}$ as the best performing simulation without filter.
+We evaluate three different ways of determining a dissimilarity threshold, namely \textit{HMinD}, \textit{HAveD}, and \textit{HMidD}. For our comparison in Figure \ref{fig:result}(c), we used $\eta$ normalization, \textit{Mid} window size, and a warping band of 36 \% time series length. The best $F_{1}score_{\mu}$ was achieved by means of \textit{HAveD}, shortly followed by the \textit{HMidD} approach. Comparatively high $Precision_{\mu}$ values were given by \textit{HMinD} threshold.
 
-\paragraph{Influence of Filter Interval Size} The filter interval size has influence on the performed
-$F_{1}score_{\mu}$ and on the amount of nearest neighbour classification calls. The right plot of figure
-\ref{fig:blur_factor_result} illustrates the influence of the filter interval size on the $F_{1}score_{\mu}$. Only the
-LNCE estimate is reaching with the given factors the same $F_{1}score_{\mu}$ as the dominating configuration without
-filter. However, the two filter types come also with small factors very close to the top $F_{1}score_{\mu}$ value.
+
+\paragraph{Window Size:} 
+
+The influence of the window size determination approach is shown in Figure \ref{fig:result}(d). We compare \textit{Min}, \textit{Max}, \textit{Ave}, and \textit{Mid} window size, with $\eta$ normalization, \textit{HAveD} dissimilarity threshold, and a warping and of 36 \% time series length. The highest $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$ was achieved by the \textit{Mid} window size, shortly followed by the \textit{Ave} window size. Figure \ref{fig:result}(d) furthermore suggests to refrain from using \textit{Max} and \textit{Min} window size determination.
+
+
+\paragraph{Filtering Approach:} 
+
+Given the optimal parameter setting that was determined in the previous experiments, we are now in the position to assess the influence of the filtering approach. Figure \ref{fig:result}(e) shows the performance with $VAR$, $LNCE$, and no filter. Note that only results with a 
+$F_{1}score_{\mu}$ of at least 0.7 are plotted. Interestingly, top performance was achieved with with and without filter. This lead is to the question of computational complexity, which is answered in following paragraph.
+
+\paragraph{Filter Interval:} 
+
+The filter interval does not only influence the resulting $F_{1}score_{\mu}$, but also the amount of time series dissimilarity comparisons. 
+Figure \ref{fig:blur_factor_result} illustrates the influence of the interval size in respect to performance and computational demand.
+With an appropriate filter interval of about 200 \% we are able to reduce the number of dissimilarity comparisons by one half, while still achieving relatively high performance values.
 
 \begin{figure}
     \begin{center}
@@ -328,7 +317,7 @@ filter. However, the two filter types come also with small factors very close to
                             xmax=300,
                             ymin=0.6,
                             ymax=0.75,
-                            xlabel=filter interval size in \%,
+                            xlabel=size of filter interval in \%,
                             ylabel=$F_{1}score_{\mu}$,
                             width=\axisdefaultwidth,
                             height=0.7*\axisdefaultheight]
@@ -349,7 +338,7 @@ filter. However, the two filter types come also with small factors very close to
                             xmax=300,
                             ymin=0,
                             ymax=5500,
-                            xlabel=filter interval size in \%,
+                            xlabel=size of filter interval in \%,
                             ylabel=\# 1NN-DTW calls,
                             width=\axisdefaultwidth,
                             height=0.7*\axisdefaultheight]
@@ -365,12 +354,17 @@ filter. However, the two filter types come also with small factors very close to
             \end{tabular}
         }
     \end{center}
-    \caption{The left plot shows the $F_{1}score_{\mu}$ depending on the factor that expands the size of the filter
-    interval in \%. The right plot shows the amount of 1NN-DTW calls depending on the factor that expands the size
-    of the filter interval in \%.}
+    \caption{Influence of filter interval on the $F_{1}score_{\mu}$ (left) and the amount of 1NN-DTW dissimilarity comparisons (right). An optimal tradeoff between performance and computational demand is achieved at approximately 150 \% to 200 \% filter interval.}
     \label{fig:blur_factor_result}
 \end{figure}
 
-\paragraph{Differentiation according to Gestures} Also interesting are the different results depending on the gesture.
-Figure \ref{fig:result}.e shows the $Precision$ and $Recall$ values for
-every gesture over all records on the best performing simulation.
+
+\paragraph{Individual Gestures} 
+
+Finally, we have tested the performance for each of the examined gestures separately. 
+Figure \ref{fig:result}(e) shows the best $Precision$ and $Recall$ values that were achieved for each gesture.
+The results demonstrate that some gestures are easier to recognize than others.
+
+
+
+
