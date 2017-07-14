@@ -1,55 +1,29 @@
 \subsection{Experiment} \label{experiment}
 
-An online sliding window application can be configured and implemented in many different ways. The following five main
-configurations with their associated options are used in this paper.
+The proposed sliding window filter has several model parameters that need to be carefully tuned in order to achieve optimal performance. Depending on the application domain we need to select an appropriate window and step size, time series normalization, dissimilarity threshold, and filter criterion. In the following we describe all parameter settings that were assessed in our empirical study: 
 
 \begin{itemize}
-    \item The \textbf{Window Size} defines the size of the observed time series window. Four different approaches were
-        tested.
-        \begin{itemize}
-            \item The \textbf{Max} approach works with the maximum length of the training gestures.
-            \item The \textbf{Min} approach works with the minimum length of the training gestures.
-            \item The \textbf{Ave} approach works with the average length of the training gestures.
-            \item The \textbf{Mid} approach works with the average length between the maximum and minimum of the
-                training gestures.
-        \end{itemize}
-    \item The \textbf{Step Size} defines the gap size between the observed time series windows. This values is
-        intuitively defined to one tenth of the window size.
-    \item The \textbf{Time Series Distance Measure} calculates the distance between the observed time series window and
-        a training gesture. This time series distance calcualtion is the fundamental for a nearest neighbour
-        classification on time series. DTW is the only approach in this experiment. Both compared time series are
-        prepared by three different methods before calculating the simularity with DTW. Once with the $\eta$
-        normalization, once the Z-score $z$ and once without normalization. In addition DTW is combined with
-        34 different Sakoe-Chiba band sizes from 2 \% to 200 \%.
-    \item The \textbf{Threshold} defines for every gesture class the upper bound of the time series distance measure
-        between the observed time series window and a training gesture. A time series window is detected as a specific
-        gesture if the neareast neighbour associated with the window is an instance of the same gesture class and the
-        distance between those two time series is less than or equal the threshold of the gesture class. Three different
-        approaches were tested as threshold determination.
-        \begin{itemize}
-            \item The \textbf{HMinD} approach determines the threshold of a gesture class by the half minimum distance
-                of a class to all other gesture classes in the training data set.
-            \item The \textbf{HAveD} approach determines the threshold of a gesture class by the half average distance
-                of a class to all other gesture classes in the training data set.
-            \item The \textbf{HMidD} approach determines the threshold of a gesture class by the half average of the
-                minimum and maximum distance of a class to all other gesture classes in the training data set.
-        \end{itemize}
-    \item The \textbf{Time Series Filter Measure} is the fundamental of the presented filter approach. Two different
-        time series measures are tested agains simulations without filter.
-        \begin{itemize}
-            \item The \textbf{LNCE} measure is the length normalized Complexity Estimate of a time series.
-            \item The \textbf{VAR} measure is the sample variance of a time series.
-        \end{itemize}
-        Both approaches are tested with eleven different factors that increased the size of the passing filter interval
-        from 100 \% to 300 \%.
+
+\item 
+The \textbf{window size} determines the number of most recent measurements contained in the examined time series subsequences. We tested four different sizes that were learned from the training gesture, including \textbf{min}, \textbf{max}, and \textbf{avg} length as well as the \textbf{mid}-point of the range. \\
+      
+\item 
+The \textbf{step size} defines the gap between consecutive time series windows. As default setting we use one tenth of the window size. \\
+        
+\item 
+For online gesture recognition we employ the nearest neighbor classifier in combination with the DTW distance, where we evaluate 34 different Sakoe-Chiba \textbf{band} sizes, ranging from 2 \% to 200 \%. 
+Prior to pair-wise comparing sliding windows and training gestures, the corresponding time series should be normalized. We evaluate $\eta$, $z$, and no \textbf{normalization}. \\
+
+\item 
+The dissimilarity \textbf{threshold} defines the time series distance at which a sliding window and a training gesture are considered to belong to the same class. We determine the threshold for an individual class by measuring the distances between all samples of that particular class and all instances of other classes. In our empirical study we evaluate the threshold influence for: (i) one half of the minimum distance - \textbf{HMinD}, (ii) one half of the average distance - \textbf{HAvgD}, and (iii) one half of the midpoint distance - \textbf{HAvgD}. \\  
+
+\item 
+The \textbf{filter criterion} is an essential part of our proposed approach. In our empirical study we evaluate the performance of the two filter criteria, namely the sample variance \textbf{VAR} and the length normalized complexity estimate \textbf{LNCE} of a time series. Both filters are tested with different factors that increase the size of the filter interval from 100 \% to 300 \%.
+
 \end{itemize}
 
-An example result of a configured online gesture detection simulation is illustrated by figure \ref{fig:experiment}.
-True positive class detections are shown as green rectangles, false positive class detections are shown as red
-rectangles and false negative class detections are shown as blue rectangles. True negatives are white resp.
-transparent. Apart from the not always avoidable small
-false detections around the green rectangles, are seven gestures detected correctly and one gesture is falsely detected
-in the presented example.
+Figure \ref{fig:experiment} visualizes the online gesture recognition results for a sample time series stream processed by our proposed sliding window filter, 
+after selecting the above described model parameters with help of the recorded training gestures.
 
 \begin{figure}
     \resizebox {\textwidth} {!} {
@@ -92,6 +66,7 @@ in the presented example.
             \end{axis}
         \end{tikzpicture}
     }
-    \caption{An example result of a simulated online gesture detection on a test time series stream.}
+    \caption{Visualized results of online gesture recognition for a sample time series stream. We highlight true positives in green, false positives in red, false negatives in blue, and true negatives in transparent. 
+    Although we see short false detection intervals before or after true positives, seven out of eight gestures were assigned to the correct class label.}
     \label{fig:experiment}
 \end{figure}
