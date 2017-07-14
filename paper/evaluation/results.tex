@@ -1,20 +1,14 @@
 \subsection{Results} \label{results}
 
-28152 different configured simulations are obtained by the presented options in section \ref{experiment}. All
-simulations with associated $Precision_{\mu}$ and $Recall_{\mu}$ value are illustrated by figure \ref{fig:result}.a. The
-best performing configurations are reaching a $F_{1}score_{\mu}$ around 0.7384. Two configurations
-achieve the best $F_{1}score_{\mu}$. One simulation works with and one without the presented filter approach. Both
-configurations use the same options apart from the filter. Those dominating configuration options are the following.
-\begin{itemize}
-    \item \textbf{$\eta$DTW}, Dynamic Time Warping combined with the $\eta$ normalization and a Sakoe-Chiba band size of
-        36 \% as time series distance measure.
-    \item \textbf{Mid} as window size determination.
-    \item \textbf{HAveD} as threshold determination.
-\end{itemize}
-Hereinafter, is inspected the influence of those options by changing step by step only one part of the
-dominating configuration. Afterwards, the influence of the time series filter measure on the $F_{1}score_{\mu}$ and on
-the amount of nearest neighbour classification calls is examined. Finally, the performance of the different gestures
-under the best performing simulation is shown.
+In order to evaluate the influence of all model parameters that were described in Section \ref{experiment}, we performed a total number of 28152 experiments. 
+Figure \ref{fig:result}(a) illustrates the $Precision_{\mu}$ and $Recall_{\mu}$ values for all test runs. 
+A top performance of around 0.7384 $F_{1}score_{\mu}$ was achieved by parameter configurations that 
+used $\eta$ time series normalization, DTW with a Sakoe-Chiba band of about 36 \% time series length, \textit{Mid} window size, and \textit{HAvgD} for threshold determination.
+
+Given the best parameter configuration, we investigated the influence of the individual parameters by changing only one at a time and fixing the others, see Figure \ref{fig:result}(b,c,d).  
+As shown in Figure \ref{fig:result}(e), we also evaluated the performance with $VAR$, $LNCE$, and no filter. 
+The best results for each individual gesture is shown in Figure Figure \ref{fig:result}(f).
+Further tests on the applicability of the sliding window filter as well as our interpretation of the results are presented below.
 
 \begin{figure}
     \begin{tabular}{lclc}
@@ -247,11 +241,13 @@ under the best performing simulation is shown.
             }
         }
     \end{tabular}
-    \caption{$Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the influences of the different configurations. The
-        magnifying glass is focusing on the best simulation measured on the underlying $F_{1}score_{\mu}$. Gray lines
-        are illustrating the distribution of $F_{1}score_{\mu}$ in $\frac{1}{10}$ steps.}
+    \caption{
+    $Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the performance influence of the individual model parameters. 
+    The magnifying glass is focusing on the results with the highest $F_{1}score_{\mu}$. 
+    Gray lines indicate the $F_{1}score_{\mu}$ distribution in $\frac{1}{10}$ steps.}
         \label{fig:result}
 \end{figure}
+
 
 \paragraph{Influence of Normalization} To illustrate the influence of the normalization the focus is on the set of
 simulations that use \textit{Mid} as window size determination and \textit{HAveD} as threshold determination. The
