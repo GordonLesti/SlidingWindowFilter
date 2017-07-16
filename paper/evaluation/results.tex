@@ -29,7 +29,7 @@ Further tests on the applicability of the sliding window filter as well as our i
                         colorbar horizontal,
                         colormap/viridis high res,
                         title=All Simulations]
-                        % \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result2/result.dat};
+                        \addplot[only marks, scatter, scatter src=explicit, mark size=1] table[x=x,y=y,meta=fscore] {../data/fig/result2/result.dat};
                         \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
                         \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
                         \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
@@ -296,8 +296,7 @@ The influence of the window size determination approach is shown in Figure \ref{
 
 \paragraph{Filtering Approach:}
 
-Given the optimal parameter setting that was determined in the previous experiments, we are now in the position to assess the influence of the filtering approach. Figure \ref{fig:result}(e) shows the performance with $VAR$, $LNCE$, and no filter. Note that only results with a
-$F_{1}score_{\mu}$ of at least 0.7 are plotted. Interestingly, top performance was achieved with with and without filter. This lead is to the question of computational complexity, which is answered in following paragraph.
+Given the optimal parameter setting that was determined in the previous experiments, we are now in the position to assess the influence of the filtering approach. Figure \ref{fig:result}(e) shows the performance with $VAR$, $LNCE$, and no filter. Twenty simulations are reaching a $F_{1}score_{\mu}$ value greater or equal to 0.7. Interestingly, top performance was achieved with and without filter. This lead is to the question of computational complexity, which is answered in following paragraph.
 
 \paragraph{Filter Interval:}
 
