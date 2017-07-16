@@ -8,13 +8,11 @@ This section gives more background on the sliding window technique \cite{keogh20
             \hline
             \textbf{Symbol} \qquad & \textbf{Description}\\
             \hline
-            $\mathbb{U}$ & a set containing all items of a domain\\
-            $d$ & a distance function on $\mathbb{U}$ with $d: \mathbb{U} \times \mathbb{U} \to \mathbb{R}$\\
-            $Q$ & a time series over the set $\mathbb{U}$ of size $l$ with
-                $Q = (q_1, q_2, \dots, q_i, \dots, q_l), q_i \in \mathbb{U}$\\
-            $Q[i,j]$ & a subsequence time series of $Q$ over the set $\mathbb{U}$ with $Q[i,j] = (q_i, q_{i+1}, \dots, q_{j})$\\
-            $\mu$ & the mean of a time series $Q$ over the set $\mathbb{U}$, $\bar{q} \in \mathbb{U}$\\
-            $\sigma$ & the standard deviation of a time series $Q$ over the set $\mathbb{U}$, $\sigma \in \mathbb{R}$\\
+            $Q$ & a time series of size $n$ with $Q = (q_1, q_2, \dots, q_i, \dots, q_n)$\\
+            $Q[i,j]$ & a subsequence time series of $Q$ with $Q[i,j] = (q_i, q_{i+1}, \dots, q_{j})$\\
+            $t$ & the current time\\
+            $\mu$ & the mean of a time series $Q$\\
+            $\sigma$ & the standard deviation of a time series $Q$\\
             $\eta$, $z$  & two different time series normalizations\\
             \hline
         \end{tabularx}
