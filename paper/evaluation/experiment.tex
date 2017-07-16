@@ -1,28 +1,28 @@
 \subsection{Experiment} \label{experiment}
 
-The proposed sliding window filter has several model parameters that need to be carefully tuned in order to achieve optimal performance. Depending on the application domain we need to select an appropriate window and step size, time series normalization, dissimilarity threshold, and filter criterion. In the following we describe all parameter settings that were assessed in our empirical study: 
+The proposed sliding window filter has several model parameters that need to be carefully tuned in order to achieve optimal performance. Depending on the application domain we need to select an appropriate window and step size, time series normalization, dissimilarity threshold, and filter criterion. In the following we describe all parameter settings that were assessed in our empirical study:
 
 \begin{itemize}
 
-\item 
+\item
 The \textbf{window size} determines the number of most recent measurements contained in the examined time series subsequences. We tested four different sizes that were learned from the training gesture, including \textbf{min}, \textbf{max}, and \textbf{avg} length as well as the \textbf{mid}-point of the range. \\
-      
-\item 
+
+\item
 The \textbf{step size} defines the gap between consecutive time series windows. As default setting we use one tenth of the window size. \\
-        
-\item 
-For online gesture recognition we employ the nearest neighbor classifier in combination with the DTW distance, where we evaluate 34 different Sakoe-Chiba \textbf{band} sizes, ranging from 2 \% to 200 \%. 
+
+\item
+For online gesture recognition we employ the nearest neighbor classifier in combination with the DTW distance, where we evaluate 34 different Sakoe-Chiba \textbf{band} sizes, ranging from 1 \% to 100 \%.
 Prior to pair-wise comparing sliding windows and training gestures, the corresponding time series should be normalized. We evaluate $\eta$, $z$, and no \textbf{normalization}. \\
 
-\item 
-The dissimilarity \textbf{threshold} defines the time series distance at which a sliding window and a training gesture are considered to belong to the same class. We determine the threshold for an individual class by measuring the distances between all samples of that particular class and all instances of other classes. In our empirical study we evaluate the threshold influence for: (i) one half of the minimum distance - \textbf{HMinD}, (ii) one half of the average distance - \textbf{HAvgD}, and (iii) one half of the midpoint distance - \textbf{HAvgD}. \\  
+\item
+The dissimilarity \textbf{threshold} defines the time series distance at which a sliding window and a training gesture are considered to belong to the same class. We determine the threshold for an individual class by measuring the distances between all samples of that particular class and all instances of other classes. In our empirical study we evaluate the threshold influence for: (i) one half of the minimum distance - \textbf{HMinD}, (ii) one half of the average distance - \textbf{HAvgD}, and (iii) one half of the midpoint distance - \textbf{HMidD}. \\
 
-\item 
+\item
 The \textbf{filter criterion} is an essential part of our proposed approach. In our empirical study we evaluate the performance of the two filter criteria, namely the sample variance \textbf{VAR} and the length normalized complexity estimate \textbf{LNCE} of a time series. Both filters are tested with different factors that increase the size of the filter interval from 100 \% to 300 \%.
 
 \end{itemize}
 
-Figure \ref{fig:experiment} visualizes the online gesture recognition results for a sample time series stream processed by our proposed sliding window filter, 
+Figure \ref{fig:experiment} visualizes the online gesture recognition results for a sample time series stream processed by our proposed sliding window filter,
 after selecting the above described model parameters with help of the recorded training gestures.
 
 \begin{figure}
@@ -66,7 +66,7 @@ after selecting the above described model parameters with help of the recorded t
             \end{axis}
         \end{tikzpicture}
     }
-    \caption{Visualized results of online gesture recognition for a sample time series stream. We highlight true positives in green, false positives in red, false negatives in blue, and true negatives in transparent. 
+    \caption{Visualized results of online gesture recognition for a sample time series stream. We highlight true positives in green, false positives in red, false negatives in blue, and true negatives in transparent.
     Although we see short false detection intervals before or after true positives, seven out of eight gestures were assigned to the correct class label.}
     \label{fig:experiment}
 \end{figure}

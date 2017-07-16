@@ -1,12 +1,12 @@
 \subsection{Results} \label{results}
 
-In order to evaluate the influence of all model parameters that were described in Section \ref{experiment}, we performed a total number of 28152 experiments. 
-Figure \ref{fig:result}(a) illustrates the $Precision_{\mu}$ and $Recall_{\mu}$ values for all test runs. 
-A top performance of around 0.7384 $F_{1}score_{\mu}$ was achieved by parameter configurations that 
-used $\eta$ time series normalization, DTW with a Sakoe-Chiba band of about 36 \% time series length, \textit{Mid} window size, and \textit{HAvgD} for threshold determination.
+In order to evaluate the influence of all model parameters that were described in Section \ref{experiment}, we performed a total number of 28152 experiments.
+Figure \ref{fig:result}(a) illustrates the $Precision_{\mu}$ and $Recall_{\mu}$ values for all test runs.
+A top performance of around 0.7384 $F_{1}score_{\mu}$ was achieved by parameter configurations that
+used $\eta$ time series normalization, DTW with a Sakoe-Chiba band of about 18 \% time series length, \textit{mid} window size, and \textit{HAvgD} for threshold determination.
 
-Given the best parameter configuration, we investigated the influence of the individual parameters by changing only one at a time and fixing the others, see Figure \ref{fig:result}(b,c,d).  
-As shown in Figure \ref{fig:result}(e), we also evaluated the performance with $VAR$, $LNCE$, and no filter. 
+Given the best parameter configuration, we investigated the influence of the individual parameters by changing only one at a time and fixing the others, see Figure \ref{fig:result}(b,c,d).
+As shown in Figure \ref{fig:result}(e), we also evaluated the performance with $VAR$, $LNCE$, and no filter.
 The best results for each individual gesture is shown in Figure Figure \ref{fig:result}(f).
 Further tests on the applicability of the sliding window filter as well as our interpretation of the results are presented below.
 
@@ -103,7 +103,7 @@ Further tests on the applicability of the sliding window filter as well as our i
                         samples=100,
                         legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
                         \addplot[blue, only marks, mark size=1] table {../data/fig/threshold_result/haved.dat};
-                        \addlegendentry{HAveD}
+                        \addlegendentry{HAvgD}
                         \addplot[red, only marks, mark size=1] table {../data/fig/threshold_result/hmidd.dat};
                         \addlegendentry{HMidD}
                         \addplot[green, only marks, mark size=1] table {../data/fig/threshold_result/hmind.dat};
@@ -142,13 +142,13 @@ Further tests on the applicability of the sliding window filter as well as our i
                         samples=100,
                         legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
                         \addplot[blue, only marks, mark size=1] table {../data/fig/window_size_result/ave.dat};
-                        \addlegendentry{Ave}
+                        \addlegendentry{avg}
                         \addplot[red, only marks, mark size=1] table {../data/fig/window_size_result/max.dat};
-                        \addlegendentry{Max}
+                        \addlegendentry{max}
                         \addplot[green, only marks, mark size=1] table {../data/fig/window_size_result/mid.dat};
-                        \addlegendentry{Mid}
+                        \addlegendentry{mid}
                         \addplot[violet, only marks, mark size=1] table {../data/fig/window_size_result/min.dat};
-                        \addlegendentry{Min}
+                        \addlegendentry{min}
                         \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
                         \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
                         \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
@@ -242,23 +242,23 @@ Further tests on the applicability of the sliding window filter as well as our i
         }
     \end{tabular}
     \caption{
-    $Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the performance influence of the individual model parameters. 
-    The magnifying glass is focusing on the results with the highest $F_{1}score_{\mu}$. 
+    $Precision_{\mu}$ and $Recall_{\mu}$ plots illustrating the performance influence of the individual model parameters.
+    The magnifying glass is focusing on the results with the highest $F_{1}score_{\mu}$.
     Gray lines indicate the $F_{1}score_{\mu}$ distribution in $\frac{1}{10}$ steps.}
         \label{fig:result}
 \end{figure}
 \definecolor{light-gray}{gray}{0.8}
 
 
-\paragraph{Normalization:} 
+\paragraph{Normalization:}
 
-The influence of the time series normalization is illustrated in Figure \ref{fig:result}(b). We compare $\eta$, $z$, and no normalization, with \textit{Mid} window size and \textit{HAveD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved by means of the $\eta$ normalization, which corresponds to the data points shown in the magnifying glass. The point cloud in the lower left corner of plot \ref{fig:result}(b) are parameter settings with rather small warping band. 
+The influence of the time series normalization is illustrated in Figure \ref{fig:result}(b). We compare $\eta$, $z$, and no normalization, with \textit{mid} window size and \textit{HAvgD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved by means of the $\eta$ normalization, which corresponds to the data points shown in the magnifying glass. The point cloud in the lower left corner of plot \ref{fig:result}(b) are parameter settings with rather small warping band.
 
 
-\paragraph{Warping Band:} 
+\paragraph{Warping Band:}
 
-The influence of the Sakoe-Chiba band in combination with the DTW distance is shown below in Figure \ref{fig:sakoe-chiba_band_result}. 
-For this experiment we selected only the dominating parameter settings, with $\eta$ normalization, \textit{Mid} window size, and and \textit{HAveD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved with a band with of 36 \% time series length.
+The influence of the Sakoe-Chiba band in combination with the DTW distance is shown below in Figure \ref{fig:sakoe-chiba_band_result}.
+For this experiment we selected only the dominating parameter settings, with $\eta$ normalization, \textit{mid} window size, and and \textit{HAvgD} dissimilarity threshold. The best $F_{1}score_{\mu}$ was achieved with a band with of 18 \% time series length.
 
 \begin{figure}
     \begin{minipage}{0.55\textwidth}
@@ -267,12 +267,12 @@ For this experiment we selected only the dominating parameter settings, with $\e
                 \begin{axis}[
                     xmin=0,
                     ymin=0.65,
-                    xmax=200,
+                    xmax=100,
                     xlabel=band size in \% depending on input time series,
                     ylabel=$F_{1}score_{\mu}$,
                     width=\axisdefaultwidth,
                     height=0.6*\axisdefaultheight]
-                    \addplot[blue, ultra thick] table {../data/fig/sakoe-chiba_band_result/scb.dat};
+                    \addplot[blue, ultra thick] table[x expr=0.5*\thisrowno{0}, y=y] {../data/fig/sakoe-chiba_band_result/scb.dat};
                 \end{axis}
             \end{tikzpicture}
         }
@@ -284,24 +284,24 @@ For this experiment we selected only the dominating parameter settings, with $\e
 \end{figure}
 
 
-\paragraph{Dissimilarity Threshold:} 
+\paragraph{Dissimilarity Threshold:}
 
-We evaluate three different ways of determining a dissimilarity threshold, namely \textit{HMinD}, \textit{HAveD}, and \textit{HMidD}. For our comparison in Figure \ref{fig:result}(c), we used $\eta$ normalization, \textit{Mid} window size, and a warping band of 36 \% time series length. The best $F_{1}score_{\mu}$ was achieved by means of \textit{HAveD}, shortly followed by the \textit{HMidD} approach. Comparatively high $Precision_{\mu}$ values were given by \textit{HMinD} threshold.
-
-
-\paragraph{Window Size:} 
-
-The influence of the window size determination approach is shown in Figure \ref{fig:result}(d). We compare \textit{Min}, \textit{Max}, \textit{Ave}, and \textit{Mid} window size, with $\eta$ normalization, \textit{HAveD} dissimilarity threshold, and a warping and of 36 \% time series length. The highest $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$ was achieved by the \textit{Mid} window size, shortly followed by the \textit{Ave} window size. Figure \ref{fig:result}(d) furthermore suggests to refrain from using \textit{Max} and \textit{Min} window size determination.
+We evaluate three different ways of determining a dissimilarity threshold, namely \textit{HMinD}, \textit{HAvgD}, and \textit{HMidD}. For our comparison in Figure \ref{fig:result}(c), we used $\eta$ normalization, \textit{mid} window size, and a warping band of 18 \% time series length. The best $F_{1}score_{\mu}$ was achieved by means of \textit{HAvgD}, shortly followed by the \textit{HMidD} approach. Comparatively high $Precision_{\mu}$ values were given by \textit{HMinD} threshold.
 
 
-\paragraph{Filtering Approach:} 
+\paragraph{Window Size:}
 
-Given the optimal parameter setting that was determined in the previous experiments, we are now in the position to assess the influence of the filtering approach. Figure \ref{fig:result}(e) shows the performance with $VAR$, $LNCE$, and no filter. Note that only results with a 
+The influence of the window size determination approach is shown in Figure \ref{fig:result}(d). We compare \textit{min}, \textit{max}, \textit{avg}, and \textit{mid} window size, with $\eta$ normalization, \textit{HAvgD} dissimilarity threshold, and a warping and of 18 \% time series length. The highest $Precision_{\mu}$, $Recall_{\mu}$ and $F_{1}score_{\mu}$ was achieved by the \textit{mid} window size, shortly followed by the \textit{avg} window size. Figure \ref{fig:result}(d) furthermore suggests to refrain from using \textit{max} and \textit{min} window size determination.
+
+
+\paragraph{Filtering Approach:}
+
+Given the optimal parameter setting that was determined in the previous experiments, we are now in the position to assess the influence of the filtering approach. Figure \ref{fig:result}(e) shows the performance with $VAR$, $LNCE$, and no filter. Note that only results with a
 $F_{1}score_{\mu}$ of at least 0.7 are plotted. Interestingly, top performance was achieved with with and without filter. This lead is to the question of computational complexity, which is answered in following paragraph.
 
-\paragraph{Filter Interval:} 
+\paragraph{Filter Interval:}
 
-The filter interval does not only influence the resulting $F_{1}score_{\mu}$, but also the amount of time series dissimilarity comparisons. 
+The filter interval does not only influence the resulting $F_{1}score_{\mu}$, but also the amount of time series dissimilarity comparisons.
 Figure \ref{fig:blur_factor_result} illustrates the influence of the interval size in respect to performance and computational demand.
 With an appropriate filter interval of about 200 \% we are able to reduce the number of dissimilarity comparisons by one half, while still achieving relatively high performance values.
 
@@ -359,12 +359,8 @@ With an appropriate filter interval of about 200 \% we are able to reduce the nu
 \end{figure}
 
 
-\paragraph{Individual Gestures} 
+\paragraph{Individual Gestures}
 
-Finally, we have tested the performance for each of the examined gestures separately. 
+Finally, we have tested the performance for each of the examined gestures separately.
 Figure \ref{fig:result}(e) shows the best $Precision$ and $Recall$ values that were achieved for each gesture.
 The results demonstrate that some gestures are easier to recognize than others.
-
-
-
-
