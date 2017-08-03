@@ -4,4 +4,25 @@ All of our data records are resampled and quantized before further analysis. In 
 
 \paragraph{Resampling:} The recorded acceleration data was resampled by means of the moving average technique, using a window size of 50 ms and step size of 30 ms.
 
-\paragraph{Quantization:} The resampled records were then converted into time series with integer values between -16 and 16, such as suggested in related work \cite{liu2009uwave}.
+\paragraph{Quantization:} The resampled records were then converted into time series with integer values between -16 and 16, such as suggested in related work \cite{liu2009uwave} and summarized in table \ref{table:conversion}.
+
+\begin{table}
+    \begin{center}
+        \begin{tabularx}{\textwidth}{XX}
+            \hline
+            \textbf{Acceleration data ($a$) in $\frac{dm}{s^2}$} & \textbf{Converted value}\\
+            \hline
+            $a > 200$ & 16\\
+            $100 < a < 200$ & 11 to 15 (five levels linearly)\\
+            $0 < a < 100$ & 1 to 10 (ten levels linearly)\\
+            $a = 0$ & 0\\
+            $-100 < a < 0$ & -1 to - 10 (ten levels linearly)\\
+            $-200 < a < -100$ & -11 to - 15 (five levels linearly)\\
+            $a < -200$ & -16\\
+            \hline
+        \end{tabularx}
+    \end{center}
+    \caption{Table shows the conversion rules of the recorded acceleration data. In contrast to \cite{liu2009uwave} are
+    $100\frac{dm}{s^2}$ the steps threshold and not $1g$.}
+	\label{table:conversion}
+\end{table}
