@@ -3,15 +3,15 @@
 Since our proposed sliding window filter is tested on time series streams that contain various different gestures, we need to treat the described online gesture recognition challenge as multi-class problem.
 Common performance measures for multi-class problems are $Precision_{\mu}$, $Recall_{\mu}$ and $F_{\beta}score_{\mu}$ \cite{sokolova2009systematic}:
 
-\begin{equation}
+\begin{equation*}
     Precision_{\mu} = {\sum \limits_{i=1}^{l} tp_i}  \bigg/  {\sum \limits_{i=1}^{l} (tp_i + fp_i)}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
     Recall_{\mu} = {\sum \limits_{i=1}^{l} tp_i} \bigg/{\sum \limits_{i=1}^{l} (tp_i + fn_i)}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
     F_{\beta}score_{\mu} = {(\beta^2 + 1)Precision_{\mu} Recall_{\mu}} \bigg/ {\beta^2 Precision_{\mu} + Recall_{\mu}}
-\end{equation}
+\end{equation*}
 
 where $\beta$ is usually set to one and $l$ denotes the number of classes that require separate computation of true positives ($tp$), false positives ($fp$), and false negatives ($fn$).
 These multi-class performance measures allow us to compare and rank the results for different parameter settings.

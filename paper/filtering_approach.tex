@@ -45,13 +45,13 @@ In order to reduce the large number of computational expensive dissimilarity com
 
 Given is a time series $Q = (q_1, \dots, q_n)$ with length $n$, we can define the sample variance ($VAR$) and length normalized complexity estimate ($LNCE$) as follows:
 
-\begin{equation}
+\begin{equation*}
     VAR(Q) = \frac{1}{n}\sum \limits_{i=1}^{n} (q_i - \mu)^2
-\end{equation}
+\end{equation*}
 
-\begin{equation}
+\begin{equation*}
     LNCE(Q) = \frac{1}{n-1}\sqrt[2]{\sum \limits_{i=1}^{n-1} (q_i - q_{i + 1})^2}
-\end{equation}
+\end{equation*}
 
 Having defined the above statistical measures, we are able to compute the $VAR$ and $LNCE$ for all training time series and, subsequently, use the resulting range of statistical values to learn an appropriate filter interval. During testing, each window that exhibits a measured value within the learned interval is passed to the classifier or pruned otherwise. In order to avoid excessive pruning of relevant windows, we further more introduce a multiplication factor, which allows us to expend the interval boundaries by a certain percentage.
 
