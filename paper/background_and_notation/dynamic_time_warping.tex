@@ -27,6 +27,7 @@ Dynamic Time Warping (DTW) is a widely used and robust distance measure for time
                 } & \quad
                 \resizebox* {!} {0.3\textwidth} {
                     \begin{tabular}[b]{ll}
+                        \adjustbox{valign=t}{
                         \begin{turn}{90}
                             \begin{tikzpicture}
                                 \begin{axis}[
@@ -41,12 +42,14 @@ Dynamic Time Warping (DTW) is a widely used and robust distance measure for time
                                     \addplot[red, ultra thick, mark=none] table {../data/fig/scb/q.dat};
                                 \end{axis}
                             \end{tikzpicture}
-                        \end{turn} \hspace*{3em} &
-                        \begin{tikzpicture}
+                        \end{turn}} \hspace*{1em} &
+                        \adjustbox{valign=t}{
+                        \begin{tikzpicture} {\LARGE
                             \begin{axis}[
                                 enlargelimits=false,
                                 ymin=0,
                                 ymax=47,
+                                colorbar,
                                 hide x axis,
                                 hide y axis,
                                 width=\axisdefaultwidth,
@@ -57,8 +60,8 @@ Dynamic Time Warping (DTW) is a widely used and robust distance measure for time
                                     mesh/cols=48,
                                     point meta=explicit] table[meta=C] {../data/fig/scb/matrix.dat};
                                 \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/scb/matrix_path.dat};
-                            \end{axis}
-                        \end{tikzpicture}\\
+                            \end{axis}}
+                        \end{tikzpicture}}\\
                         &
                         \\[1em]
                         &
