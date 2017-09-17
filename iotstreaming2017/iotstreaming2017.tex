@@ -1,0 +1,31 @@
+\documentclass[handout]{beamer}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{rotating}
+\usepackage{tikz}
+\pgfplotsset{compat=1.11}
+\setcounter{tocdepth}{2}
+\usetikzlibrary{spy}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{pgfplots.colormaps}
+
+\begin{document}
+    \title{A Sliding Window Filter for Time Series Streams}
+    \subtitle{IoT Large Scale Learning from Data Streams\\ECML PKDD 2017}
+    \author{Gordon Lesti$^1$ and Stephan Spiegel$^2$}
+    \date{September 18, 2017}
+    \institute{
+        $^1$ Technische Universit\"at Berlin, Stra{\ss}e des 17. Juni 135, 10623 Berlin, Germany\\
+        \texttt{gordon.lesti@campus.tu-berlin.de}\\
+        $^2$ IBM Research Zurich, S\"aumerstrasse 4 , 8803 R\"uschlikon, Switzerland\\
+        \texttt{tep@zurich.ibm.com}
+    }
+
+    \frame{\titlepage}
+    \frame{\frametitle{Structure}\tableofcontents}
+    \input{introduction.tex}
+    \input{background.tex}
+    \input{sliding_window_filter.tex}
+    \input{references.tex}
+\end{document}

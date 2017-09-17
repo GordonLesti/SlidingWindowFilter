@@ -1,0 +1,171 @@
+\subsection{Dynamic Time Warping}
+
+\begin{frame}{Dynamic Time Warping}
+    \begin{itemize}
+        \item A widely used and robust distance measure for time series
+
+        \item \textit{"Allowing similar shapes to match even if they are out of phase in the time axis"}
+            \cite{keogh2002exact}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}<handout:0>{Dynamic Time Warping}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[red, thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                            \end{axis}
+                        \end{tikzpicture} \\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\begin{frame}{Dynamic Time Warping}{Example}
+    \begin{center}
+        \resizebox {\textwidth} {!} {
+            \begin{tabular}{cc}
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,
+                            xmax=47,
+                            xlabel=time,
+                            ylabel=acceleration,
+                            width=\axisdefaultwidth,
+                            height=0.7*\axisdefaultheight,
+                            reverse legend,
+                            legend pos=south east]
+                            \addplot[gray, quiver={u=\thisrow{u}, v=\thisrow{v}}] table {../data/fig/dynamictimewarping/path.dat};
+                            \addplot[red, thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                            \addlegendentry{Q}
+                            \addplot[blue, thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \addlegendentry{C}
+                        \end{axis}
+                    \end{tikzpicture}
+                } & \quad
+                \resizebox* {!} {0.3\textwidth} {
+                    \begin{tabular}[b]{ll}
+                        \begin{turn}{90}
+                            \begin{tikzpicture}
+                                \begin{axis}[
+                                    xmin=0,
+                                    xmax=47,
+                                    ymin=-100,
+                                    ymax=0,
+                                    hide x axis,
+                                    hide y axis,
+                                    width=\axisdefaultwidth,
+                                    height=0.7*\axisdefaultheight]
+                                    \addplot[red, ultra thick, mark=none] table {../data/fig/dynamictimewarping/q.dat};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{turn} \hspace*{3em} &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                enlargelimits=false,
+                                ymin=0,
+                                ymax=47,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=\axisdefaultwidth,
+                                colorbar,
+                                colormap/viridis high res]
+                                \addplot[matrix plot*,
+                                    mesh/cols=48,
+                                    point meta=explicit] table[meta=C] {../data/fig/dynamictimewarping/matrix.dat};
+                                \addplot[white, ultra thick, mark=*, mark size=1] table {../data/fig/dynamictimewarping/matrix_path.dat};
+                            \end{axis}
+                        \end{tikzpicture} \\
+                        &
+                        \\[1em]
+                        &
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                xmin=0,
+                                xmax=47,
+                                ymin=-100,
+                                ymax=0,
+                                hide x axis,
+                                hide y axis,
+                                width=\axisdefaultwidth,
+                                height=0.7*\axisdefaultheight]
+                                \addplot[blue, ultra thick, mark=none] table {../data/fig/dynamictimewarping/c.dat};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{tabular}
+                }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\input{background/dynamic_time_warping/sakoe-chiba_band.tex}
+\input{background/dynamic_time_warping/time_series_normalization.tex}

@@ -1,0 +1,59 @@
+\section{Introduction}
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item sensor-equipped devices measure our environment
+        \pause
+        \item online algorithms process the generated data streams in quasi real-time
+        \pause
+        \item inform about relevant trends and events that impact decision making
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}{Applications}
+    Applications range from
+    \begin{itemize}
+        \item smart home control \cite{spiegel2015metering}
+        \pause
+        \item frequent pattern mining for engine optimization \cite{spiegel2015driving}
+        \pause
+        \item scene detection for video content \cite{acar2011mediaeval}
+        \pause
+        \item gesture recognition for human-computer interaction \cite{liu2009uwave}
+        \pause
+        \item $\dots$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}{Sliding Window Technique}
+    \begin{itemize}
+        \item observes the most recent sensor measurements
+        \pause
+        \item moves along the time axis as new measurements arrive
+        \pause
+        \item each window is examined for a set of predefined events
+        \pause
+        \item comparison of the current time series segment and all preliminary learned instances of the relevant temporal patterns
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}{Sliding Window Technique}
+    Time and space complexity of the sliding window technique increases with
+    \begin{itemize}
+        \item decreasing step size $s$
+        \pause
+        \item growing window size $w$
+        \pause
+        \item measurement frequency
+        \pause
+        \item number of preliminary learned instances
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}{Aim}
+    Our aim
+    \begin{itemize}
+        \item reduce the number of computational expensive dissimilarity comparisons
+        \pause
+        \item a sliding window filter \cite{lesti2017filter}, which is able to decide whether the current window should be passed to a time series classifier or not
+    \end{itemize}
+\end{frame}
