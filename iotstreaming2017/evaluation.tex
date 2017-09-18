@@ -283,3 +283,43 @@
         }
     \end{center}
 \end{frame}
+
+\begin{frame}{Evaluation}{Influence of Normalization}
+    \begin{center}
+        \resizebox {0.5\textwidth} {!} {
+            \begin{tikzpicture}[spy using outlines={circle, magnification=6, connect spies}]
+                \begin{axis}[
+                    xmin=0,
+                    xmax=1,
+                    ymin=0,
+                    ymax=1,
+                    width=\axisdefaultwidth,
+                    height=\axisdefaultwidth,
+                    xlabel=$Precision_{\mu}$,
+                    ylabel=$Recall_{\mu}$,
+                    samples=100,
+                    legend style={at={(0.5,-0.15)}, anchor=north,legend columns=-1}]
+                    \addplot[blue, only marks, mark size=1] table {../data/fig/distance_measure_result/dtw.dat};
+                    \addlegendentry{no}
+                    \addplot[red, only marks, mark size=1] table {../data/fig/distance_measure_result/ndtw.dat};
+                    \addlegendentry{$\eta$-norm}
+                    \addplot[green, only marks, mark size=1] table {../data/fig/distance_measure_result/n1dtw.dat};
+                    \addlegendentry{$z$-norm}
+                    \addplot[gray, domain=0.051:1] {(0.1 * x) / (2 * x - 0.1)};
+                    \addplot[gray, domain=0.11:1] {(0.2 * x) / (2 * x - 0.2)};
+                    \addplot[gray, domain=0.16:1] {(0.3 * x) / (2 * x - 0.3)};
+                    \addplot[gray, domain=0.21:1] {(0.4 * x) / (2 * x - 0.4)};
+                    \addplot[gray, domain=0.26:1] {(0.5 * x) / (2 * x - 0.5)};
+                    \addplot[gray, domain=0.31:1] {(0.6 * x) / (2 * x - 0.6)};
+                    \addplot[gray, domain=0.36:1] {(0.7 * x) / (2 * x - 0.7)};
+                    \addplot[gray, domain=0.41:1] {(0.8 * x) / (2 * x - 0.8)};
+                    \addplot[gray, domain=0.46:1] {(0.9 * x) / (2 * x - 0.9)};
+                    \coordinate (spypoint) at (axis cs:0.8413867433,0.6578651685);
+                    \coordinate (magnifyglass) at (axis cs:0.2,0.8);
+                \end{axis}
+                \spy [size=2cm] on (spypoint)
+                    in node[fill=white] at (magnifyglass);
+            \end{tikzpicture}
+        }
+    \end{center}
+\end{frame}
